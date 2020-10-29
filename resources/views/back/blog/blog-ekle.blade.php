@@ -1,3 +1,6 @@
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/editors/tinymce/tinymce.min.css')}}">
+@endsection
 @extends('back.layouts.app')
 @section('content')
     <div class="app-content content">
@@ -24,12 +27,11 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form form-horizontal row-separator">
+                                    <form class="form-horizontal" method="post" autocomplete="off" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="la la-eye"></i>Sosyal Medya</h4>
+                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>Blog</h4>
                                             <div class="row">
-
-
                                                 <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
@@ -73,46 +75,74 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <fieldset>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text" id="basic-addon3"><i class="la la-youtube-play"></i></span>
-                                                                        </div>
-                                                                        <input type="text" class="form-control" placeholder="Youtube" aria-describedby="basic-addon3">
-                                                                    </div>
-                                                                </fieldset>
+                                                                <label>Blog Görsel (Tek Fotoğraf)</label>
+                                                                <div class="input-group">
+                                                                    <input type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="card-body">
-                                                        <div class="card-block">
-                                                            <fieldset>
+                                                <div class="col-md-3">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Blog Görsel (Çoklu Fotoğraf)</label>
                                                                 <div class="input-group">
-                                                                    <div class="input-group-prepend">
-                                                                        <span class="input-group-text" id="basic-addon3"><i class="la la-linkedin"></i></span>
-                                                                    </div>
-                                                                    <input type="text" class="form-control" placeholder="Linkedin" aria-describedby="basic-addon3">
+                                                                    <input type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
-                                                            </fieldset>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Blog Belge (Tek PDF)</label>
+                                                                <div class="input-group">
+                                                                    <input type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Blog Belge (Çoklu PDF)</label>
+                                                                <div class="input-group">
+                                                                    <input type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Blog Metni</label>
+                                                                <div class="form-group">
+                                                                    <textarea class="tinymce"> </textarea>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                             </div>
 
-
                                         </div>
                                         <div class="form-actions right">
                                             <button type="submit" class="btn btn-primary">
-                                                <i class="la la-check"></i> Güncelle
+                                                <i class="la la-check"></i> Kaydet
                                             </button>
                                         </div>
                                     </form>
@@ -125,4 +155,8 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script src="{{asset('/public/back/app-assets/vendors/js/editors/tinymce/tinymce.js')}}" type="text/javascript"></script>
+<script src="{{asset('/public/back/app-assets/js/scripts/editors/editor-tinymce.js')}}" type="text/javascript"></script>
 @endsection

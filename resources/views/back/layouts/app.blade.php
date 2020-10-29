@@ -22,6 +22,7 @@
     <!-- BEGIN MODERN CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/app.css')}}">
     <!-- END MODERN CSS-->
+    @yield('css')
     <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/core/menu/menu-types/horizontal-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/core/colors/palette-gradient.css')}}">
@@ -547,3 +548,4 @@
 </body>
 </html>
 
+@yield('js')
