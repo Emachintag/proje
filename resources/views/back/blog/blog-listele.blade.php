@@ -30,7 +30,7 @@
                         </div>
                         <div class="col-xl-6 col-md-12">
                             <div class="card overflow-hidden">
-                                <div class="card-content">
+                                <div style="cursor: pointer" onclick="location.href='{{route('blog_ekle')}}'" class="card-content">
                                     <div class="media align-items-stretch bg-info text-white rounded">
                                         <div class="bg-info bg-darken-2 p-2 media-middle">
                                             <i class="icon-pencil font-large-2 text-white"></i>
