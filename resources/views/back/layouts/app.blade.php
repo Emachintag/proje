@@ -381,11 +381,11 @@
             </li>
             <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="la la-cogs"></i><span>Site Ayarları</span></a>
                 <ul class="dropdown-menu">
-                    <li data-menu=""><a class="dropdown-item" href="../vertical-menu-template" data-toggle="dropdown">Site Bilgileri</a>
+                    <li data-menu=""><a class="dropdown-item" href="{{route('site_ayarlar')}}" data-toggle="dropdown">Site Bilgileri</a>
                     </li>
                     <li data-menu=""><a class="dropdown-item" href="{{route('sosyal_medya_ayarlar')}}" data-toggle="dropdown">Sosyal Medya Bilgileri</a>
                     </li>
-                    <li data-menu=""><a class="dropdown-item" href="/vertical-menu-template" data-toggle="dropdown">İletişim Bilgileri</a>
+                    <li data-menu=""><a class="dropdown-item" href="{{route('iletisim_ayarlar')}}" data-toggle="dropdown">İletişim Bilgileri</a>
                     </li>
                 </ul>
             </li>
