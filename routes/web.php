@@ -20,11 +20,11 @@ Route::prefix('panel')->group(function () {
         $space = "App\Http\Controllers\\";
         $controller = $space.$moduleController;
         $moduleSlug = $u->moduleSlug;
-        Route::get($moduleLink, $controller.'@listele')->name($moduleSlug);
-        Route::get($moduleLink, $controller.'@ekle')->name($moduleSlug.'_ekle');
-        Route::post($moduleLink, $controller.'@ekle_post')->name($moduleSlug.'_ekle_post');
-        Route::get($moduleLink, $controller.'@duzenle')->name($moduleSlug.'_duzenle');
-        Route::post($moduleLink, $controller.'@duzenle_post')->name($moduleSlug.'_duzenle_post');
+        Route::get($moduleLink, $controller.'@'.$moduleSlug.'_listele')->name($moduleSlug);
+        Route::get($moduleLink, $controller.'@'.$moduleSlug.'_ekle')->name($moduleSlug.'_ekle');
+        Route::post($moduleLink, $controller.'@'.$moduleSlug.'_ekle_post')->name($moduleSlug.'_ekle_post');
+        Route::get($moduleLink, $controller.'@'.$moduleSlug.'_duzenle')->name($moduleSlug.'_duzenle');
+        Route::post($moduleLink, $controller.'@'.$moduleSlug.'_duzenle_post')->name($moduleSlug.'_duzenle_post');
     }
 
 });
