@@ -34,14 +34,10 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <fieldset>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text" id="basic-addon3"><i class="la la-facebook"></i></span>
-                                                                        </div>
-                                                                        <input type="text" class="form-control" placeholder="Facebook" aria-describedby="basic-addon3">
-                                                                    </div>
-                                                                </fieldset>
+                                                                <label>Blog Başlığı</label>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -50,14 +46,10 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <fieldset>
+                                                                    <label>Blog Alt Başlığı</label>
                                                                     <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text" id="basic-addon3"><i class="la la-twitter"></i></span>
-                                                                        </div>
-                                                                        <input type="text" class="form-control" placeholder="Twitter" aria-describedby="basic-addon3">
+                                                                        <input type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                     </div>
-                                                                </fieldset>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -66,14 +58,17 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <fieldset>
-                                                                    <div class="input-group">
-                                                                        <div class="input-group-prepend">
-                                                                            <span class="input-group-text" id="basic-addon3"><i class="la la-instagram"></i></span>
-                                                                        </div>
-                                                                        <input type="text" class="form-control" placeholder="İnstagram" aria-describedby="basic-addon3">
-                                                                    </div>
-                                                                </fieldset>
+                                                                <label>Kategori</label>
+                                                                <div class="input-group">
+                                                                    <select class="form-control" id="basicSelect">
+                                                                        <option>Select Option</option>
+                                                                        <option>Option 1</option>
+                                                                        <option>Option 2</option>
+                                                                        <option>Option 3</option>
+                                                                        <option>Option 4</option>
+                                                                        <option>Option 5</option>
+                                                                    </select>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
