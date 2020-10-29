@@ -10,8 +10,8 @@
     <title>Dashboard sales - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin
         Dashboard
     </title>
-    <link rel="apple-touch-icon" href="{{asset('/public/back/app-assets/images/ico/apple-icon-120.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/public/back/app-assets/images/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('/public/logo.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/public/logo.png')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
           rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
@@ -44,9 +44,9 @@
             <ul class="nav navbar-nav flex-row">
                 <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href="index.html">
-                        <img class="brand-logo" alt="modern admin logo" src="../../../app-assets/images/logo/logo.png')}}">
-                        <h3 class="brand-text">Modern Admin</h3>
+                    <a class="navbar-brand" href="{{route('home')}}">
+                        <img class="brand-logo" alt="modern admin logo" src="{{asset('/public/logo.png')}}">
+                        <h3 class="brand-text">I Feel Code</h3>
                     </a>
                 </li>
                 <li class="nav-item d-md-none">
