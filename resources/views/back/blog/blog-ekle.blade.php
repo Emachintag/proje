@@ -141,9 +141,7 @@
 
                                         </div>
                                         <div class="form-actions right">
-                                            <button type="submit" class="btn btn-primary">
-                                                <i class="la la-check"></i> Kaydet
-                                            </button>
+                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Gönder</button>
                                         </div>
                                     </form>
                                 </div>
