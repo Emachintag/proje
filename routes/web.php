@@ -20,8 +20,16 @@ Route::prefix('panel')->group(function () {
     Route::get('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar'])->name('iletisim_ayarlar');
     Route::post('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar_post']);
 
-
-
+    Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+    Route::get('/blog-ekle', [HomeController::class, 'blog_ekle'])->name('blog_ekle');
+    Route::post('/blog-ekle', [HomeController::class, 'blog_ekle_post']);
+    Route::get('/blog-duzenle', [HomeController::class, 'blog_duzenle'])->name('blog_duzenle');
+    Route::post('/blog-duzenle', [HomeController::class, 'blog_duzenle_post']);
+    Route::get('/blog-kategori', [HomeController::class, 'blog_kategori'])->name('blog_kategori');
+    Route::get('/blog-kategori-ekle', [HomeController::class, 'blog_kategori_ekle'])->name('blog_kategori_ekle');
+    Route::post('/blog-kategori-ekle', [HomeController::class, 'blog_kategori_ekle_post']);
+    Route::get('/blog-kategori-duzenle', [HomeController::class, 'blog_kategori_duzenle'])->name('blog_kategori_duzenle');
+    Route::post('/blog-kategori-duzenle', [HomeController::class, 'blog_kategori_duzenle_post']);
 
     /*foreach (Modules::where('status', '1')->get() as $u) {
         $moduleLink = $u->moduleLink;
