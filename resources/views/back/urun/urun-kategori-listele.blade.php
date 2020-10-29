@@ -18,8 +18,8 @@
                                             <i class="icon-speech font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
-                                            <h4 class="text-white">Blog Sayısı</h4>
-                                            <span>Yazdığınız Blog Sayısı</span>
+                                            <h4 class="text-white">Ürün Kategori Sayısı</h4>
+                                            <span>Kaydedilen Ürün Kategori Sayısı</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
                                             <h1 class="text-white">84,695</h1>
@@ -30,14 +30,14 @@
                         </div>
                         <div class="col-xl-6 col-md-12">
                             <div class="card overflow-hidden">
-                                <div style="cursor: pointer" onclick="location.href='{{route('blog_ekle')}}'" class="card-content">
-                                    <div class="media align-items-stretch bg-info text-white rounded">
+                                <div style="cursor: pointer" onclick="location.href='{{route('blog_kategori_ekle')}}'" class="card-content">
+                                    <div  class="media align-items-stretch bg-info text-white rounded">
                                         <div class="bg-info bg-darken-2 p-2 media-middle">
                                             <i class="icon-pencil font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
-                                            <h4 class="text-white">Yeni Blog Ekle</h4>
-                                            <span>Yeni Blog İçin Tıklayınız</span>
+                                            <h4 class="text-white">Yeni Ürün Kategori Ekle</h4>
+                                            <span>Yeni Ürün Kategori Eklemek İçin Tıklayınız</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
                                             <h1 class="text-white">18,000</h1>
@@ -55,7 +55,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Blog Listeleme</h4>
+                                    <h4 class="card-title">Ürün Listeleme</h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -72,8 +72,8 @@
                                         <table class="table table-striped table-bordered zero-configuration">
                                             <thead>
                                             <tr>
-                                                <th>Blog Başlık</th>
-                                                <th>Blog Resim</th>
+                                                <th>Ürün Kategori Başlık</th>
+                                                <th>Ürün Kategori Sırası</th>
                                                 <th>İşlem</th>
 
                                             </tr>
@@ -101,8 +101,8 @@
                                             </tbody>
                                             <tfoot>
                                             <tr>
-                                                <th>Blog Başlık</th>
-                                                <th>Blog Resim</th>
+                                                <th>Ürün Kategori Başlık</th>
+                                                <th>Ürün Kategori Sırası</th>
                                                 <th>İşlem</th>
 
                                             </tr>

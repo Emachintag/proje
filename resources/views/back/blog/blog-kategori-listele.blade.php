@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Yeni Blog Kategori Ekle</h4>
-                                            <span>Yeni Blok Kategori Eklemek İçin Tıklayınız</span>
+                                            <span>Yeni Blog Kategori Eklemek İçin Tıklayınız</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
                                             <h1 class="text-white">18,000</h1>

@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="row-separator-colored-controls">Blog Kategorisi Ekle</h4>
+                                <h4 class="card-title" id="row-separator-colored-controls">Ürün Kategorisi Ekle</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -62,7 +62,7 @@
 
                                         </div>
                                         <div class="form-actions right">
-                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Düzenle</button>
+                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Gönder</button>
                                         </div>
                                     </form>
                                 </div>

@@ -1,5 +1,5 @@
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/editors/tinymce/tinymce.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/editors/tinymce/tinymce.min.css')}}">
 @endsection
 @extends('back.layouts.app')
 @section('content')
@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="row-separator-colored-controls">Blog Ekle</h4>
+                                <h4 class="card-title" id="row-separator-colored-controls">Ürün Ekle</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -30,13 +30,13 @@
                                     <form class="form-horizontal" method="post" autocomplete="off" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>Blog</h4>
+                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>Ürün</h4>
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Blog Başlığı</label>
+                                                                <label>Ürün Başlığı</label>
                                                                 <div class="input-group">
                                                                     <input type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
@@ -48,10 +48,10 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Blog Alt Başlığı</label>
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
+                                                                    <label>Ürün Alt Başlığı</label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -79,7 +79,7 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Blog Görsel (Tek Fotoğraf)</label>
+                                                                <label>Ürün Görsel (Tek Fotoğraf)</label>
                                                                 <div class="input-group">
                                                                     <input type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
@@ -91,7 +91,7 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Blog Görsel (Çoklu Fotoğraf)</label>
+                                                                <label>Ürün Görsel (Çoklu Fotoğraf)</label>
                                                                 <div class="input-group">
                                                                     <input type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
@@ -103,7 +103,7 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Blog Belge (Tek PDF)</label>
+                                                                <label>Ürün Belge (Tek PDF)</label>
                                                                 <div class="input-group">
                                                                     <input type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
@@ -115,7 +115,7 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Blog Belge (Çoklu PDF)</label>
+                                                                <label>Ürün Belge (Çoklu PDF)</label>
                                                                 <div class="input-group">
                                                                     <input type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
@@ -128,7 +128,7 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Blog Metni</label>
+                                                                <label>Ürün Metni</label>
                                                                 <div class="form-group">
                                                                     <textarea class="tinymce"> </textarea>
                                                                 </div>
@@ -141,7 +141,7 @@
 
                                         </div>
                                         <div class="form-actions right">
-                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Düzenle</button>
+                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Gönder</button>
                                         </div>
                                     </form>
                                 </div>
@@ -155,6 +155,6 @@
     </div>
 @endsection
 @section('js')
-    <script src="{{asset('/public/back/app-assets/vendors/js/editors/tinymce/tinymce.js')}}" type="text/javascript"></script>
-    <script src="{{asset('/public/back/app-assets/js/scripts/editors/editor-tinymce.js')}}" type="text/javascript"></script>
+<script src="{{asset('/public/back/app-assets/vendors/js/editors/tinymce/tinymce.js')}}" type="text/javascript"></script>
+<script src="{{asset('/public/back/app-assets/js/scripts/editors/editor-tinymce.js')}}" type="text/javascript"></script>
 @endsection
