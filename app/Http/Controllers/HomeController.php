@@ -6,24 +6,23 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function listele()
+    public function index()
     {
-        return view('back.home.listele');
+        return view('back.index');
     }
-    public function ekle()
-    {
 
-    }
-    public function ekle_post()
+    public function sosyal_medya_ayarlar()
     {
-        
+        return view('back.ayarlar.sosyal-medya');
     }
-    public function duzenle()
-    {
 
-    }
-    public function duzenle_post()
+    public function site_ayarlar()
     {
+        return view('back.ayarlar.site-ayarlar');
+    }
 
+    public function iletisim_ayarlar()
+    {
+        return view('back.ayarlar.iletisim-ayarlar');
     }
 }
