@@ -383,9 +383,9 @@
                 <ul class="dropdown-menu">
                     <li data-menu=""><a class="dropdown-item" href="../vertical-menu-template" data-toggle="dropdown">Site Bilgileri</a>
                     </li>
-                    <li data-menu=""><a class="dropdown-item" href="/sosyalmedya" data-toggle="dropdown">Sosyal Medya Bilgileri</a>
+                    <li data-menu=""><a class="dropdown-item" href="{{route('sosyal_medya_ayarlar')}}" data-toggle="dropdown">Sosyal Medya Bilgileri</a>
                     </li>
-                    <li data-menu=""><a class="dropdown-item" href="../vertical-menu-template" data-toggle="dropdown">İletişim Bilgileri</a>
+                    <li data-menu=""><a class="dropdown-item" href="/vertical-menu-template" data-toggle="dropdown">İletişim Bilgileri</a>
                     </li>
                 </ul>
             </li>

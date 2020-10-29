@@ -2,34 +2,7 @@
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
-            <div class="content-header row">
-                <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">Input Groups</h3>
-                    <div class="row breadcrumbs-top">
-                        <div class="breadcrumb-wrapper col-12">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                </li>
-                                <li class="breadcrumb-item"><a href="#">Form Components</a>
-                                </li>
-                                <li class="breadcrumb-item active">Input Groups
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-header-right col-md-6 col-12">
-                    <div class="media width-250 float-right">
-                        <media-left class="media-middle">
-                            <div id="sp-bar-total-sales"></div>
-                        </media-left>
-                        <div class="media-body media-right text-right">
-                            <h3 class="m-0">$5,668</h3>
-                            <span class="text-muted">Sales</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="content-body">
                 <!-- input groups start -->
 
@@ -38,7 +11,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="row-separator-colored-controls">User Profile</h4>
+                                <h4 class="card-title" id="row-separator-colored-controls">Sosyal Medya Ayarları</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
