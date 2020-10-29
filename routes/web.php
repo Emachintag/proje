@@ -3,18 +3,27 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AdminController;
-use App\Models\Modules;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/', [MainController::class, 'index'])->name('anasayfa');
 Route::get('/giris', [LoginController::class, 'login'])->name('giris');
 Route::post('/giris', [LoginController::class, 'login_post']);
 
 Auth::routes();
 Route::prefix('panel')->group(function () {
 
-    foreach (Modules::where('status', '1')->get() as $u) {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/sosyal-medya-ayarlar', [HomeController::class, 'sosyal_medya_ayarlar'])->name('sosyal_medya_ayarlar');
+    Route::post('/sosyal-medya-ayarlar', [HomeController::class, 'sosyal_medya_ayarlar_post']);
+    Route::get('/site-ayarlar', [HomeController::class, 'site_ayarlar'])->name('site_ayarlar');
+    Route::post('/site-ayarlar', [HomeController::class, 'site_ayarlar_post']);
+    Route::get('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar'])->name('iletisim_ayarlar');
+    Route::post('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar_post']);
+
+
+
+
+    /*foreach (Modules::where('status', '1')->get() as $u) {
         $moduleLink = $u->moduleLink;
         $moduleController = $u->moduleController;
         $space = "App\Http\Controllers\\";
@@ -25,6 +34,6 @@ Route::prefix('panel')->group(function () {
         Route::post($moduleLink, $controller.'@ekle_post')->name($moduleSlug.'_ekle_post');
         Route::get($moduleLink, $controller.'@duzenle')->name($moduleSlug.'_duzenle');
         Route::post($moduleLink, $controller.'@duzenle_post')->name($moduleSlug.'_duzenle_post');
-    }
+    }*/
 
 });
