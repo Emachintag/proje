@@ -421,13 +421,13 @@
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-newspaper-o"></i>Blog Yönetimi</a>
                         <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Blog Görüntüle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('blog')}}" data-toggle="dropdown">Blog Görüntüle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Blog Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('blog_ekle')}}" data-toggle="dropdown">Blog Ekle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Blog Kategori Yönet</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('blog_kategori')}}" data-toggle="dropdown">Blog Kategori Yönet</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Blog Kategori Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('blog_kategori_ekle')}}" data-toggle="dropdown">Blog Kategori Ekle</a>
                             </li>
 
                         </ul>

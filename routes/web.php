@@ -20,6 +20,8 @@ Route::prefix('panel')->group(function () {
     Route::get('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar'])->name('iletisim_ayarlar');
     Route::post('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar_post']);
 
+    // Blog İşlemleri Başlangıç
+
     Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
     Route::get('/blog-ekle', [HomeController::class, 'blog_ekle'])->name('blog_ekle');
     Route::post('/blog-ekle', [HomeController::class, 'blog_ekle_post']);
@@ -30,6 +32,8 @@ Route::prefix('panel')->group(function () {
     Route::post('/blog-kategori-ekle', [HomeController::class, 'blog_kategori_ekle_post']);
     Route::get('/blog-kategori-duzenle', [HomeController::class, 'blog_kategori_duzenle'])->name('blog_kategori_duzenle');
     Route::post('/blog-kategori-duzenle', [HomeController::class, 'blog_kategori_duzenle_post']);
+
+    // Blog İşlemleri Bitiş
 
     /*foreach (Modules::where('status', '1')->get() as $u) {
         $moduleLink = $u->moduleLink;
