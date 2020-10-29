@@ -38,7 +38,7 @@
                                                             <div class="card-block">
                                                                 <label>Hizmet Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +50,7 @@
                                                             <div class="card-block">
                                                                 <label>Hizmet Alt Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -62,7 +62,7 @@
                                                             <div class="card-block">
                                                                 <label>Kategori</label>
                                                                 <div class="input-group">
-                                                                    <select class="form-control" id="basicSelect">
+                                                                    <select name="kategori" class="form-control" id="basicSelect">
                                                                         <option>Select Option</option>
                                                                         <option>Option 1</option>
                                                                         <option>Option 2</option>
@@ -81,7 +81,7 @@
                                                             <div class="card-block">
                                                                 <label>Hizmet Görsel (Tek Fotoğraf)</label>
                                                                 <div class="input-group">
-                                                                    <input type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -93,7 +93,7 @@
                                                             <div class="card-block">
                                                                 <label>Hizmet Görsel (Çoklu Fotoğraf)</label>
                                                                 <div class="input-group">
-                                                                    <input type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="image[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -105,7 +105,7 @@
                                                             <div class="card-block">
                                                                 <label>Hizmet Belge (Tek PDF)</label>
                                                                 <div class="input-group">
-                                                                    <input type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="file" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -117,7 +117,7 @@
                                                             <div class="card-block">
                                                                 <label>Hizmet Belge (Çoklu PDF)</label>
                                                                 <div class="input-group">
-                                                                    <input type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="file[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -130,7 +130,7 @@
                                                             <div class="card-block">
                                                                 <label>Hizmet Metni</label>
                                                                 <div class="form-group">
-                                                                    <textarea class="tinymce"> </textarea>
+                                                                    <textarea name="text" class="tinymce"> </textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -141,7 +141,7 @@
 
                                         </div>
                                         <div class="form-actions right">
-                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Düzenle</button>
+                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Gönder</button>
                                         </div>
                                     </form>
                                 </div>

@@ -38,7 +38,7 @@
                                                             <div class="card-block">
                                                                 <label>Galeri Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +50,7 @@
                                                             <div class="card-block">
                                                                     <label>Galeri Açıklama</label>
                                                                     <div class="input-group">
-                                                                        <input type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                        <input name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                     </div>
                                                             </div>
                                                         </div>
@@ -62,7 +62,7 @@
                                                             <div class="card-block">
                                                                 <label>Youtube Link</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="link" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -75,7 +75,7 @@
                                                             <div class="card-block">
                                                                 <label>Galeri Görsel (Tek Fotoğraf)</label>
                                                                 <div class="input-group">
-                                                                    <input type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>

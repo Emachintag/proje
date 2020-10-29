@@ -38,7 +38,7 @@
                                                             <div class="card-block">
                                                                 <label>Kategori Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Kategori Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="title" type="text" class="form-control" placeholder="Kategori Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +50,7 @@
                                                             <div class="card-block">
                                                                 <label>Kategori Sırası</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Kategori Sırası" aria-describedby="basic-addon3">
+                                                                    <input name="sira" type="text" class="form-control" placeholder="Kategori Sırası" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>

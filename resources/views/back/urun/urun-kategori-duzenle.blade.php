@@ -38,7 +38,7 @@
                                                             <div class="card-block">
                                                                 <label>Kategori Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Kategori Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="title" type="text" class="form-control" placeholder="Kategori Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +50,7 @@
                                                             <div class="card-block">
                                                                 <label>Kategori Sırası</label>
                                                                 <div class="input-group">
-                                                                    <input type="text" class="form-control" placeholder="Kategori Sırası" aria-describedby="basic-addon3">
+                                                                    <input name="sira" type="text" class="form-control" placeholder="Kategori Sırası" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -62,7 +62,7 @@
 
                                         </div>
                                         <div class="form-actions right">
-                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Düzenle</button>
+                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Gönder</button>
                                         </div>
                                     </form>
                                 </div>
