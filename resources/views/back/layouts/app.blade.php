@@ -506,6 +506,17 @@
 
 
 
+            <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="la la-user"></i><span>Üye İşlemleri</span></a>
+                <ul class="dropdown-menu">
+                    <li data-menu=""><a class="dropdown-item" href="{{route('site_ayarlar')}}" data-toggle="dropdown">Üye Görüntüle</a>
+                    </li>
+                    <li data-menu=""><a class="dropdown-item" href="{{route('sosyal_medya_ayarlar')}}" data-toggle="dropdown">Üye Ekle </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
 
                 </ul>
             </li>

@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="row-separator-colored-controls">Slider Ekle</h4>
+                                <h4 class="card-title" id="row-separator-colored-controls">Hakkımızda Ekle</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -30,13 +30,13 @@
                                     <form class="form-horizontal" method="post" autocomplete="off" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>Slider</h4>
+                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>Hakkımızda</h4>
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Slider Başlığı</label>
+                                                                <label>Hakkımızda Başlığı</label>
                                                                 <div class="input-group">
                                                                     <input name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
@@ -48,7 +48,7 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Slider Alt Başlık</label>
+                                                                <label>Hakkımızda Alt Başlığı</label>
                                                                 <div class="input-group">
                                                                     <input name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
@@ -61,7 +61,7 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Slider Görsel (Tek Fotoğraf)</label>
+                                                                <label>Hakkımızda Görsel (Tek Fotoğraf)</label>
                                                                 <div class="input-group">
                                                                     <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
@@ -69,10 +69,25 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Hakkımızda Metni</label>
+                                                                <div class="form-group">
+                                                                    <textarea name="text" class="tinymce"> </textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
+
                                         </div>
                                         <div class="form-actions right">
-                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Gönder</button>
+                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Güncelle</button>
                                         </div>
                                     </form>
                                 </div>
