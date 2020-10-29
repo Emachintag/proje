@@ -16,7 +16,7 @@ class HomeController extends Controller
     }
     public function ekle_post()
     {
-        
+
     }
     public function duzenle()
     {
