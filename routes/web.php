@@ -21,9 +21,10 @@ Route::prefix('panel')->group(function () {
         $controller = $space.$moduleController;
         $moduleSlug = $u->moduleSlug;
         Route::get($moduleLink, $controller.'@listele')->name($moduleSlug);
-        Route::get($moduleLink, $controller.'@ekle')->name($moduleSlug);
-        Route::post($moduleLink, $controller.'@ekle_post')->name($moduleSlug);
-        Route::get($moduleLink, $controller.'@ekle')->name($moduleSlug);
+        Route::get($moduleLink, $controller.'@ekle')->name($moduleSlug.'_ekle');
+        Route::post($moduleLink, $controller.'@ekle_post')->name($moduleSlug.'_ekle_post');
+        Route::get($moduleLink, $controller.'@duzenle')->name($moduleSlug.'_duzenle');
+        Route::post($moduleLink, $controller.'@duzenle_post')->name($moduleSlug.'_duzenle_post');
     }
 
 });

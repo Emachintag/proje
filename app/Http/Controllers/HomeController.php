@@ -10,4 +10,20 @@ class HomeController extends Controller
     {
         return view('back.home.listele');
     }
+    public function ekle()
+    {
+
+    }
+    public function ekle_post()
+    {
+        
+    }
+    public function duzenle()
+    {
+
+    }
+    public function duzenle_post()
+    {
+
+    }
 }
