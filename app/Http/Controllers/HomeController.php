@@ -266,10 +266,6 @@ class HomeController extends Controller
             'pdf' => $pdfName,
             'text' => $request->input('text'),
             'url' => $url,
-            'urun_olculeri' => $request->input('urun_olculeri'),
-            'genislik' => $request->input('genislik'),
-            'yukseklik' => $request->input('yukseklik'),
-            'derinlik' => $request->input('derinlik'),
         ]);
         $lastId = DB::table('haber')->get()->last()->id;
         if($request->hasfile('pdfs'))
