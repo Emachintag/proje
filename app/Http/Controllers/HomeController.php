@@ -52,6 +52,7 @@ class HomeController extends Controller
             'site_google' => $request->input('site_google'),
 
         ]);
+        return back();
 
     }
 

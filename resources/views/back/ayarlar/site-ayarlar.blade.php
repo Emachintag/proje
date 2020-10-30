@@ -3,6 +3,9 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    $site_ayarlar = DB::table('site_ayarlar')->first();
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -38,7 +41,7 @@
                                                             <div class="card-block">
                                                                 <label>Site Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="site_name" type="text" class="form-control" placeholder="Site Başlığı" aria-describedby="basic-addon3">
+                                                                    <input value="{{$site_ayarlar->site_name}}" name="site_name" type="text" class="form-control" placeholder="Site Başlığı" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +53,7 @@
                                                             <div class="card-block">
                                                                 <label>Site Açıklama</label>
                                                                 <div class="input-group">
-                                                                    <input name="site_description" type="text" class="form-control" placeholder="Site Açıklama" aria-describedby="basic-addon3">
+                                                                    <input value="{{$site_ayarlar->site_description}}" name="site_description" type="text" class="form-control" placeholder="Site Açıklama" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -62,7 +65,7 @@
                                                             <div class="card-block">
                                                                 <label>Footer Text</label>
                                                                 <div class="input-group">
-                                                                    <input name="site_footer_text" type="text" class="form-control" placeholder="Footer Text" aria-describedby="basic-addon3">
+                                                                    <input value="{{$site_ayarlar->site_footer_text}}" name="site_footer_text" type="text" class="form-control" placeholder="Footer Text" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -75,8 +78,13 @@
                                                                 <label>Site Googleda Endekslensin mi</label>
                                                                 <div class="input-group">
                                                                     <select name="site_google" class="form-control" id="basicSelect">
-                                                                        <option value="1" >Evet</option>
-                                                                        <option value="0" >Hayır</option>
+                                                                        @if($site_ayarlar->site_google == 1)
+                                                                        <option value="1" selected >Evet</option>
+                                                                            <option value="0" >Hayır</option>
+                                                                        @else
+                                                                            <option value="1" >Evet</option>
+                                                                            <option value="0" selected >Hayır</option>
+                                                                            @endif
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -84,27 +92,55 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Logo</label>
-                                                                <div class="input-group">
-                                                                    <input name="site_logo" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                    <div class="form-group">
+                                                        <label class="label-control text-pink" for="userinput15">Logo</label>
+                                                        @if($site_ayarlar->site_logo != '')
+                                                            <?php
+                                                            $image = $site_ayarlar->site_logo;
+                                                            ?>
+                                                            <div class="row" style="margin-bottom: 3em;">
+                                                                <div class="col-md-3">
+                                                                    <img class="img-thumbnail" src="{{ asset('/public/img/'.$image.'') }}" alt="{{$site_ayarlar->site_name}} favicon" style="width: 100%;">
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <h3>
+                                                                        <strong>Not: Logo'yu değiştirmek için yeni resim seçip yükleyebilirsiniz.</strong>
+                                                                    </h3>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        @endif
+                                                        <input
+                                                            id="userinput15"
+                                                            class="form-control border-pink @error('meta') is-invalid border-pink @enderror"
+                                                            type="file"
+                                                            name="site_logo"/>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Favicon</label>
-                                                                <div class="input-group">
-                                                                    <input name="site_favicon" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                    <div class="form-group">
+                                                        <label class="label-control text-pink" for="userinput15">Favicon</label>
+                                                        @if($site_ayarlar->site_favicon != '')
+                                                            <?php
+                                                            $image = $site_ayarlar->site_favicon;
+                                                            ?>
+                                                            <div class="row" style="margin-bottom: 3em;">
+                                                                <div class="col-md-3">
+                                                                    <img class="img-thumbnail" src="{{ asset('/public/img/'.$image.'') }}" alt="{{$site_ayarlar->site_name}} favicon" style="width: 100%;">
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <h3>
+                                                                        <strong>Not: Favicon'u değiştirmek için yeni resim seçip yükleyebilirsiniz.</strong>
+                                                                    </h3>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        @endif
+                                                        <input
+                                                            id="userinput15"
+                                                            class="form-control border-pink @error('meta') is-invalid border-pink @enderror"
+                                                            type="file"
+                                                            name="site_favicon"/>
+
                                                     </div>
                                                 </div>
 

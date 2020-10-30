@@ -393,27 +393,16 @@
             <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="la la-television"></i><span>Modüller</span></a>
                 <ul class="dropdown-menu">
 
-
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-user"></i>Üye İşlemleri</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Üyeleri Yönet</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Üye Ekle</a>
-                            </li>
-
-                        </ul>
-                    </li>
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-newspaper-o"></i>Haber Yönetimi</a>
                         <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Haber Görüntüle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('haber')}}" data-toggle="dropdown">Haber Görüntüle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Haber Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('haber_ekle')}}" data-toggle="dropdown">Haber Ekle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Haber Kategori Yönet</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('haber_kategori')}}" data-toggle="dropdown">Haber Kategori Yönet</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Haber Kategori Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('haber_kategori_ekle')}}" data-toggle="dropdown">Haber Kategori Ekle</a>
                             </li>
 
                         </ul>
@@ -435,13 +424,13 @@
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-recycle"></i>Hizmet Yönetimi</a>
                         <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Hizmet Görüntüle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('hizmet')}}" data-toggle="dropdown">Hizmet Görüntüle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Hizmet Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('hizmet_ekle')}}" data-toggle="dropdown">Hizmet Ekle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Hizmet Kategori Yönet</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('hizmet_kategori')}}" data-toggle="dropdown">Hizmet Kategori Yönet</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Hizmet Kategori Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('hizmet_kategori_ekle')}}" data-toggle="dropdown">Hizmet Kategori Ekle</a>
                             </li>
 
                         </ul>
@@ -449,40 +438,40 @@
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-file-pdf-o"></i>Belge Yönetimi</a>
                         <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Belge Görüntüle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('belge')}}" data-toggle="dropdown">Belge Görüntüle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Belge Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('belge_ekle')}}" data-toggle="dropdown">Belge Ekle</a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-photo"></i>Galeri Yönetimi</a>
                         <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Galeri Görüntüle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('galeri')}}" data-toggle="dropdown">Galeri Görüntüle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Galeri Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('galeri_ekle')}}" data-toggle="dropdown">Galeri Ekle</a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-forward"></i>Slider Yönetimi</a>
                         <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Slider Görüntüle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('slider')}}" data-toggle="dropdown">Slider Görüntüle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Slider Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('slider_ekle')}}" data-toggle="dropdown">Slider Ekle</a>
                             </li>
                         </ul>
                     </li>
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-paste"></i>Ürün Yönetimi</a>
                         <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Ürünleri Görüntüle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('urun')}}" data-toggle="dropdown">Ürünleri Görüntüle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Ürün Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('urun_ekle')}}l" data-toggle="dropdown">Ürün Ekle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Ürün Kategori Yönet</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('urun_kategori')}}" data-toggle="dropdown">Ürün Kategori Yönet</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Ürün Kategori Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('urun_kategori_ekle')}}" data-toggle="dropdown">Ürün Kategori Ekle</a>
                             </li>
 
                         </ul>
