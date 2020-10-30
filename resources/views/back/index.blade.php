@@ -5,6 +5,21 @@
             <div class="content-header row">
             </div>
             <div class="content-body">
+                <!-- modüller -->
+                <div class="row mb-3">
+                    <div class="col-lg-2 col-4" style="height: 125px;">
+                        <div class="card h-100 pull-up bg-gradient-directional-info">
+                            <div class="card-content">
+                                <div class="card-body text-center">
+                                    <i class="la la-home text-white la-2x"></i>
+                                    <br>
+                                    <span class="text-white">Anasayfa</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / modüller sonu -->
                 <!-- Revenue, Hit Rate & Deals -->
                 <div class="row">
                     <div class="col-xl-6 col-12">
@@ -472,6 +487,4 @@
         </div>
     </div>
     <!-- ////////////////////////////////////////////////////////////////////////////-->
-
-
 @endsection

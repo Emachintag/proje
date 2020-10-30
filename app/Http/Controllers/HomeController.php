@@ -251,23 +251,32 @@ class HomeController extends Controller
     public function haber_ekle_post(Request $request)
     {
 
-        $info = getimagesize($request->image);
-        $extension = image_type_to_extension($info[2]);
-        $imageName = time().$extension;
-        $request->image->move(public_path('img'), $imageName);
-        $pdfName = time().".pdf";
-        $request->pdf->move(public_path('img'), $pdfName);
+
         $url = Str::slug($request->input('title'), '-');
         DB::table('haber')->insert([
             'title' => $request->input('title'),
             'title_2' => $request->input('title_2'),
             'kategori' => $request->input('kategori'),
-            'image' => $imageName,
-            'pdf' => $pdfName,
             'text' => $request->input('text'),
             'url' => $url,
         ]);
         $lastId = DB::table('haber')->get()->last()->id;
+        if(isset($request->pdf)) {
+            $pdfName = time().".pdf";
+            $request->pdf->move(public_path('img'), $pdfName);
+            DB::table('haber')->where('id', $lastId)->update([
+                'pdf' => $pdfName,
+            ]);
+        }
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $request->image->move(public_path('img'), $imageName);
+            DB::table('haber')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
         if($request->hasfile('pdfs'))
         {
             $i = 1;

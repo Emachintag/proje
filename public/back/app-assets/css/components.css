@@ -1,4 +1,6 @@
 html {
+    scrollbar-width: thin;
+    scrollbar-color: #E019E4 #C2D2E4;
   font-size: 14px;
   height: 100%; }
   html body {
