@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class HomeController extends Controller
 {
@@ -27,34 +28,17 @@ class HomeController extends Controller
     public function site_ayarlar_post (Request $request)
     {
 
-        request()->validate([
-            'site_name'    => 'required',
-            'site_description' => 'required|min:15|max:158',
-        ], [
-            'site_name.required' => 'Site adını yazmanız gereklidir.',
 
-            'site_description.required' => 'Site açıklaması girin, en az 15 en fazla 158 karakter olmalı.',
-            'site_description.min' => 'Site açıklamanız en az 15 karakter içermelidir.',
-            'site_description.max' => 'Site açıklamanız en fazla 158 karakter içerebilir'
-        ]);
         if(isset($request->site_favicon)) {
-            request()->validate([
-                'favicon' => 'image'
-            ], [
-                'favicon.image' => 'Favicon bir resim olmalıdır (Jpg, jpeg, png, ico)',
-            ]);
+
             $info = getimagesize($request->site_favicon);
             $extension = image_type_to_extension($info[2]);
             $imageName = time().$extension;
             $request->site_favicon->move(public_path('img'), $imageName);
-            DB::table('site_ayarlar')->where('id', 1)->update(['site_logo' => $imageName]);
+            DB::table('site_ayarlar')->where('id', 1)->update(['site_favicon' => $imageName]);
         }
         if(isset($request->site_logo)) {
-            request()->validate([
-                'logo' => 'image'
-            ], [
-                'logo.image' => 'Logo bir resim olmalıdır (Jpg, jpeg, png, ico)',
-            ]);
+
             $info = getimagesize($request->site_logo);
             $extension = image_type_to_extension($info[2]);
             $imageName = time().$extension;
