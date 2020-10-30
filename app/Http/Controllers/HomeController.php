@@ -74,6 +74,21 @@ class HomeController extends Controller
         return view('back.ayarlar.iletisim-ayarlar');
     }
 
+    public function iletisim_ayarlar_post (Request $request)
+    {
+        DB::table('iletisim_ayarlar')->where('id', '1')->update([
+            'email' => $request->input('email'),
+            'email_2' => $request->input('email_2'),
+            'adres' => $request->input('adres'),
+            'iframe' => $request->input('iframe'),
+            'tel_1' => $request->input('tel_1'),
+            'tel_2' => $request->input('tel_2'),
+            'tel_3' => $request->input('tel_3'),
+
+        ]);
+        return back();
+    }
+
     //Blog
 
     public function blog()

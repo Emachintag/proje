@@ -3,6 +3,9 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    $iletisim_ayarlar = DB::table('iletisim_ayarlar')->first();
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -38,7 +41,7 @@
                                                             <div class="card-block">
                                                                 <label>E-Posta</label>
                                                                 <div class="input-group">
-                                                                    <input name="email" type="email" class="form-control" placeholder="E-Posta" aria-describedby="basic-addon3">
+                                                                    <input value="{{$iletisim_ayarlar->email}}" name="email" type="email" class="form-control" placeholder="E-Posta" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +53,7 @@
                                                             <div class="card-block">
                                                                 <label>E-Posta 2</label>
                                                                 <div class="input-group">
-                                                                    <input name="email" type="email" class="form-control" placeholder="E-Posta 2" aria-describedby="basic-addon3">
+                                                                    <input value="{{$iletisim_ayarlar->email_2}}" name="email_2" type="email" class="form-control" placeholder="E-Posta 2" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -62,7 +65,7 @@
                                                             <div class="card-block">
                                                                 <label>Adres</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Adres" aria-describedby="basic-addon3">
+                                                                    <input value="{{$iletisim_ayarlar->adres}}" name="adres" type="text" class="form-control" placeholder="Adres" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -74,7 +77,7 @@
                                                             <div class="card-block">
                                                                 <label>Google Map Iframe</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Google Harita" aria-describedby="basic-addon3">
+                                                                    <input value="{{$iletisim_ayarlar->iframe}}" name="iframe" type="text" class="form-control" placeholder="Google Harita" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -86,7 +89,7 @@
                                                             <div class="card-block">
                                                                 <label>Telefon</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Telefon" aria-describedby="basic-addon3">
+                                                                    <input value="{{$iletisim_ayarlar->tel_1}}" name="tel_1" type="text" class="form-control" placeholder="Telefon" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -98,7 +101,7 @@
                                                             <div class="card-block">
                                                                 <label>GSM</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="GSM" aria-describedby="basic-addon3">
+                                                                    <input value="{{$iletisim_ayarlar->tel_2}}" name="tel_2" type="text" class="form-control" placeholder="GSM" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -110,7 +113,7 @@
                                                             <div class="card-block">
                                                                 <label>GSM 2</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="GSM 2" aria-describedby="basic-addon3">
+                                                                    <input value="{{$iletisim_ayarlar->tel_3}}" name="tel_3" type="text" class="form-control" placeholder="GSM 2" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
