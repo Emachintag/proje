@@ -86,7 +86,7 @@
                                                 <td>Customer Support</td>
                                                 <td>Donna Snider</td>
                                                 <td>Customer Support</td>
-                                                <td>
+                                                <td style="text-align: right" >
                                                     <a href="?haber=&sil&token={{ csrf_token() }}" class="btn btn-danger btn-min-width btn-glow">
                                                         <i class="la la-trash"></i>
                                                         <span>

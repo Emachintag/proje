@@ -35,6 +35,111 @@ Route::prefix('panel')->group(function () {
 
     // Blog İşlemleri Bitiş
 
+
+
+    // Belge İşlemleri Başlangıç
+
+    Route::get('/belge', [HomeController::class, 'belge'])->name('belge');
+    Route::get('/belge-ekle', [HomeController::class, 'belge_ekle'])->name('belge_ekle');
+    Route::post('/belge-ekle', [HomeController::class, 'belge_ekle_post']);
+    Route::get('/belge-duzenle', [HomeController::class, 'belge_duzenle'])->name('belge_duzenle');
+    Route::post('/belge-duzenle', [HomeController::class, 'belge_duzenle_post']);
+
+    // Belge İşlemleri Bitiş
+
+
+    // Ekip İşlemleri Başlangıç
+
+    Route::get('/ekip', [HomeController::class, 'ekip'])->name('ekip');
+    Route::get('/ekip-ekle', [HomeController::class, 'ekip_ekle'])->name('ekip_ekle');
+    Route::post('/ekip-ekle', [HomeController::class, 'ekip_ekle_post']);
+    Route::get('/ekip-duzenle', [HomeController::class, 'ekip_duzenle'])->name('ekip_duzenle');
+    Route::post('/ekip-duzenle', [HomeController::class, 'ekip_duzenle_post']);
+
+    // Ekip İşlemleri Bitiş
+
+
+    // Galeri İşlemleri Başlangıç
+
+    Route::get('/galeri', [HomeController::class, 'galeri'])->name('galeri');
+    Route::get('/galeri-ekle', [HomeController::class, 'galeri_ekle'])->name('galeri_ekle');
+    Route::post('/galeri-ekle', [HomeController::class, 'galeri_ekle_post']);
+    Route::get('/galeri-duzenle', [HomeController::class, 'galeri_duzenle'])->name('galeri_duzenle');
+    Route::post('/galeri-duzenle', [HomeController::class, 'galeri_duzenle_post']);
+
+    // Galeri İşlemleri Bitiş
+
+
+    // Haber İşlemleri Başlangıç
+
+    Route::get('/haber', [HomeController::class, 'haber'])->name('haber');
+    Route::get('/haber-ekle', [HomeController::class, 'haber_ekle'])->name('haber_ekle');
+    Route::post('/haber-ekle', [HomeController::class, 'haber_ekle_post']);
+    Route::get('/haber-duzenle', [HomeController::class, 'haber_duzenle'])->name('haber_duzenle');
+    Route::post('/haber-duzenle', [HomeController::class, 'haber_duzenle_post']);
+    Route::get('/haber-kategori', [HomeController::class, 'haber_kategori'])->name('haber_kategori');
+    Route::get('/haber-kategori-ekle', [HomeController::class, 'haber_kategori_ekle'])->name('haber_kategori_ekle');
+    Route::post('/haber-kategori-ekle', [HomeController::class, 'haber_kategori_ekle_post']);
+    Route::get('/haber-kategori-duzenle', [HomeController::class, 'haber_kategori_duzenle'])->name('haber_kategori_duzenle');
+    Route::post('/haber-kategori-duzenle', [HomeController::class, 'haber_kategori_duzenle_post']);
+
+    // Haber İşlemleri Bitiş
+
+    // Hizmet İşlemleri Başlangıç
+
+    Route::get('/hizmet', [HomeController::class, 'hizmet'])->name('hizmet');
+    Route::get('/hizmet-ekle', [HomeController::class, 'hizmet_ekle'])->name('hizmet_ekle');
+    Route::post('/hizmet-ekle', [HomeController::class, 'hizmet_ekle_post']);
+    Route::get('/hizmet-duzenle', [HomeController::class, 'hizmet_duzenle'])->name('hizmet_duzenle');
+    Route::post('/hizmet-duzenle', [HomeController::class, 'hizmet_duzenle_post']);
+    Route::get('/hizmet-kategori', [HomeController::class, 'hizmet_kategori'])->name('hizmet_kategori');
+    Route::get('/hizmet-kategori-ekle', [HomeController::class, 'hizmet_kategori_ekle'])->name('hizmet_kategori_ekle');
+    Route::post('/hizmet-kategori-ekle', [HomeController::class, 'hizmet_kategori_ekle_post']);
+    Route::get('/hizmet-kategori-duzenle', [HomeController::class, 'hizmet_kategori_duzenle'])->name('hizmet_kategori_duzenle');
+    Route::post('/hizmet-kategori-duzenle', [HomeController::class, 'hizmet_kategori_duzenle_post']);
+
+    // Hizmet İşlemleri Bitiş
+
+    // Slider İşlemleri Başlangıç
+
+    Route::get('/slider', [HomeController::class, 'slider'])->name('slider');
+    Route::get('/slider-ekle', [HomeController::class, 'slider_ekle'])->name('slider_ekle');
+    Route::post('/slider-ekle', [HomeController::class, 'slider_ekle_post']);
+    Route::get('/slider-duzenle', [HomeController::class, 'slider_duzenle'])->name('slider_duzenle');
+    Route::post('/slider-duzenle', [HomeController::class, 'slider_duzenle_post']);
+
+    // Slider İşlemleri Bitiş
+
+
+    // Ürün İşlemleri Başlangıç
+
+    Route::get('/urun', [HomeController::class, 'urun'])->name('urun');
+    Route::get('/urun-ekle', [HomeController::class, 'urun_ekle'])->name('urun_ekle');
+    Route::post('/urun-ekle', [HomeController::class, 'urun_ekle_post']);
+    Route::get('/urun-duzenle', [HomeController::class, 'urun_duzenle'])->name('urun_duzenle');
+    Route::post('/urun-duzenle', [HomeController::class, 'urun_duzenle_post']);
+    Route::get('/urun-kategori', [HomeController::class, 'urun_kategori'])->name('urun_kategori');
+    Route::get('/urun-kategori-ekle', [HomeController::class, 'urun_kategori_ekle'])->name('urun_kategori_ekle');
+    Route::post('/urun-kategori-ekle', [HomeController::class, 'urun_kategori_ekle_post']);
+    Route::get('/urun-kategori-duzenle', [HomeController::class, 'urun_kategori_duzenle'])->name('urun_kategori_duzenle');
+    Route::post('/urun-kategori-duzenle', [HomeController::class, 'urun_kategori_duzenle_post']);
+
+    // Ürün İşlemleri Bitiş
+
+
+    // Üye İşlemleri Başlangıç
+
+    Route::get('/uye', [HomeController::class, 'uye'])->name('uye');
+    Route::get('/uye-ekle', [HomeController::class, 'uye_ekle'])->name('uye_ekle');
+    Route::post('/uye-ekle', [HomeController::class, 'uye_ekle_post']);
+    Route::get('/uye-duzenle', [HomeController::class, 'uye_duzenle'])->name('uye_duzenle');
+    Route::post('/uye-duzenle', [HomeController::class, 'uye_duzenle_post']);
+
+    // Üye İşlemleri Bitiş
+
+
+
+
     /*foreach (Modules::where('status', '1')->get() as $u) {
         $moduleLink = $u->moduleLink;
         $moduleController = $u->moduleController;
