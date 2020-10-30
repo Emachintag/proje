@@ -114,7 +114,7 @@
                                                             <div class="card-block">
                                                                 <label>Haber Belge (Çoklu PDF)</label>
                                                                 <div class="input-group">
-                                                                    <input name="pdf[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="pdfs[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -22,6 +22,11 @@
     <list default="true" id="6930ecd9-fcab-41a7-ba62-e60016408112" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/back/app-assets/css/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/back/app-assets/css/components.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/back/app-assets/css/core/menu/menu-types/horizontal-menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/back/app-assets/css/core/menu/menu-types/horizontal-menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-duzenle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/haber/haber-duzenle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-ekle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/haber/haber-ekle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,6 +187,7 @@
       <workItem from="1603983734844" duration="18028000" />
       <workItem from="1604045318963" duration="12365000" />
       <workItem from="1604079547433" duration="8741000" />
+      <workItem from="1604089454708" duration="1904000" />
     </task>
     <servers />
   </component>

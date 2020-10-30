@@ -272,7 +272,7 @@ class HomeController extends Controller
             'derinlik' => $request->input('derinlik'),
         ]);
         $lastId = DB::table('haber')->get()->last()->id;
-        if($request->hasfile('pdf'))
+        if($request->hasfile('pdfs'))
         {
             $i = 1;
             foreach($request->file('pdf') as $image)

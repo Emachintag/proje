@@ -93,7 +93,7 @@
                                                             <div class="card-block">
                                                                 <label>Haber Görsel (Çoklu Fotoğraf)</label>
                                                                 <div class="input-group">
-                                                                    <input name="image[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="images[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -105,7 +105,7 @@
                                                             <div class="card-block">
                                                                 <label>Haber Belge (Tek PDF)</label>
                                                                 <div class="input-group">
-                                                                    <input name="file" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="pdf" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -117,7 +117,7 @@
                                                             <div class="card-block">
                                                                 <label>Haber Belge (Çoklu PDF)</label>
                                                                 <div class="input-group">
-                                                                    <input name="file[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="pdfs[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>

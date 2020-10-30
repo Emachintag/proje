@@ -18,6 +18,7 @@ html {
       backface-visibility: hidden;
       min-height: calc(100% - 32px); }
       html body .content.app-content {
+          background-color: #f0f0f0;
         overflow: hidden; }
       html body .content .content-wrapper {
         padding: 2.2rem; }
@@ -569,7 +570,9 @@ body.vertical-layout.vertical-menu.menu-expanded .main-menu-footer .content {
   margin: 0px 4px 0 8px; }
 
 .horizontal-layout .navbar-fixed {
-  z-index: 999 !important; }
+  z-index: 999 !important;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
 
 @media (max-width: 767.98px) {
   .menu-hide .main-menu,
