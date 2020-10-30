@@ -1,12 +1,11 @@
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    $sosyal_medya_ayarlar = DB::table('sosyal_medya_ayarlar')->first();
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
-
             <div class="content-body">
-                <!-- input groups start -->
-
-                <!-- input groups end -->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -24,12 +23,11 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form class="form form-horizontal row-separator">
+                                    <form class="form-horizontal" method="post" autocomplete="off" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="la la-eye"></i>Sosyal Medya</h4>
                                             <div class="row">
-
-
                                                 <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
@@ -39,7 +37,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span class="input-group-text" id="basic-addon3"><i class="la la-facebook"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control" placeholder="Facebook" aria-describedby="basic-addon3">
+                                                                        <input value="{{$sosyal_medya_ayarlar->facebook}}" name="facebook" type="text" class="form-control" placeholder="Facebook" aria-describedby="basic-addon3">
                                                                     </div>
                                                                 </fieldset>
                                                             </div>
@@ -55,7 +53,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span class="input-group-text" id="basic-addon3"><i class="la la-twitter"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control" placeholder="Twitter" aria-describedby="basic-addon3">
+                                                                        <input value="{{$sosyal_medya_ayarlar->twitter}}" name="twitter" type="text" class="form-control" placeholder="Twitter" aria-describedby="basic-addon3">
                                                                     </div>
                                                                 </fieldset>
                                                             </div>
@@ -71,7 +69,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span class="input-group-text" id="basic-addon3"><i class="la la-instagram"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control" placeholder="İnstagram" aria-describedby="basic-addon3">
+                                                                        <input value="{{$sosyal_medya_ayarlar->instagram}}" name="instagram" type="text" class="form-control" placeholder="İnstagram" aria-describedby="basic-addon3">
                                                                     </div>
                                                                 </fieldset>
                                                             </div>
@@ -89,7 +87,7 @@
                                                                         <div class="input-group-prepend">
                                                                             <span class="input-group-text" id="basic-addon3"><i class="la la-youtube-play"></i></span>
                                                                         </div>
-                                                                        <input type="text" class="form-control" placeholder="Youtube" aria-describedby="basic-addon3">
+                                                                        <input value="{{$sosyal_medya_ayarlar->youtube}}" name="youtube" type="text" class="form-control" placeholder="Youtube" aria-describedby="basic-addon3">
                                                                     </div>
                                                                 </fieldset>
                                                             </div>
@@ -104,7 +102,7 @@
                                                                     <div class="input-group-prepend">
                                                                         <span class="input-group-text" id="basic-addon3"><i class="la la-linkedin"></i></span>
                                                                     </div>
-                                                                    <input type="text" class="form-control" placeholder="Linkedin" aria-describedby="basic-addon3">
+                                                                    <input value="{{$sosyal_medya_ayarlar->linkedin}}" name="linkedin" type="text" class="form-control" placeholder="Linkedin" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </fieldset>
                                                         </div>

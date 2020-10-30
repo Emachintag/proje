@@ -20,6 +20,19 @@ class HomeController extends Controller
         return view('back.ayarlar.sosyal-medya');
     }
 
+    public function sosyal_medya_ayarlar_post (Request $request)
+    {
+        DB::table('sosyal_medya_ayarlar')->where('id', '1')->update([
+            'facebook' => $request->input('facebook'),
+            'twitter' => $request->input('twitter'),
+            'instagram' => $request->input('instagram'),
+            'youtube' => $request->input('youtube'),
+            'linkedin' => $request->input('linkedin'),
+
+        ]);
+        return back();
+    }
+
     public function site_ayarlar()
     {
         return view('back.ayarlar.site-ayarlar');
