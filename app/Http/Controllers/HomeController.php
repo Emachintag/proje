@@ -271,7 +271,7 @@ class HomeController extends Controller
         if($request->hasfile('pdfs'))
         {
             $i = 1;
-            foreach($request->file('pdf') as $image)
+            foreach($request->file('pdfs') as $image)
             {
                 $extension = $image->getClientOriginalExtension();
                 $pdfName = $url."-".$i."-".$image->getClientOriginalName();
