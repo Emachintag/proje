@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,8 @@ class HomeController extends Controller
             'linkedin' => $request->input('linkedin'),
 
         ]);
-        return back();
+
+        return back()->with('success', 'Sosyal medya bilgileri başarıyla güncellendi.');
     }
 
     public function site_ayarlar()
@@ -65,7 +67,8 @@ class HomeController extends Controller
             'site_google' => $request->input('site_google'),
 
         ]);
-        return back();
+
+        return back()->with('success', 'Site bilgileri başarıyla güncellendi.');
 
     }
 
@@ -86,7 +89,7 @@ class HomeController extends Controller
             'tel_3' => $request->input('tel_3'),
 
         ]);
-        return back();
+        return back()->with('success', 'İletişim bilgileri başarıyla güncellendi.');
     }
 
     //Blog
@@ -131,7 +134,7 @@ class HomeController extends Controller
 
     }
 
-    public function  blog_kategori_duzenle()
+    public function blog_kategori_duzenle()
     {
         return view('back.blog.blog-kategori-duzenle');
     }
@@ -245,8 +248,65 @@ class HomeController extends Controller
         return view('back.haber.haber-ekle');
     }
 
-    public function haber_ekle_post()
+    public function haber_ekle_post(Request $request)
     {
+
+        $info = getimagesize($request->image);
+        $extension = image_type_to_extension($info[2]);
+        $imageName = time().$extension;
+        $request->image->move(public_path('img'), $imageName);
+        $pdfName = time().".pdf";
+        $request->pdf->move(public_path('img'), $pdfName);
+        $url = Str::slug($request->input('title'), '-');
+        DB::table('haber')->insert([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'kategori' => $request->input('kategori'),
+            'image' => $imageName,
+            'pdf' => $pdfName,
+            'text' => $request->input('text'),
+            'url' => $url,
+            'urun_olculeri' => $request->input('urun_olculeri'),
+            'genislik' => $request->input('genislik'),
+            'yukseklik' => $request->input('yukseklik'),
+            'derinlik' => $request->input('derinlik'),
+        ]);
+        $lastId = DB::table('haber')->get()->last()->id;
+        if($request->hasfile('pdf'))
+        {
+            $i = 1;
+            foreach($request->file('pdf') as $image)
+            {
+                $extension = $image->getClientOriginalExtension();
+                $pdfName = $url."-".$i."-".$image->getClientOriginalName();
+                $pdfFirstName = explode(".", $pdfName);
+                $pdfName = Str::slug($pdfFirstName[0], '-');
+                $pdfName = $pdfName.".".$extension;
+                $image->move(public_path('img'), $pdfName);
+                DB::table('haber_belge')->insert([
+                    'haber_id' => $lastId,
+                    'belge' => $pdfName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        if($request->hasfile('images'))
+        {
+            $i = 0;
+            foreach($request->file('images') as $image)
+            {
+                $info = getimagesize($image);
+                $extension = image_type_to_extension($info[2]);
+                $imageName = time().$i.$extension;
+                $image->move(public_path().'/img/', $imageName);
+                DB::table('haber_gorsel')->insert([
+                    'haber_id' => $lastId,
+                    'gorsel' => $imageName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        return redirect()->route('haber')->with('success', 'Yeni ürün başarıyla eklendi.');
 
     }
 
@@ -441,7 +501,7 @@ class HomeController extends Controller
         return view('back.uye.uye-ekle');
     }
 
-    public function uye_ekle_post()
+    public function uye_ekle_post(Request $request)
     {
 
     }

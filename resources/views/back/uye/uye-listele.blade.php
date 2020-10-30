@@ -13,9 +13,9 @@
                         <div class="col-xl-6 col-md-12">
                             <div class="card">
                                 <div class="card-content">
-                                    <div class="media align-items-stretch bg-warning text-white rounded">
-                                        <div class="bg-warning bg-darken-2 p-2 media-middle">
-                                            <i class="icon-speech font-large-2 text-white"></i>
+                                    <div class="media align-items-stretch bg-gradient-directional-success text-white rounded">
+                                        <div class="bg-gradient-directional-success bg-darken-2 p-2 media-middle">
+                                            <i class="icon-user font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Üye Sayısı</h4>
@@ -31,8 +31,8 @@
                         <div class="col-xl-6 col-md-12">
                             <div class="card overflow-hidden">
                                 <div style="cursor: pointer" onclick="location.href='{{route('uye_ekle')}}'" class="card-content">
-                                    <div class="media align-items-stretch bg-info text-white rounded">
-                                        <div class="bg-info bg-darken-2 p-2 media-middle">
+                                    <div class="media align-items-stretch bg-gradient-directional-info text-white rounded">
+                                        <div class="bg-gradient-directional-info bg-darken-2 p-2 media-middle">
                                             <i class="icon-pencil font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">

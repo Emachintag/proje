@@ -8,7 +8,32 @@
             <div class="content-body">
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @if (session('success'))
+                                    <div class="alert bg-success alert-icon-left alert-arrow-left alert-dismissible mb-2"
+                                         role="alert">
+                                        <span class="alert-icon"><i class="ft ft-thumbs-up"></i></span>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <strong>{{ session('success') }}</strong>
+                                    </div>
+                                @endif
+                                @if($errors->any())
+                                    <div class="alert bg-warning alert-icon-left alert-arrow-left alert-dismissible mb-2"
+                                         role="alert">
+                                        <span class="alert-icon"><i class="ft ft-alert-circle"></i></span>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <strong>{!! implode('', $errors->all('<div>:message</div>')) !!}</strong>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                         <div class="card">
+
                             <div class="card-header">
                                 <h4 class="card-title" id="row-separator-colored-controls">Sosyal Medya Ayarları</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
@@ -21,6 +46,7 @@
                                     </ul>
                                 </div>
                             </div>
+
                             <div class="card-content collapse show">
                                 <div class="card-body">
                                     <form class="form-horizontal" method="post" autocomplete="off" enctype="multipart/form-data">

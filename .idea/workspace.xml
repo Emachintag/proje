@@ -160,7 +160,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../adblue" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Documents/www/www/kozmetik" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -181,7 +181,7 @@
       <workItem from="1603967176761" duration="4799000" />
       <workItem from="1603983734844" duration="18028000" />
       <workItem from="1604045318963" duration="12365000" />
-      <workItem from="1604079547433" duration="2793000" />
+      <workItem from="1604079547433" duration="8741000" />
     </task>
     <servers />
   </component>
@@ -201,14 +201,15 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1603924484387">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603924484387" />
-    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1604079557873">
+    <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604086791790">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1604079557873" />
+    <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1604086791790" />
+    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603924484387" />
+    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1604088074858">
+      <screen x="0" y="0" width="1600" height="870" />
+    </state>
+    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1604088074858" />
     <state x="634" y="358" key="NewPhpFileDialog" timestamp="1604065609715">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
