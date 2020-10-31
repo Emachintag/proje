@@ -1,4 +1,15 @@
-
+<?php
+if(isset($_GET['pdfSil'])) {
+    DB::table('blog_belge')->where('id', $_GET['pdf'])->delete();
+    header("Location: ?okey");
+    die();
+}
+if(isset($_GET['gorselSil'])) {
+    DB::table('blog_gorsel')->where('id', $_GET['gorsel'])->delete();
+    header("Location: ?okey1");
+    die();
+}
+?>
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/editors/tinymce/tinymce.min.css')}}">
 @endsection
