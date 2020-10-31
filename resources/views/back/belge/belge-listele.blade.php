@@ -8,13 +8,12 @@
             <div class="content-body">
 
                 <section id="stats-icon-subtitle-bg">
-
                     <div class="row">
                         <div class="col-xl-6 col-md-12">
                             <div class="card">
                                 <div class="card-content">
-                                    <div class="media align-items-stretch bg-warning text-white rounded">
-                                        <div class="bg-warning bg-darken-2 p-2 media-middle">
+                                    <div class="media align-items-stretch bg-gradient-x-warning text-white rounded">
+                                        <div class="p-2 media-middle">
                                             <i class="icon-speech font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
@@ -22,7 +21,7 @@
                                             <span>Yazdığınız Belge Sayısı</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">84,695</h1>
+                                            <h1 class="text-white">1</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -30,9 +29,9 @@
                         </div>
                         <div class="col-xl-6 col-md-12">
                             <div class="card overflow-hidden">
-                                <div style="cursor: pointer" onclick="location.href='{{route('belge_ekle')}}'" class="card-content">
-                                    <div class="media align-items-stretch bg-info text-white rounded">
-                                        <div class="bg-info bg-darken-2 p-2 media-middle">
+                                <div style="cursor: pointer" onclick="location.href='{{route('haber_ekle')}}'" class="card-content">
+                                    <div class="media align-items-stretch bg-gradient-x-info text-white rounded">
+                                        <div class="p-2 media-middle">
                                             <i class="icon-pencil font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
@@ -46,7 +45,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </section>
                 <!-- Zero configuration table -->

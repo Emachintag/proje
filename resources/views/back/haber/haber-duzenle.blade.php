@@ -3,6 +3,11 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php $haberim = DB::table('haber')->where('id', $id)->first();
+
+
+
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 

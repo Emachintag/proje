@@ -63,12 +63,9 @@
                                                                 <label>Kategori</label>
                                                                 <div class="input-group">
                                                                     <select name="kategori" class="form-control" id="basicSelect">
-                                                                        <option>Select Option</option>
-                                                                        <option>Option 1</option>
-                                                                        <option>Option 2</option>
-                                                                        <option>Option 3</option>
-                                                                        <option>Option 4</option>
-                                                                        <option>Option 5</option>
+                                                                        <option value="1" >Select Option</option>
+                                                                        <option value="0" >Option 1</option>
+
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -93,7 +90,7 @@
                                                             <div class="card-block">
                                                                 <label>Blog Görsel (Çoklu Fotoğraf)</label>
                                                                 <div class="input-group">
-                                                                    <input name="image[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="images[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -105,7 +102,7 @@
                                                             <div class="card-block">
                                                                 <label>Blog Belge (Tek PDF)</label>
                                                                 <div class="input-group">
-                                                                    <input name="file" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="pdf" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -117,7 +114,7 @@
                                                             <div class="card-block">
                                                                 <label>Blog Belge (Çoklu PDF)</label>
                                                                 <div class="input-group">
-                                                                    <input name="file[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="pdfs[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
