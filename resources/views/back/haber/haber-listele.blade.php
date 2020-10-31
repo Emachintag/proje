@@ -97,7 +97,7 @@
                                                 <td style="text-align: center" >{{$u->title_2}}</td>
                                                 <td style="text-align: center" ><img class="img" src="{{asset('/public/img/'.$u->image)}}" height="100"></td>
                                                 <td style="text-align: center" >
-                                                    <a href="?haber=&sil&token={{ csrf_token() }}" class="btn btn-danger btn-min-width btn-glow">
+                                                    <a href="?haber=&sil&token={{csrf_token()}}" class="btn btn-danger btn-min-width btn-glow">
                                                         <i class="la la-trash"></i>
                                                         <span>
                                                 Sil

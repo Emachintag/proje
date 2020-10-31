@@ -113,13 +113,34 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <div class="row">
-                                                                <div class="card-body">
-                                                                    <div class="card-block">
-                                                                        <label>Haber Görsel (Çoklu Fotoğraf)</label>
-                                                                        <div class="input-group">
-                                                                            <input name="images[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                        </div>
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6 col-md-6">
+                                                                        <label class="label-control" for="userinput4">Yeni Resim Yükle ( Çoklu )</label>
+                                                                        <input
+                                                                            id="userinput4"
+                                                                            type="file"
+                                                                            name="images[]"
+                                                                            class="btn btn-block btn-outline-pink form-control"
+                                                                            accept="image/*"
+                                                                            multiple
+                                                                        >
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-md-3">
+                                                                        @if(DB::table('haber_gorsel')->where('haber_id', $haberim->id)->get())
+                                                                            @foreach(DB::table('haber_gorsel')->where('haber_id', $haberim->id)->get() as $uuuu)
+                                                                                <div class="row mt-1">
+                                                                                    <div class="col-9">
+                                                                                        <img class="form-control" src="{{asset('public/img/'.$uuuu->gorsel)}}" style="width: 100%;">
+                                                                                    </div>
+                                                                                    <div class="col-3">
+                                                                                        <button type="button" onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        @else
+                                                                            <span class="text-danger">Galeriye Resim Yüklenmemiş</span>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -153,13 +174,37 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <div class="row">
-                                                                <div class="card-body">
-                                                                    <div class="card-block">
-                                                                        <label>Haber Belge (Çoklu PDF)</label>
-                                                                        <div class="input-group">
-                                                                            <input name="pdfs[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                        </div>
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6 col-md-6">
+                                                                        <label class="label-control" for="userinput4">Yeni Resim PDF ( Çoklu )</label>
+                                                                        <input
+                                                                            id="userinput4"
+                                                                            type="file"
+                                                                            name="pdfs[]"
+                                                                            class="btn btn-block btn-outline-pink form-control"
+                                                                            accept="image/*"
+                                                                            multiple
+                                                                        >
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-md-6">
+                                                                        @if(DB::table('haber_belge')->where('haber_id', $haberim->id)->get())
+                                                                            @foreach(DB::table('haber_belge')->where('haber_id', $haberim->id)->get() as $uuuu)
+                                                                                <div class="row mt-3">
+                                                                                    <div class="col-9">
+                                                                                        <a target="_blank" href="{{asset('public/img/'.$uuuu->belge)}}">
+                                                                                        <span class="text-success form-control"><i class="fa fa-external-link"></i>
+                                                                                        Belgeyi Görüntülemek İçin Tıklayın
+                                                                                    </span></a>
+                                                                                    </div>
+                                                                                    <div class="col-3">
+                                                                                        <button type="button" onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        @else
+                                                                            <span class="text-danger"> PDF Yüklenmemiş</span>
+                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>

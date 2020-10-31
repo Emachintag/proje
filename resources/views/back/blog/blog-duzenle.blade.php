@@ -3,6 +3,14 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    if(isset($_GET['id'])) {
+        $haberim = DB::table('blog')->where('id', $_GET['id'])->first();
+    } else {
+        header("Location:".route('blog'));
+    }
+
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 
