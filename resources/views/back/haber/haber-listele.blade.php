@@ -103,7 +103,7 @@
                                                 Sil
                                             </span>
                                                     </a>
-                                                    <a href="{{route('haber_duzenle')}}?id={{$u->id}}" class="btn btn-info btn-min-width btn-glow">
+                                                    <a href="{{route('haber_duzenle', ['id'=>$u->id])}}" class="btn btn-info btn-min-width btn-glow">
                                                         <i class="la la-edit"></i>
                                                         <span>
                                                 Düzenle

@@ -3,9 +3,12 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
-    <?php $haberim = DB::table('haber')->where('id', $id)->first();
-
-
+    <?php
+        if(isset($_GET['id'])) {
+            $haberim = DB::table('haber')->where('id', $_GET['id'])->first();
+        } else {
+            header("Location:".route('haber'));
+        }
 
     ?>
     <div class="app-content content">
@@ -43,7 +46,7 @@
                                                             <div class="card-block">
                                                                 <label>Haber Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$haberim->title}}" name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -55,7 +58,7 @@
                                                             <div class="card-block">
                                                                 <label>Haber Alt Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$haberim->title_2}}" name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -80,54 +83,92 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Haber Görsel (Tek Fotoğraf)</label>
-                                                                <div class="input-group">
-                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="card-body">
+                                                                    <div class="card-block">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                @if($haberim->image != '')
+                                                                                    <label>Haber Görseli</label>
+                                                                                    <div class="input-group">
+                                                                                        <img src="{{asset('public/img/'.$haberim->image)}}" class="form-control">
+                                                                                    </div>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="col-md-8">
+                                                                                <label>Haber Görsel (Tek Fotoğraf)</label>
+                                                                                <div class="input-group">
+                                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Haber Görsel (Çoklu Fotoğraf)</label>
-                                                                <div class="input-group">
-                                                                    <input name="images[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="card-body">
+                                                                    <div class="card-block">
+                                                                        <label>Haber Görsel (Çoklu Fotoğraf)</label>
+                                                                        <div class="input-group">
+                                                                            <input name="images[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Haber Belge (Tek PDF)</label>
-                                                                <div class="input-group">
-                                                                    <input name="pdf" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="card-body">
+                                                                    <div class="card-block">
+                                                                        @if($haberim->pdf != '')
+                                                                            <label>Haber Belge</label>
+                                                                            <div class="input-group">
+                                                                                <a target="_blank" href="/public/img/{{$haberim->pdf}}">
+                                                                                    <span class="text-success"><i class="fa fa-external-link"></i>
+                                                                                        Belgeyi Görüntülemek İçin Tıklayın
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        @endif
+                                                                        <label>Haber Belge (Tek PDF)</label>
+                                                                        <div class="input-group">
+                                                                            <input name="pdf" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Haber Belge (Çoklu PDF)</label>
-                                                                <div class="input-group">
-                                                                    <input name="pdfs[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="card-body">
+                                                                    <div class="card-block">
+                                                                        <label>Haber Belge (Çoklu PDF)</label>
+                                                                        <div class="input-group">
+                                                                            <input name="pdfs[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
+
+
 
                                                 <div class="col-md-12">
                                                     <div class="row">
@@ -135,7 +176,7 @@
                                                             <div class="card-block">
                                                                 <label>Haber Metni</label>
                                                                 <div class="form-group">
-                                                                    <textarea name="text" class="tinymce"> </textarea>
+                                                                    <textarea name="text" class="tinymce">{{$haberim->text}}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
