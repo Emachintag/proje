@@ -1,3 +1,4 @@
+
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/editors/tinymce/tinymce.min.css')}}">
 @endsection
@@ -5,9 +6,9 @@
 @section('content')
     <?php
     if(isset($_GET['id'])) {
-        $haberim = DB::table('blog')->where('id', $_GET['id'])->first();
+        $blog = DB::table('blog')->where('id', $_GET['id'])->first();
     } else {
-        header("Location:".route('blog'));
+        header("Location:".route('Blog'));
     }
 
     ?>
@@ -46,7 +47,7 @@
                                                             <div class="card-block">
                                                                 <label>Blog Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$blog->title}}" name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -58,7 +59,7 @@
                                                             <div class="card-block">
                                                                 <label>Blog Alt Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$blog->title_2}}" name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -83,54 +84,137 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Blog Görsel (Tek Fotoğraf)</label>
-                                                                <div class="input-group">
-                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="card-body">
+                                                                    <div class="card-block">
+                                                                        <div class="row">
+                                                                            <div class="col-md-4">
+                                                                                @if($blog->image != '')
+                                                                                    <label>Blog Görseli</label>
+                                                                                    <div class="input-group">
+                                                                                        <img src="{{asset('public/img/'.$blog->image)}}" class="form-control">
+                                                                                    </div>
+                                                                                @endif
+                                                                            </div>
+                                                                            <div class="col-md-8">
+                                                                                <label>Blog Görsel (Tek Fotoğraf)</label>
+                                                                                <div class="input-group">
+                                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Blog Görsel (Çoklu Fotoğraf)</label>
-                                                                <div class="input-group">
-                                                                    <input name="image[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6 col-md-6">
+                                                                        <label class="label-control" for="userinput4">Yeni Resim Yükle ( Çoklu )</label>
+                                                                        <input
+                                                                            id="userinput4"
+                                                                            type="file"
+                                                                            name="images[]"
+                                                                            class="btn btn-block btn-outline-pink form-control"
+                                                                            accept="image/*"
+                                                                            multiple
+                                                                        >
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-md-3">
+                                                                        @if(DB::table('blog_gorsel')->where('Blog_id', $blog->id)->get())
+                                                                            @foreach(DB::table('blog_gorsel')->where('Blog_id', $blog->id)->get() as $uuuu)
+                                                                                <div class="row mt-1">
+                                                                                    <div class="col-9">
+                                                                                        <img class="form-control" src="{{asset('public/img/'.$uuuu->gorsel)}}" style="width: 100%;">
+                                                                                    </div>
+                                                                                    <div class="col-3">
+                                                                                        <button type="button" onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        @else
+                                                                            <span class="text-danger">Galeriye Resim Yüklenmemiş</span>
+                                                                        @endif
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Blog Belge (Tek PDF)</label>
-                                                                <div class="input-group">
-                                                                    <input name="file" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+
+                                                        <div class="col-md-12">
+                                                            <div class="row">
+                                                                <div class="card-body">
+                                                                    <div class="card-block">
+                                                                        @if($blog->pdf != '')
+                                                                            <label>Blog Belge</label>
+                                                                            <div class="input-group">
+                                                                                <a target="_blank" href="{{asset('public/img/'.$blog->pdf)}}">
+                                                                                    <span class="text-success"><i class="fa fa-external-link"></i>
+                                                                                        Belgeyi Görüntülemek İçin Tıklayın
+                                                                                    </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        @endif
+                                                                        <label>Blog Belge (Tek PDF)</label>
+                                                                        <div class="input-group">
+                                                                            <input name="pdf" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Blog Belge (Çoklu PDF)</label>
-                                                                <div class="input-group">
-                                                                    <input name="file[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <div class="row">
+                                                                    <div class="col-sm-6 col-md-6">
+                                                                        <label class="label-control" for="userinput4">Yeni Resim PDF ( Çoklu )</label>
+                                                                        <input
+                                                                            id="userinput4"
+                                                                            type="file"
+                                                                            name="pdfs[]"
+                                                                            class="btn btn-block btn-outline-pink form-control"
+                                                                            accept="image/*"
+                                                                            multiple
+                                                                        >
+                                                                    </div>
+                                                                    <div class="col-sm-6 col-md-6">
+                                                                        @if(DB::table('blog_belge')->where('blog_id', $blog->id)->get())
+                                                                            @foreach(DB::table('blog_belge')->where('Blog_id', $blog->id)->get() as $uuuu)
+                                                                                <div class="row mt-3">
+                                                                                    <div class="col-9">
+                                                                                        <a target="_blank" href="{{asset('public/img/'.$uuuu->belge)}}">
+                                                                                        <span class="text-success form-control"><i class="fa fa-external-link"></i>
+                                                                                        Belgeyi Görüntülemek İçin Tıklayın
+                                                                                    </span></a>
+                                                                                    </div>
+                                                                                    <div class="col-3">
+                                                                                        <button type="button" onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        @else
+                                                                            <span class="text-danger"> PDF Yüklenmemiş</span>
+                                                                        @endif
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                 </div>
+
+
 
                                                 <div class="col-md-12">
                                                     <div class="row">
@@ -138,7 +222,7 @@
                                                             <div class="card-block">
                                                                 <label>Blog Metni</label>
                                                                 <div class="form-group">
-                                                                    <textarea name="text" class="tinymce"> </textarea>
+                                                                    <textarea name="text" class="tinymce">{{$blog->text}}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>

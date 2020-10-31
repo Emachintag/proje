@@ -158,7 +158,7 @@
                                                                         @if($haberim->pdf != '')
                                                                             <label>Haber Belge</label>
                                                                             <div class="input-group">
-                                                                                <a target="_blank" href="/public/img/{{$haberim->pdf}}">
+                                                                                <a target="_blank" href="{{asset('public/img/'.$haberim->pdf)}}">
                                                                                     <span class="text-success"><i class="fa fa-external-link"></i>
                                                                                         Belgeyi Görüntülemek İçin Tıklayın
                                                                                     </span>
