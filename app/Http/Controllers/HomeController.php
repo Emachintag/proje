@@ -6,8 +6,31 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Str;
 
+function compressImage($source, $destination, $quality) {
+    $info =  getimagesize($source);
+    if ($info['mime'] == 'image/jpeg')
+        $image = imagecreatefromjpeg($source);
+    elseif ($info['mime'] == 'image/gif')
+        $image = imagecreatefromgif($source);
+    elseif ($info['mime'] == 'image/png')
+        $image = imagecreatefrompng($source);
+    else
+        $image = imagecreatefromjpeg($source);
+
+    $kucukresimgenislik = 700;
+    $genislik = imagesx($image);
+    $yukseklik = imagesy($image);
+    $yeni_genislik = $kucukresimgenislik;
+    $yeni_yukseklik = (int) round($yukseklik * ($kucukresimgenislik / $genislik));
+    $tmp_img = imagecreatetruecolor($yeni_genislik, $yeni_yukseklik);
+    imagecopyresized($tmp_img, $image, 0, 0, 0, 0, $yeni_genislik, $yeni_yukseklik, $genislik, $yukseklik);
+    imagejpeg($tmp_img, $destination, $quality);
+}
+
 class HomeController extends Controller
 {
+
+
     public function index()
     {
         return view('back.index');
@@ -45,11 +68,19 @@ class HomeController extends Controller
 
 
         if(isset($request->site_favicon)) {
-
             $info = getimagesize($request->site_favicon);
             $extension = image_type_to_extension($info[2]);
             $imageName = time().$extension;
-            $request->site_favicon->move(public_path('img'), $imageName);
+
+            /*
+             * Resim Sıkıştırma
+             */
+            $location = public_path('img')."\ ".$imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['site_favicon']['tmp_name'],$location,75);
+
+
+
             DB::table('site_ayarlar')->where('id', 1)->update(['site_favicon' => $imageName]);
         }
         if(isset($request->site_logo)) {
@@ -65,7 +96,6 @@ class HomeController extends Controller
             'site_description' => $request->input('site_description'),
             'site_footer_text' => $request->input('site_footer_text'),
             'site_google' => $request->input('site_google'),
-
         ]);
 
         return back()->with('success', 'Site bilgileri başarıyla güncellendi.');
