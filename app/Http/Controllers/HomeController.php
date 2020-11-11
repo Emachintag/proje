@@ -71,15 +71,12 @@ class HomeController extends Controller
             $info = getimagesize($request->site_favicon);
             $extension = image_type_to_extension($info[2]);
             $imageName = time().$extension;
-
             /*
-             * Resim Sıkıştırma
+             * Resim Sıkıştırma / Not : $request->input adı ->move() satırını silmelisin resim yükleme sırasında, sıkıştırma resmi yükleyecek
              */
             $location = public_path('img')."\ ".$imageName;
             $location = str_replace(' ', '', $location);
             compressImage($_FILES['site_favicon']['tmp_name'],$location,75);
-
-
 
             DB::table('site_ayarlar')->where('id', 1)->update(['site_favicon' => $imageName]);
         }
