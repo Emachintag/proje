@@ -89,7 +89,7 @@
                                                 Sil
                                             </span>
                                                     </a>
-                                                    <a href="/haber-duzenle/" class="btn btn-info btn-min-width btn-glow">
+                                                    <a href="/urun-duzenle/" class="btn btn-info btn-min-width btn-glow">
                                                         <i class="la la-edit"></i>
                                                         <span>
                                                 Düzenle

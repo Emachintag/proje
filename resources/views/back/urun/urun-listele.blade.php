@@ -1,3 +1,4 @@
+
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
 @endsection

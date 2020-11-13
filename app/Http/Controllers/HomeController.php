@@ -6,22 +6,24 @@ use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Str;
 
-function compressImage($source, $destination, $quality) {
-    $info =  getimagesize($source);
+function compressImage($source, $destination, $quality)
+{
+    $info = getimagesize($source);
+
     if ($info['mime'] == 'image/jpeg')
         $image = imagecreatefromjpeg($source);
     elseif ($info['mime'] == 'image/gif')
         $image = imagecreatefromgif($source);
     elseif ($info['mime'] == 'image/png')
         $image = imagecreatefrompng($source);
-    else
-        $image = imagecreatefromjpeg($source);
+
 
     $kucukresimgenislik = 700;
     $genislik = imagesx($image);
     $yukseklik = imagesy($image);
     $yeni_genislik = $kucukresimgenislik;
-    $yeni_yukseklik = (int) round($yukseklik * ($kucukresimgenislik / $genislik));
+    $yeni_yukseklik = (int)round($yukseklik * ($kucukresimgenislik / $genislik));
+
     $tmp_img = imagecreatetruecolor($yeni_genislik, $yeni_yukseklik);
     imagecopyresized($tmp_img, $image, 0, 0, 0, 0, $yeni_genislik, $yeni_yukseklik, $genislik, $yukseklik);
     imagejpeg($tmp_img, $destination, $quality);
@@ -44,7 +46,7 @@ class HomeController extends Controller
         return view('back.ayarlar.sosyal-medya');
     }
 
-    public function sosyal_medya_ayarlar_post (Request $request)
+    public function sosyal_medya_ayarlar_post(Request $request)
     {
         DB::table('sosyal_medya_ayarlar')->where('id', '1')->update([
             'facebook' => $request->input('facebook'),
@@ -63,29 +65,31 @@ class HomeController extends Controller
         return view('back.ayarlar.site-ayarlar');
     }
 
-    public function site_ayarlar_post (Request $request)
+    public function site_ayarlar_post(Request $request)
     {
 
 
-        if(isset($request->site_favicon)) {
+        if (isset($request->site_favicon)) {
             $info = getimagesize($request->site_favicon);
             $extension = image_type_to_extension($info[2]);
-            $imageName = time().$extension;
+            $imageName = time() . $extension;
             /*
              * Resim Sıkıştırma / Not : $request->input adı ->move() satırını silmelisin resim yükleme sırasında, sıkıştırma resmi yükleyecek
              */
-            $location = public_path('img')."\ ".$imageName;
+            $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['site_favicon']['tmp_name'],$location,75);
+            compressImage($_FILES['site_favicon']['tmp_name'], $location, 75);
 
             DB::table('site_ayarlar')->where('id', 1)->update(['site_favicon' => $imageName]);
         }
-        if(isset($request->site_logo)) {
+        if (isset($request->site_logo)) {
 
             $info = getimagesize($request->site_logo);
             $extension = image_type_to_extension($info[2]);
-            $imageName = time().$extension;
-            $request->site_logo->move(public_path('img'), $imageName);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['site_logo']['tmp_name'], $location, 75);
             DB::table('site_ayarlar')->where('id', 1)->update(['site_logo' => $imageName]);
         }
         DB::table('site_ayarlar')->where('id', '1')->update([
@@ -104,7 +108,7 @@ class HomeController extends Controller
         return view('back.ayarlar.iletisim-ayarlar');
     }
 
-    public function iletisim_ayarlar_post (Request $request)
+    public function iletisim_ayarlar_post(Request $request)
     {
         DB::table('iletisim_ayarlar')->where('id', '1')->update([
             'email' => $request->input('email'),
@@ -143,32 +147,32 @@ class HomeController extends Controller
             'url' => $url,
         ]);
         $lastId = DB::table('blog')->get()->last()->id;
-        if(isset($request->pdf)) {
-            $pdfName = time().".pdf";
+        if (isset($request->pdf)) {
+            $pdfName = time() . ".pdf";
             $request->pdf->move(public_path('img'), $pdfName);
             DB::table('blog')->where('id', $lastId)->update([
                 'pdf' => $pdfName,
             ]);
         }
-        if(isset($request->image)) {
+        if (isset($request->image)) {
             $info = getimagesize($request->image);
             $extension = image_type_to_extension($info[2]);
-            $imageName = time().$extension;
-            $request->image->move(public_path('img'), $imageName);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 75);
             DB::table('blog')->where('id', $lastId)->update([
                 'image' => $imageName,
             ]);
         }
-        if($request->hasfile('pdfs'))
-        {
+        if ($request->hasfile('pdfs')) {
             $i = 1;
-            foreach($request->file('pdfs') as $image)
-            {
+            foreach ($request->file('pdfs') as $image) {
                 $extension = $image->getClientOriginalExtension();
-                $pdfName = $url."-".$i."-".$image->getClientOriginalName();
+                $pdfName = $url . "-" . $i . "-" . $image->getClientOriginalName();
                 $pdfFirstName = explode(".", $pdfName);
                 $pdfName = Str::slug($pdfFirstName[0], '-');
-                $pdfName = $pdfName.".".$extension;
+                $pdfName = $pdfName . "." . $extension;
                 $image->move(public_path('img'), $pdfName);
                 DB::table('blog_belge')->insert([
                     'blog_id' => $lastId,
@@ -177,15 +181,15 @@ class HomeController extends Controller
                 $i = $i + 1;
             }
         }
-        if($request->hasfile('images'))
-        {
+        if ($request->hasfile('images')) {
             $i = 0;
-            foreach($request->file('images') as $image)
-            {
+            foreach ($request->file('images') as $image) {
                 $info = getimagesize($image);
                 $extension = image_type_to_extension($info[2]);
-                $imageName = time().$i.$extension;
-                $image->move(public_path().'/img/', $imageName);
+                $imageName = time() . $i . $extension;
+                $location = public_path('img') . "\ " . $imageName;
+                $location = str_replace(' ', '', $location);
+                compressImage($_FILES['images']['tmp_name'], $location, 75);
                 DB::table('blog_gorsel')->insert([
                     'blog_id' => $lastId,
                     'gorsel' => $imageName,
@@ -239,7 +243,7 @@ class HomeController extends Controller
     {
 
     }
-     //Blog
+    //Blog
 
 
     // Belge
@@ -356,32 +360,34 @@ class HomeController extends Controller
             'url' => $url,
         ]);
         $lastId = DB::table('haber')->get()->last()->id;
-        if(isset($request->pdf)) {
-            $pdfName = time().".pdf";
+        if (isset($request->pdf)) {
+            $pdfName = time() . ".pdf";
             $request->pdf->move(public_path('img'), $pdfName);
             DB::table('haber')->where('id', $lastId)->update([
                 'pdf' => $pdfName,
             ]);
         }
-        if(isset($request->image)) {
+        if (isset($request->image)) {
             $info = getimagesize($request->image);
             $extension = image_type_to_extension($info[2]);
-            $imageName = time().$extension;
-            $request->image->move(public_path('img'), $imageName);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+
+            compressImage($_FILES['image']['tmp_name'], $location, 1);
+
             DB::table('haber')->where('id', $lastId)->update([
                 'image' => $imageName,
             ]);
         }
-        if($request->hasfile('pdfs'))
-        {
+        if ($request->hasfile('pdfs')) {
             $i = 1;
-            foreach($request->file('pdfs') as $image)
-            {
+            foreach ($request->file('pdfs') as $image) {
                 $extension = $image->getClientOriginalExtension();
-                $pdfName = $url."-".$i."-".$image->getClientOriginalName();
+                $pdfName = $url . "-" . $i . "-" . $image->getClientOriginalName();
                 $pdfFirstName = explode(".", $pdfName);
                 $pdfName = Str::slug($pdfFirstName[0], '-');
-                $pdfName = $pdfName.".".$extension;
+                $pdfName = $pdfName . "." . $extension;
                 $image->move(public_path('img'), $pdfName);
                 DB::table('haber_belge')->insert([
                     'haber_id' => $lastId,
@@ -390,15 +396,18 @@ class HomeController extends Controller
                 $i = $i + 1;
             }
         }
-        if($request->hasfile('images'))
-        {
+        if ($request->hasfile('images')) {
+
             $i = 0;
-            foreach($request->file('images') as $image)
-            {
+            foreach ($request->file('images') as $image) {
+
                 $info = getimagesize($image);
                 $extension = image_type_to_extension($info[2]);
-                $imageName = time().$i.$extension;
-                $image->move(public_path().'/img/', $imageName);
+                $imageName = time() . $i . $extension;
+                $location = public_path('img') . "\ " . $imageName;
+                $location = str_replace(' ', '', $location);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 75);
+
                 DB::table('haber_gorsel')->insert([
                     'haber_id' => $lastId,
                     'gorsel' => $imageName,
@@ -453,7 +462,6 @@ class HomeController extends Controller
     }
 
     // Haber
-
 
 
     // Hizmet

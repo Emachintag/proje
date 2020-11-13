@@ -1,19 +1,53 @@
+<?php
+use Illuminate\Support\Facades\File;
+?>
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
 @endsection
 @extends('back.layouts.app')
 @section('content')
     <?php
-    if(isset($_GET['haber']) AND isset($_GET['sil']) AND isset($_GET['token'])) {
-        $haber_id = $_GET['haber'];
-        $token = $_GET['token'];
-        if(Session::token() == $token) {
-            DB::table('haber')->where('id', $haber_id)->delete();
-            header("Location: haberler?okey");
-            die();
-        } else {
-            header("Location: haberler?notOkey");
+    if(isset($_GET['id']) AND isset($_GET['sil']) ) {
+        $id = $_GET['id'];
+        /*
+         * Silme işlemi için en üstte bulunan use file ve çekilen tablolar ayarlanmalıdır.
+         */
+
+        // tekli görsel silme
+        $kapakFoto = DB::table('haber')->where('id', $id)->first()->image;
+        $kapakFoto = public_path("img/".$kapakFoto);
+        if(File::exists($kapakFoto)) {
+            File::delete($kapakFoto);
         }
+
+        // tekli pdf silme
+        $kapakPdf = DB::table('haber')->where('id', $id)->first()->pdf;
+        $kapakPdf = public_path("img/".$kapakPdf);
+        if(File::exists($kapakPdf)) {
+            File::delete($kapakPdf);
+        }
+
+        // çoklu görsel silme
+        foreach (DB::table('haber_gorsel')->where('haber_id', $id)->get() as $u) {
+            $gorsel = public_path("img/".$u->gorsel);
+            if(File::exists($gorsel)) {
+                File::delete($gorsel);
+            }
+        }
+
+        // çoklu pdf silme
+        foreach (DB::table('haber_belge')->where('haber_id', $id)->get() as $u) {
+            $belge = public_path("img/".$u->belge);
+            if(File::exists($belge)) {
+                File::delete($belge);
+            }
+        }
+
+        //veritabanından silme, not : bunu direkt delete() değil de tabloda deleted_at diye bir alan açalım, silinme tarihini bu alana datetime olarak yazdıralım.
+        //yanlışlıkla silinme olursa geri getirebiliriz.
+        DB::table('haber')->where('id', $id)->delete();
+        header("Location: ?okey");
+        die();
     }
     ?>
     <div class="app-content content">
@@ -97,7 +131,7 @@
                                                 <td style="text-align: center" >{{$u->title_2}}</td>
                                                 <td style="text-align: center" ><img class="img" src="{{asset('/public/img/'.$u->image)}}" height="100"></td>
                                                 <td style="text-align: center" >
-                                                    <a href="?haber=&sil&token={{csrf_token()}}" class="btn btn-danger btn-min-width btn-glow">
+                                                    <a href="?id={{$u->id}}&sil" class="btn btn-danger btn-min-width btn-glow">
                                                         <i class="la la-trash"></i>
                                                         <span>
                                                 Sil

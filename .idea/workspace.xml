@@ -161,7 +161,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../adblue" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -194,6 +194,8 @@
       <workItem from="1604158812889" duration="1820000" />
       <workItem from="1604163497190" duration="2995000" />
       <workItem from="1605044968733" duration="5648000" />
+      <workItem from="1605178744094" duration="628000" />
+      <workItem from="1605272807747" duration="5570000" />
     </task>
     <servers />
   </component>
