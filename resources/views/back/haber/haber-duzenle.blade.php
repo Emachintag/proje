@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\File;
             header("Location:".route('haber'));
         }
 
+
     ?>
     <div class="app-content content">
         <div class="content-wrapper">
@@ -138,55 +139,33 @@ use Illuminate\Support\Facades\File;
                                                                                 @endif
                                                                             </div>
                                                                         </div>
-
-
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-5">
                                                     <div class="row">
-
-                                                        <div class="col-md-12">
+                                                        <div class="col-sm-12 col-md-6">
                                                             <div class="form-group">
-                                                                <div class="row">
-                                                                    <div class="col-sm-6 col-md-6">
-                                                                        <label class="label-control" for="userinput4">Yeni Belge PDF ( Çoklu )</label>
-                                                                        <input
-                                                                            id="userinput4"
-                                                                            type="file"
-                                                                            name="pdfs[]"
-                                                                            class="btn btn-block btn-outline-pink form-control"
-                                                                            accept="image/*"
-                                                                            multiple
-                                                                        >
-                                                                    </div>
-                                                                    <div class="col-sm-6 col-md-6">
-                                                                        @if(DB::table('haber_belge')->where('haber_id', $haberim->id)->get())
-                                                                            @foreach(DB::table('haber_belge')->where('haber_id', $haberim->id)->get() as $uuuu)
-                                                                                <div class="row mt-3">
-                                                                                    <div class="col-9">
-                                                                                        <a target="_blank" href="{{asset('public/img/'.$uuuu->belge)}}">
-                                                                                        <span class="text-success form-control"><i class="fa fa-external-link"></i>
-                                                                                        Belgeyi Görüntülemek İçin Tıklayın
-                                                                                    </span></a>
-                                                                                    </div>
-                                                                                    <div class="col-3">
-                                                                                        <button type="button" onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        @else
-                                                                            <span class="text-danger"> PDF Yüklenmemiş</span>
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
+                                                                <label class="label-control text-danger" for="userinput4">Yeni Yüklemek istediğiniz pdf'leri seçin</label>
+                                                                <input
+                                                                    id="userinput4" type="file" name="pdf[]" class="btn btn-block btn-outline-pink form-control" accept="application/pdf" multiple>
                                                             </div>
                                                         </div>
-
+                                                        <div class="col-sm-12 col-md-6 mt-1">
+                                                            @if(DB::table('haber_belge')->where('haber_id', $haberim->id)->get())
+                                                                @foreach(DB::table('haber_belge')->where('haber_id', $haberim->id)->get() as $uu)
+                                                                    <span class="text-info mt-1" style="display: block;">
+                                                            <a target="_blank" href="/public/img/{{$uu->belge}}"><label>{{$uu->belge}}</label><img style="width: 30%" src="{{ asset('/public/back/icon/pdf.png') }}" ></a>
+                                                             <button type="button" onclick="location.href='?pdfSil&pdf={{$uu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button>
+                                                        </span><br>
+                                                                @endforeach
+                                                            @else
+                                                                <span class="text-danger">PDF Yüklenmemiş</span>
+                                                            @endif
+                                                        </div>
                                                     </div>
                                                 </div>
 
