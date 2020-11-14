@@ -1,3 +1,6 @@
+<?php
+use Illuminate\Support\Facades\File;
+?>
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/editors/tinymce/tinymce.min.css')}}">
 @endsection
@@ -6,6 +9,7 @@
     <?php
         if(isset($_GET['id'])) {
             $haberim = DB::table('haber')->where('id', $_GET['id'])->first();
+
         } else {
             header("Location:".route('haber'));
         }
@@ -83,7 +87,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="row">
 
                                                         <div class="col-md-12">
@@ -91,7 +95,14 @@
                                                                 <div class="card-body">
                                                                     <div class="card-block">
                                                                         <div class="row">
-                                                                            <div class="col-md-4">
+
+                                                                            <div class="col-md-3">
+                                                                                <label>Haber Görsel (Tek Fotoğraf)</label>
+                                                                                <div class="input-group">
+                                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-3">
                                                                                 @if($haberim->image != '')
                                                                                     <label>Haber Görseli</label>
                                                                                     <div class="input-group">
@@ -99,48 +110,36 @@
                                                                                     </div>
                                                                                 @endif
                                                                             </div>
-                                                                            <div class="col-md-8">
-                                                                                <label>Haber Görsel (Tek Fotoğraf)</label>
-                                                                                <div class="input-group">
-                                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                                </div>
+                                                                            <div class="col-sm-3 col-md-3">
+                                                                                <label class="label-control" for="userinput4">Yeni Resim Yükle ( Çoklu )</label>
+                                                                                <input
+                                                                                    id="userinput4"
+                                                                                    type="file"
+                                                                                    name="images[]"
+                                                                                    class="btn btn-block btn-outline-pink form-control"
+                                                                                    accept="image/*"
+                                                                                    multiple
+                                                                                >
+                                                                            </div>
+                                                                            <div class="col-sm-3 col-md-3">
+                                                                                @if(DB::table('haber_gorsel')->where('haber_id', $haberim->id)->get())
+                                                                                    @foreach(DB::table('haber_gorsel')->where('haber_id', $haberim->id)->get() as $uuuu)
+                                                                                        <div class="row mt-1">
+                                                                                            <div class="col-9">
+                                                                                                <img class="form-control" src="{{asset('public/img/'.$uuuu->gorsel)}}" style="width: 100%;">
+                                                                                            </div>
+                                                                                            <div class="col-3">
+                                                                                                <button type="button" onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    @endforeach
+                                                                                @else
+                                                                                    <span class="text-danger">Galeriye Resim Yüklenmemiş</span>
+                                                                                @endif
                                                                             </div>
                                                                         </div>
 
 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <div class="row">
-                                                                    <div class="col-sm-6 col-md-6">
-                                                                        <label class="label-control" for="userinput4">Yeni Resim Yükle ( Çoklu )</label>
-                                                                        <input
-                                                                            id="userinput4"
-                                                                            type="file"
-                                                                            name="images[]"
-                                                                            class="btn btn-block btn-outline-pink form-control"
-                                                                            accept="image/*"
-                                                                            multiple
-                                                                        >
-                                                                    </div>
-                                                                    <div class="col-sm-6 col-md-3">
-                                                                        @if(DB::table('haber_gorsel')->where('haber_id', $haberim->id)->get())
-                                                                            @foreach(DB::table('haber_gorsel')->where('haber_id', $haberim->id)->get() as $uuuu)
-                                                                                <div class="row mt-1">
-                                                                                    <div class="col-9">
-                                                                                        <img class="form-control" src="{{asset('public/img/'.$uuuu->gorsel)}}" style="width: 100%;">
-                                                                                    </div>
-                                                                                    <div class="col-3">
-                                                                                        <button type="button" onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            @endforeach
-                                                                        @else
-                                                                            <span class="text-danger">Galeriye Resim Yüklenmemiş</span>
-                                                                        @endif
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -148,36 +147,14 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="row">
 
-                                                        <div class="col-md-12">
-                                                            <div class="row">
-                                                                <div class="card-body">
-                                                                    <div class="card-block">
-                                                                        @if($haberim->pdf != '')
-                                                                            <label>Haber Belge</label>
-                                                                            <div class="input-group">
-                                                                                <a target="_blank" href="{{asset('public/img/'.$haberim->pdf)}}">
-                                                                                    <span class="text-success"><i class="fa fa-external-link"></i>
-                                                                                        Belgeyi Görüntülemek İçin Tıklayın
-                                                                                    </span>
-                                                                                </a>
-                                                                            </div>
-                                                                        @endif
-                                                                        <label>Haber Belge (Tek PDF)</label>
-                                                                        <div class="input-group">
-                                                                            <input name="pdf" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                         <div class="col-md-12">
                                                             <div class="form-group">
                                                                 <div class="row">
                                                                     <div class="col-sm-6 col-md-6">
-                                                                        <label class="label-control" for="userinput4">Yeni Resim PDF ( Çoklu )</label>
+                                                                        <label class="label-control" for="userinput4">Yeni Belge PDF ( Çoklu )</label>
                                                                         <input
                                                                             id="userinput4"
                                                                             type="file"

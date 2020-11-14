@@ -373,8 +373,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-
-            compressImage($_FILES['image']['tmp_name'], $location, 1);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
 
             DB::table('haber')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -397,7 +396,6 @@ class HomeController extends Controller
             }
         }
         if ($request->hasfile('images')) {
-
             $i = 0;
             foreach ($request->file('images') as $image) {
 
@@ -406,7 +404,7 @@ class HomeController extends Controller
                 $imageName = time() . $i . $extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 75);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
 
                 DB::table('haber_gorsel')->insert([
                     'haber_id' => $lastId,
@@ -424,8 +422,65 @@ class HomeController extends Controller
         return view('back.haber.haber-duzenle');
     }
 
-    public function haber_duzenle_post()
+    public function haber_duzenle_post(Request $request)
     {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('haber')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('haber')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'kategori' => $request->input('kategori'),
+            'text' => $request->input('text'),
+        ]);
+        $url = Str::slug($request->input('title'), '-');
+        if($request->hasfile('pdf'))
+        {
+            $i = 1;
+            foreach($request->file('pdf') as $image)
+            {
+                $extension = $image->getClientOriginalExtension();
+                $pdfName = $url."-".$i."-".$image->getClientOriginalName();
+                $pdfFirstName = explode(".", $pdfName);
+                $pdfName = Str::slug($pdfFirstName[0], '-');
+                $pdfName = $pdfName.".".$extension;
+
+                $image->move(public_path('img'), $pdfName);
+                DB::table('haber_belge')->insert([
+                    'haber_id' => $request->id,
+                    'belge' => $pdfName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        if($request->hasfile('images'))
+        {
+            $i = 0;
+            foreach($request->file('images') as $image)
+            {
+                $info = getimagesize($image);
+                $extension = image_type_to_extension($info[2]);
+                $imageName = time().$i.$extension;
+                $location = public_path('img') . "\ " . $imageName;
+                $location = str_replace(' ', '', $location);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                DB::table('haber_gorsel')->insert([
+                    'haber_id' => $request->id,
+                    'gorsel' => $imageName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        return redirect()->route('haber')->with('success', 'Yeni haber başarıyla eklendi.');
 
     }
 

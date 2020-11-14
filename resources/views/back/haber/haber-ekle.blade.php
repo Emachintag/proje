@@ -72,11 +72,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Haber Görsel (Tek Fotoğraf)</label>
+                                                                <label>Haber Kapak Görsel (Tek Fotoğraf)</label>
                                                                 <div class="input-group">
                                                                     <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3" accept="image/*">
                                                                 </div>
@@ -84,7 +84,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
@@ -96,19 +96,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Haber Belge (Tek PDF)</label>
-                                                                <div class="input-group">
-                                                                    <input name="pdf" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
