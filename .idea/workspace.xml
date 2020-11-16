@@ -161,7 +161,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../balkanika" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -197,7 +197,9 @@
       <workItem from="1605178744094" duration="628000" />
       <workItem from="1605272807747" duration="5894000" />
       <workItem from="1605348830970" duration="4571000" />
-      <workItem from="1605361927767" duration="2362000" />
+      <workItem from="1605361927767" duration="2621000" />
+      <workItem from="1605519826241" duration="5235000" />
+      <workItem from="1605529040119" duration="699000" />
     </task>
     <servers />
   </component>
@@ -222,10 +224,10 @@
     </state>
     <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1604086791790" />
     <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603924484387" />
-    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1605361997132">
+    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1605529143087">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1605361997132" />
+    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1605529143087" />
     <state x="634" y="358" key="NewPhpFileDialog" timestamp="1604065609715">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
