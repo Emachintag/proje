@@ -1,4 +1,15 @@
 <?php
+    if(isset($_GET['gorselSil']) && isset($_GET['gorsel']) && isset($_GET['id'])) {
+        $sil = $_GET['gorsel'];
+        $gorsel = DB::table('haber_gorsel')->where('id', $sil)->first()->gorsel;
+        $gorsel = public_path("img/".$gorsel);
+        if(File::exists($gorsel)) {
+            File::delete($gorsel);
+        }
+        DB::table('haber_gorsel')->where('id', $sil)->delete();
+        header("Location: ?id=" . $_GET['id']);
+        die();
+    }
 use Illuminate\Support\Facades\File;
 ?>
 @section('css')
@@ -10,7 +21,6 @@ use Illuminate\Support\Facades\File;
     <?php
     if (isset($_GET['id'])) {
         $haberim = DB::table('haber')->where('id', $_GET['id'])->first();
-
     } else {
         header("Location:" . route('haber'));
     }
@@ -138,16 +148,16 @@ use Illuminate\Support\Facades\File;
                                                                                 @if(DB::table('haber_gorsel')->where('haber_id', $haberim->id)->get())
                                                                                     @foreach(DB::table('haber_gorsel')->where('haber_id', $haberim->id)->get() as $uuuu)
                                                                                         <div class="row mt-1">
-                                                                                            <div class="col-9">
+                                                                                            <div class="col-8">
                                                                                                 <img
                                                                                                     class="form-control"
                                                                                                     src="{{asset('public/img/'.$uuuu->gorsel)}}"
                                                                                                     style="width: 100%;">
                                                                                             </div>
-                                                                                            <div class="col-3">
+                                                                                            <div class="col-4 mt-3">
                                                                                                 <button type="button"
-                                                                                                        onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}'"
-                                                                                                        class="btn btn-outline-danger ml-1">
+                                                                                                        onclick="location.href='?gorselSil&gorsel={{$uuuu->id}}&id={{$haberim->id}}'"
+                                                                                                        class="btn btn-block btn-outline-danger ml-1">
                                                                                                     <i class="ft ft-minus"></i>
                                                                                                     Sil
                                                                                                 </button>

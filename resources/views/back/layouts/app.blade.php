@@ -16,24 +16,19 @@
           rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
           rel="stylesheet">
-    <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/vendors.css')}}">
-    <!-- END VENDOR CSS-->
-    <!-- BEGIN MODERN CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/app.css')}}">
-    <!-- END MODERN CSS-->
-    @yield('css')
-    <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/core/menu/menu-types/horizontal-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/core/colors/palette-gradient.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/charts/jquery-jvectormap-2.0.3.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/charts/morris.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/fonts/simple-line-icons/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/core/colors/palette-gradient.css')}}">
-    <!-- END Page Level CSS-->
-    <!-- BEGIN Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/assets/css/style.css')}}">
-    <!-- END Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/extensions/toastr.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/css/plugins/extensions/toastr.css')}}">
+    <script src="{{asset('/public/back/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/public/back/app-assets/vendors/js/extensions/sweetalert.min.js')}}" type="text/javascript"></script>
+    <script src="{{asset('/public/back/app-assets/js/scripts/extensions/sweet-alerts.js')}}" type="text/javascript"></script>
+    @yield('css')
+
 </head>
 <body class="horizontal-layout horizontal-menu 2-columns   menu-expanded" data-open="hover"
       data-menu="horizontal-menu" data-col="2-columns">
@@ -232,31 +227,15 @@
         <span class="float-md-right d-block d-md-inline-blockd-none d-lg-block">Hand-crafted & Made with <i class="ft-heart pink"></i></span>
     </p>
 </footer>
-<!-- BEGIN VENDOR JS-->
 <script src="{{asset('/public/back/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
-<!-- BEGIN VENDOR JS-->
-<!-- BEGIN PAGE VENDOR JS-->
 <script type="text/javascript" src="{{asset('/public/back/app-assets/vendors/js/ui/jquery.sticky.js')}}"></script>
-<script type="text/javascript" src="{{asset('/public/back/app-assets/vendors/js/charts/jquery.sparkline.min.js')}}"></script>
-<script src="{{asset('/public/back/app-assets/vendors/js/charts/chart.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('/public/back/app-assets/vendors/js/charts/raphael-min.js')}}" type="text/javascript"></script>
-<script src="{{asset('/public/back/app-assets/vendors/js/charts/morris.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('/public/back/app-assets/vendors/js/charts/jvector/jquery-jvectormap-2.0.3.min.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('/public/back/app-assets/vendors/js/charts/jvector/jquery-jvectormap-world-mill.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('/public/back/app-assets/data/jvector/visitor-data.js')}}" type="text/javascript"></script>
-<!-- END PAGE VENDOR JS-->
-<!-- BEGIN MODERN JS-->
 <script src="{{asset('/public/back/app-assets/js/core/app-menu.js')}}" type="text/javascript"></script>
 <script src="{{asset('/public/back/app-assets/js/core/app.js')}}" type="text/javascript"></script>
 <script src="{{asset('/public/back/app-assets/js/scripts/customizer.js')}}" type="text/javascript"></script>
-<!-- END MODERN JS-->
-<!-- BEGIN PAGE LEVEL JS-->
-<script type="text/javascript" src="{{asset('/public/back/app-assets/js/scripts/ui/breadcrumbs-with-stats.js')}}"></script>
-<script src="{{asset('/public/back/app-assets/js/scripts/pages/dashboard-sales.js')}}" type="text/javascript"></script>
-<!-- END PAGE LEVEL JS-->
+<script src="{{asset('/public/back/app-assets/vendors/js/extensions/toastr.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('/public/back/app-assets/js/scripts/extensions/toastr.js')}}" type="text/javascript"></script>
+
+@yield('js')
 </body>
 </html>
 
-@yield('js')

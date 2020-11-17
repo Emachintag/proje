@@ -14,7 +14,7 @@ $(document).ready(function() {
 *       js of zero configuration        *
 ****************************************/
 
-$('.zero-configuration').DataTable();
+
 
 /**************************************
 *       js of default ordering        *
