@@ -173,7 +173,7 @@
                         <ul class="dropdown-menu">
                             <li data-menu=""><a class="dropdown-item" href="{{route('urun')}}" data-toggle="dropdown">Ürünleri Görüntüle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('urun_ekle')}}l" data-toggle="dropdown">Ürün Ekle</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('urun_ekle')}}" data-toggle="dropdown">Ürün Ekle</a>
                             </li>
                             <li data-menu=""><a class="dropdown-item" href="{{route('urun_kategori')}}" data-toggle="dropdown">Ürün Kategori Yönet</a>
                             </li>

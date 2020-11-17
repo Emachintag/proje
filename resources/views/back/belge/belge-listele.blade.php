@@ -21,7 +21,7 @@
                                             <span>Yazdığınız Belge Sayısı</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">1</h1>
+                                            <h1 class="text-white">{{DB::table('belge')->count()}}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="col-xl-6 col-md-12">
                             <div class="card overflow-hidden">
-                                <div style="cursor: pointer" onclick="location.href='{{route('haber_ekle')}}'" class="card-content">
+                                <div style="cursor: pointer" onclick="location.href='{{route('belge_ekle')}}'" class="card-content">
                                     <div class="media align-items-stretch bg-gradient-x-info text-white rounded">
                                         <div class="p-2 media-middle">
                                             <i class="icon-pencil font-large-2 text-white"></i>
@@ -37,9 +37,6 @@
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Yeni Belge Ekle</h4>
                                             <span>Yeni Belge İçin Tıklayınız</span>
-                                        </div>
-                                        <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">18,000</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -70,40 +67,73 @@
                                         <table class="table table-striped table-bordered zero-configuration">
                                             <thead>
                                             <tr>
-                                                <th>Belge Başlık</th>
-                                                <th>Belge Resim</th>
-                                                <th>Belge Link</th>
+                                                <th>Başlık</th>
+                                                <th>Fotoğraf</th>
+                                                <th>Belge</th>
                                                 <th>İşlem</th>
 
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>Donna Snider</td>
-                                                <td style="text-align: right" >
-                                                    <a href="?haber=&sil&token={{ csrf_token() }}" class="btn btn-danger btn-min-width btn-glow">
-                                                        <i class="la la-trash"></i>
-                                                        <span>
-                                                Sil
-                                            </span>
-                                                    </a>
-                                                    <a href="/haber-duzenle/" class="btn btn-info btn-min-width btn-glow">
-                                                        <i class="la la-edit"></i>
-                                                        <span>
-                                                Düzenle
-                                            </span>
-                                                    </a>
-                                                </td>
+                                            @foreach(DB::table('belge')->get() as $u)
+                                                <tr>
+                                                    <td style="text-align: center" >{{$u->title}}</td>
+                                                    <td style="text-align: center"><img class="img" src="{{asset('/public/img/'.$u->image)}}" height="100"></td>
+                                                    <td style="text-align: center"><a target="_blank" href="{{asset('/public/img/'.$u->pdf)}}" ><img class="img" src="{{ asset('/public/back/icon/pdf.png') }}" height="100"></a></td>
+                                                    <td style="text-align: center">
+                                                        <button id="delete-confir{{$u->id}}" class="btn btn-outline-danger">
+                                                            <i class="la la-remove"></i>
+                                                            Sil
+                                                        </button>
+                                                        <script>
+                                                            $(document).ready(function(){
+                                                                $('#delete-confir{{$u->id}}').on('click',function(){
+                                                                    swal({
+                                                                        title: "Belge Silme",
+                                                                        text: "{{$u->title}} - yazı tamamen silinecektir. Onaylıyor musunuz?",
+                                                                        icon: "warning",
+                                                                        buttons: {
+                                                                            cancel: {
+                                                                                text: "Hayır",
+                                                                                value: null,
+                                                                                visible: true,
+                                                                                className: "btn-outline-success",
+                                                                                closeModal: false,
+                                                                            },
+                                                                            confirm: {
+                                                                                text: "Evet",
+                                                                                value: true,
+                                                                                visible: true,
+                                                                                className: "btn-outline-danger",
+                                                                                closeModal: false
+                                                                            }
+                                                                        }
+                                                                    }).then(isConfirm => {
+                                                                        if (isConfirm) {
+                                                                            swal("Başarılı", "Silme işlemi başarılı", "success");
+                                                                            location.href='?id={{$u->id}}&sil'
+                                                                        } else {
+                                                                            swal("Dikkat", "Silme işlemi iptal edildi...", "error");
+                                                                        }
+                                                                    });
+                                                                });
+                                                            });
+                                                        </script>
+                                                        <a href="{{route('belge_duzenle', ['id'=>$u->id])}}"
+                                                           class="btn btn-outline-info">
+                                                            <i class="la la-edit"></i>
+                                                            Düzenle
+                                                        </a>
+                                                    </td>
 
-                                            </tr>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                             <tfoot>
                                             <tr>
-                                                <th>Belge Başlık</th>
-                                                <th>Belge Resim</th>
-                                                <th>Belge Link</th>
+                                                <th>Başlık</th>
+                                                <th>Fotoğraf</th>
+                                                <th>Belge</th>
                                                 <th>İşlem</th>
 
                                             </tr>

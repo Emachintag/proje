@@ -63,61 +63,46 @@
                                                                 <label>Kategori</label>
                                                                 <div class="input-group">
                                                                     <select name="kategori" class="form-control" id="basicSelect">
-                                                                        <option>Select Option</option>
-                                                                        <option>Option 1</option>
-                                                                        <option>Option 2</option>
-                                                                        <option>Option 3</option>
-                                                                        <option>Option 4</option>
-                                                                        <option>Option 5</option>
+                                                                        <option value="1" >deneme</option>
+                                                                        <option value="2" >deneme 1</option>
+
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Ürün Görsel (Tek Fotoğraf)</label>
+                                                                <label>Ürün Kapak Görsel (Tek Fotoğraf)</label>
                                                                 <div class="input-group">
-                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3" accept="image/*">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
                                                                 <label>Ürün Görsel (Çoklu Fotoğraf)</label>
                                                                 <div class="input-group">
-                                                                    <input name="image[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="images[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3" accept="image/*">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Ürün Belge (Tek PDF)</label>
-                                                                <div class="input-group">
-                                                                    <input name="file" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
                                                                 <label>Ürün Belge (Çoklu PDF)</label>
                                                                 <div class="input-group">
-                                                                    <input name="file[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="pdfs[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>

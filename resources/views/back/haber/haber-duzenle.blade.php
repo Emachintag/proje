@@ -10,6 +10,17 @@
         header("Location: ?id=" . $_GET['id']);
         die();
     }
+if(isset($_GET['belgeSil']) && isset($_GET['belge']) && isset($_GET['id'])) {
+    $sil = $_GET['belge'];
+    $belge = DB::table('haber_belge')->where('id', $sil)->first()->belge;
+    $belge = public_path("img/".$belge);
+    if(File::exists($belge)) {
+        File::delete($belge);
+    }
+    DB::table('haber_belge')->where('id', $sil)->delete();
+    header("Location: ?id=" . $_GET['id']);
+    die();
+}
 use Illuminate\Support\Facades\File;
 ?>
 @section('css')
@@ -179,7 +190,7 @@ use Illuminate\Support\Facades\File;
                                                                                 @if(DB::table('haber_belge')->where('haber_id', $haberim->id)->get())
                                                                                     @foreach(DB::table('haber_belge')->where('haber_id', $haberim->id)->get() as $uu)
                                                                                         <span class="text-info mt-1"
-                                                                                              style="display: block;"><a target="_blank" href="/public/img/{{$uu->belge}}"><label>{{$uu->belge}}</label><img style="width: 30%" src="{{ asset('/public/back/icon/pdf.png') }}"></a><button type="button" onclick="location.href='?pdfSil&pdf={{$uu->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button></span><br>
+                                                                                              style="display: block;"><a target="_blank" href="/public/img/{{$uu->belge}}"><label>{{$uu->belge}}</label><img style="width: 30%" src="{{ asset('/public/back/icon/pdf.png') }}"></a><button type="button" onclick="location.href='?belgeSil&belge={{$uu->id}}&id={{$haberim->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button></span><br>
                                                                                     @endforeach
                                                                                 @else
                                                                                     <span class="text-danger">PDF Yüklenmemiş</span>

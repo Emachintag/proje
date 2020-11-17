@@ -3,6 +3,14 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    if (isset($_GET['id'])) {
+        $haberim = DB::table('haber_kategori')->where('id', $_GET['id'])->first();
+    } else {
+        header("Location:" . route('haber'));
+    }
+
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -38,7 +46,7 @@
                                                             <div class="card-block">
                                                                 <label>Kategori Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Kategori Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$haberim->kategori}}" name="kategori" type="text" class="form-control" placeholder="Kategori Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,14 +58,12 @@
                                                             <div class="card-block">
                                                                 <label>Kategori Sırası</label>
                                                                 <div class="input-group">
-                                                                    <input name="sira" type="text" class="form-control" placeholder="Kategori Sırası" aria-describedby="basic-addon3">
+                                                                    <input value="{{$haberim->sira}}" name="sira" type="text" class="form-control" placeholder="Kategori Sırası" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                             </div>
 
                                         </div>

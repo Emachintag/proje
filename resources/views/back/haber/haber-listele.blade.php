@@ -122,15 +122,10 @@ use Illuminate\Support\Facades\File;
                                                 <tr>
                                                     <td style="text-align: center">{{$u->title}}</td>
                                                     <td style="text-align: center">{{$u->title_2}}</td>
-                                                    <td style="text-align: center"><img class="img"
-                                                                                        src="{{asset('/public/img/'.$u->image)}}"
-                                                                                        height="100"></td>
+                                                    <td style="text-align: center"><img class="img" src="{{asset('/public/img/'.$u->image)}}" height="100"></td>
                                                     <td>{{$u->created_at}}</td>
                                                     <td style="text-align: center">
-                                                        <button id="delete-confir{{$u->id}}" class="btn btn-outline-danger">
-                                                            <i class="la la-remove"></i>
-                                                            Sil
-                                                        </button>
+                                                        <button id="delete-confir{{$u->id}}" class="btn btn-outline-danger"><i class="la la-remove"></i>Sil</button>
                                                             <script>
                                                                 $(document).ready(function(){
                                                                     $('#delete-confir{{$u->id}}').on('click',function(){

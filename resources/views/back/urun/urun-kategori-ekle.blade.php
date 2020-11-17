@@ -38,7 +38,7 @@
                                                             <div class="card-block">
                                                                 <label>Kategori Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Kategori Başlık" aria-describedby="basic-addon3">
+                                                                    <input name="kategori" type="text" class="form-control" placeholder="Kategori Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>

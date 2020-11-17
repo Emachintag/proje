@@ -1,4 +1,13 @@
-@section('css')
+
+<?php
+
+if (isset($_GET['id']) AND isset($_GET['sil'])) {
+    $id = $_GET['id'];
+    DB::table('haber_kategori')->where('id', $id)->delete();
+    header("Location: ?okey");
+}
+
+?>@section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
 @endsection
 @extends('back.layouts.app')
@@ -38,9 +47,6 @@
                                             <h4 class="text-white">Yeni Haber Kategori Ekle</h4>
                                             <span>Yeni Haber Kategori İçin Tıklayınız</span>
                                         </div>
-                                        <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">18,000</h1>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -78,25 +84,56 @@
                                             </thead>
                                             <tbody>
                                             @foreach(DB::table('haber_kategori')->get() as $u)
-                                            <tr>
-                                                <td style="text-align: center" >{{$u->kategori}}</td>
-                                                <td style="text-align: center" >{{$u->sira}}</td>
-                                                <td style="text-align: center" >
-                                                    <a href="?haber=&sil&token={{ csrf_token() }}" class="btn btn-danger btn-min-width btn-glow">
-                                                        <i class="la la-trash"></i>
-                                                        <span>
-                                                Sil
-                                            </span>
-                                                    </a>
-                                                    <a href="/haber-duzenle/" class="btn btn-info btn-min-width btn-glow">
-                                                        <i class="la la-edit"></i>
-                                                        <span>
-                                                Düzenle
-                                            </span>
-                                                    </a>
-                                                </td>
+                                                <tr>
+                                                    <td style="text-align: center" >{{$u->kategori}}</td>
+                                                    <td style="text-align: center" >{{$u->sira}}</td>
+                                                    <td style="text-align: center">
+                                                        <button id="delete-confir{{$u->id}}" class="btn btn-outline-danger">
+                                                            <i class="la la-remove"></i>
+                                                            Sil
+                                                        </button>
+                                                        <script>
+                                                            $(document).ready(function(){
+                                                                $('#delete-confir{{$u->id}}').on('click',function(){
+                                                                    swal({
+                                                                        title: "Haber Yazısı Silme",
+                                                                        text: "{{$u->kategori}} - yazı tamamen silinecektir. Onaylıyor musunuz?",
+                                                                        icon: "warning",
+                                                                        buttons: {
+                                                                            cancel: {
+                                                                                text: "Hayır",
+                                                                                value: null,
+                                                                                visible: true,
+                                                                                className: "btn-outline-success",
+                                                                                closeModal: false,
+                                                                            },
+                                                                            confirm: {
+                                                                                text: "Evet",
+                                                                                value: true,
+                                                                                visible: true,
+                                                                                className: "btn-outline-danger",
+                                                                                closeModal: false
+                                                                            }
+                                                                        }
+                                                                    }).then(isConfirm => {
+                                                                        if (isConfirm) {
+                                                                            swal("Başarılı", "Silme işlemi başarılı", "success");
+                                                                            location.href='?id={{$u->id}}&sil'
+                                                                        } else {
+                                                                            swal("Dikkat", "Silme işlemi iptal edildi...", "error");
+                                                                        }
+                                                                    });
+                                                                });
+                                                            });
+                                                        </script>
+                                                        <a href="{{route('haber_kategori_duzenle', ['id'=>$u->id])}}"
+                                                           class="btn btn-outline-info">
+                                                            <i class="la la-edit"></i>
+                                                            Düzenle
+                                                        </a>
+                                                    </td>
 
-                                            </tr>
+                                                </tr>
                                             @endforeach
                                             </tbody>
                                             <tfoot>

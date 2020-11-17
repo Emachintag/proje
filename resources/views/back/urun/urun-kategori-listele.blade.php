@@ -1,4 +1,13 @@
-@section('css')
+
+<?php
+
+if (isset($_GET['id']) AND isset($_GET['sil'])) {
+    $id = $_GET['id'];
+    DB::table('urun_kategori')->where('id', $id)->delete();
+    header("Location: ?okey");
+}
+
+?>@section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
 @endsection
 @extends('back.layouts.app')
@@ -8,21 +17,20 @@
             <div class="content-body">
 
                 <section id="stats-icon-subtitle-bg">
-
                     <div class="row">
                         <div class="col-xl-6 col-md-12">
                             <div class="card">
                                 <div class="card-content">
-                                    <div class="media align-items-stretch bg-warning text-white rounded">
-                                        <div class="bg-warning bg-darken-2 p-2 media-middle">
+                                    <div class="media align-items-stretch bg-gradient-x-warning text-white rounded">
+                                        <div class="p-2 media-middle">
                                             <i class="icon-speech font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Ürün Kategori Sayısı</h4>
-                                            <span>Kaydedilen Ürün Kategori Sayısı</span>
+                                            <span>Yazdığınız Ürün Kategori Sayısı</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">84,695</h1>
+                                            <h1 class="text-white">{{DB::table('urun_kategori')->count()}}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -31,22 +39,18 @@
                         <div class="col-xl-6 col-md-12">
                             <div class="card overflow-hidden">
                                 <div style="cursor: pointer" onclick="location.href='{{route('urun_kategori_ekle')}}'" class="card-content">
-                                    <div  class="media align-items-stretch bg-info text-white rounded">
-                                        <div class="bg-info bg-darken-2 p-2 media-middle">
+                                    <div class="media align-items-stretch bg-gradient-x-info text-white rounded">
+                                        <div class="p-2 media-middle">
                                             <i class="icon-pencil font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Yeni Ürün Kategori Ekle</h4>
-                                            <span>Yeni Ürün Kategori Eklemek İçin Tıklayınız</span>
-                                        </div>
-                                        <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">18,000</h1>
+                                            <span>Yeni Ürün Kategori İçin Tıklayınız</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </section>
                 <!-- Zero configuration table -->
@@ -79,25 +83,58 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td style="text-align: right" >
-                                                    <a href="?haber=&sil&token={{ csrf_token() }}" class="btn btn-danger btn-min-width btn-glow">
-                                                        <i class="la la-trash"></i>
-                                                        <span>
-                                                Sil
-                                            </span>
-                                                    </a>
-                                                    <a href="/urun-duzenle/" class="btn btn-info btn-min-width btn-glow">
-                                                        <i class="la la-edit"></i>
-                                                        <span>
-                                                Düzenle
-                                            </span>
-                                                    </a>
-                                                </td>
+                                            @foreach(DB::table('urun_kategori')->get() as $u)
+                                                <tr>
+                                                    <td style="text-align: center" >{{$u->kategori}}</td>
+                                                    <td style="text-align: center" >{{$u->sira}}</td>
+                                                    <td style="text-align: center">
+                                                        <button id="delete-confir{{$u->id}}" class="btn btn-outline-danger">
+                                                            <i class="la la-remove"></i>
+                                                            Sil
+                                                        </button>
+                                                        <script>
+                                                            $(document).ready(function(){
+                                                                $('#delete-confir{{$u->id}}').on('click',function(){
+                                                                    swal({
+                                                                        title: "Ürün Yazısı Silme",
+                                                                        text: "{{$u->kategori}} - yazı tamamen silinecektir. Onaylıyor musunuz?",
+                                                                        icon: "warning",
+                                                                        buttons: {
+                                                                            cancel: {
+                                                                                text: "Hayır",
+                                                                                value: null,
+                                                                                visible: true,
+                                                                                className: "btn-outline-success",
+                                                                                closeModal: false,
+                                                                            },
+                                                                            confirm: {
+                                                                                text: "Evet",
+                                                                                value: true,
+                                                                                visible: true,
+                                                                                className: "btn-outline-danger",
+                                                                                closeModal: false
+                                                                            }
+                                                                        }
+                                                                    }).then(isConfirm => {
+                                                                        if (isConfirm) {
+                                                                            swal("Başarılı", "Silme işlemi başarılı", "success");
+                                                                            location.href='?id={{$u->id}}&sil'
+                                                                        } else {
+                                                                            swal("Dikkat", "Silme işlemi iptal edildi...", "error");
+                                                                        }
+                                                                    });
+                                                                });
+                                                            });
+                                                        </script>
+                                                        <a href="{{route('urun_kategori_duzenle', ['id'=>$u->id])}}"
+                                                           class="btn btn-outline-info">
+                                                            <i class="la la-edit"></i>
+                                                            Düzenle
+                                                        </a>
+                                                    </td>
 
-                                            </tr>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                             <tfoot>
                                             <tr>

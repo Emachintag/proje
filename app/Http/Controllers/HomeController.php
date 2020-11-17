@@ -160,7 +160,8 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 75);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
             DB::table('blog')->where('id', $lastId)->update([
                 'image' => $imageName,
             ]);
@@ -184,12 +185,14 @@ class HomeController extends Controller
         if ($request->hasfile('images')) {
             $i = 0;
             foreach ($request->file('images') as $image) {
+
                 $info = getimagesize($image);
                 $extension = image_type_to_extension($info[2]);
                 $imageName = time() . $i . $extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'], $location, 75);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+
                 DB::table('blog_gorsel')->insert([
                     'blog_id' => $lastId,
                     'gorsel' => $imageName,
@@ -199,7 +202,6 @@ class HomeController extends Controller
         }
         return redirect()->route('blog')->with('success', 'Yeni ürün başarıyla eklendi.');
 
-
     }
 
     public function blog_duzenle()
@@ -207,8 +209,65 @@ class HomeController extends Controller
         return view('back.blog.blog-duzenle');
     }
 
-    public function blog_duzenle_post()
+    public function blog_duzenle_post(Request $request)
     {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('blog')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('blog')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'kategori' => $request->input('kategori'),
+            'text' => $request->input('text'),
+        ]);
+        $url = Str::slug($request->input('title'), '-');
+        if($request->hasfile('pdf'))
+        {
+            $i = 1;
+            foreach($request->file('pdf') as $image)
+            {
+                $extension = $image->getClientOriginalExtension();
+                $pdfName = $url."-".$i."-".$image->getClientOriginalName();
+                $pdfFirstName = explode(".", $pdfName);
+                $pdfName = Str::slug($pdfFirstName[0], '-');
+                $pdfName = $pdfName.".".$extension;
+
+                $image->move(public_path('img'), $pdfName);
+                DB::table('blog_belge')->insert([
+                    'blog_id' => $request->id,
+                    'belge' => $pdfName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        if($request->hasfile('images'))
+        {
+            $i = 0;
+            foreach($request->file('images') as $image)
+            {
+                $info = getimagesize($image);
+                $extension = image_type_to_extension($info[2]);
+                $imageName = time().$i.$extension;
+                $location = public_path('img') . "\ " . $imageName;
+                $location = str_replace(' ', '', $location);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                DB::table('blog_gorsel')->insert([
+                    'blog_id' => $request->id,
+                    'gorsel' => $imageName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        return redirect()->route('blog')->with('success', 'Yeni haber başarıyla eklendi.');
 
     }
 
@@ -239,8 +298,15 @@ class HomeController extends Controller
         return view('back.blog.blog-kategori-duzenle');
     }
 
-    public function blog_kategori_duzenle_post()
+    public function blog_kategori_duzenle_post(Request $request)
     {
+
+        DB::table('blog_kategori')->where('id', $request->id)->update([
+            'kategori' => $request->input('kategori'),
+            'sira' => $request->input('sira'),
+        ]);
+
+        return redirect()->route('blog_kategori')->with('success', 'Yeni Kategori başarıyla eklendi.');
 
     }
     //Blog
@@ -258,8 +324,35 @@ class HomeController extends Controller
         return view('back.belge.belge-ekle');
     }
 
-    public function belge_ekle_post()
+    public function belge_ekle_post(Request $request)
     {
+
+        DB::table('belge')->insert([
+            'title' => $request->input('title'),
+            'created_at' => date('YmdHis'),
+
+        ]);
+        $lastId = DB::table('belge')->get()->last()->id;
+        if (isset($request->pdf)) {
+            $pdfName = time() . ".pdf";
+            $request->pdf->move(public_path('img'), $pdfName);
+            DB::table('belge')->where('id', $lastId)->update([
+                'pdf' => $pdfName,
+            ]);
+        }
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('belge')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+        return redirect()->route('belge')->with('success', 'Yeni ürün başarıyla eklendi.');
 
     }
 
@@ -511,8 +604,15 @@ class HomeController extends Controller
         return view('back.haber.haber-kategori-duzenle');
     }
 
-    public function haber_kategori_duzenle_post()
+    public function haber_kategori_duzenle_post(Request $request)
     {
+
+        DB::table('haber_kategori')->where('id', $request->id)->update([
+            'kategori' => $request->input('kategori'),
+            'sira' => $request->input('sira'),
+        ]);
+
+        return redirect()->route('haber_kategori')->with('success', 'Yeni Kategori başarıyla eklendi.');
 
     }
 
@@ -531,8 +631,73 @@ class HomeController extends Controller
         return view('back.hizmet.hizmet-ekle');
     }
 
-    public function hizmet_ekle_post()
+    public function hizmet_ekle_post(Request $request)
     {
+
+        $url = Str::slug($request->input('title'), '-');
+        DB::table('hizmet')->insert([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'kategori' => $request->input('kategori'),
+            'text' => $request->input('text'),
+            'url' => $url,
+            'created_at' => date('YmdHis'),
+        ]);
+        $lastId = DB::table('hizmet')->get()->last()->id;
+        if (isset($request->pdf)) {
+            $pdfName = time() . ".pdf";
+            $request->pdf->move(public_path('img'), $pdfName);
+            DB::table('hizmet')->where('id', $lastId)->update([
+                'pdf' => $pdfName,
+            ]);
+        }
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('hizmet')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+        if ($request->hasfile('pdfs')) {
+            $i = 1;
+            foreach ($request->file('pdfs') as $image) {
+                $extension = $image->getClientOriginalExtension();
+                $pdfName = $url . "-" . $i . "-" . $image->getClientOriginalName();
+                $pdfFirstName = explode(".", $pdfName);
+                $pdfName = Str::slug($pdfFirstName[0], '-');
+                $pdfName = $pdfName . "." . $extension;
+                $image->move(public_path('img'), $pdfName);
+                DB::table('hizmet_belge')->insert([
+                    'hizmet_id' => $lastId,
+                    'belge' => $pdfName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        if ($request->hasfile('images')) {
+            $i = 0;
+            foreach ($request->file('images') as $image) {
+
+                $info = getimagesize($image);
+                $extension = image_type_to_extension($info[2]);
+                $imageName = time() . $i . $extension;
+                $location = public_path('img') . "\ " . $imageName;
+                $location = str_replace(' ', '', $location);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+
+                DB::table('hizmet_gorsel')->insert([
+                    'hizmet_id' => $lastId,
+                    'gorsel' => $imageName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        return redirect()->route('hizmet')->with('success', 'Yeni ürün başarıyla eklendi.');
 
     }
 
@@ -541,8 +706,66 @@ class HomeController extends Controller
         return view('back.hizmet.hizmet-duzenle');
     }
 
-    public function hizmet_duzenle_post()
+    public function hizmet_duzenle_post(Request $request)
     {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('hizmet')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('hizmet')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'kategori' => $request->input('kategori'),
+            'text' => $request->input('text'),
+            'updated_at' => date('YmdHis'),
+        ]);
+        $url = Str::slug($request->input('title'), '-');
+        if($request->hasfile('pdf'))
+        {
+            $i = 1;
+            foreach($request->file('pdf') as $image)
+            {
+                $extension = $image->getClientOriginalExtension();
+                $pdfName = $url."-".$i."-".$image->getClientOriginalName();
+                $pdfFirstName = explode(".", $pdfName);
+                $pdfName = Str::slug($pdfFirstName[0], '-');
+                $pdfName = $pdfName.".".$extension;
+
+                $image->move(public_path('img'), $pdfName);
+                DB::table('hizmet_belge')->insert([
+                    'hizmet_id' => $request->id,
+                    'belge' => $pdfName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        if($request->hasfile('images'))
+        {
+            $i = 0;
+            foreach($request->file('images') as $image)
+            {
+                $info = getimagesize($image);
+                $extension = image_type_to_extension($info[2]);
+                $imageName = time().$i.$extension;
+                $location = public_path('img') . "\ " . $imageName;
+                $location = str_replace(' ', '', $location);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                DB::table('hizmet_gorsel')->insert([
+                    'hizmet_id' => $request->id,
+                    'gorsel' => $imageName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        return redirect()->route('hizmet')->with('success', 'Yeni haber başarıyla eklendi.');
 
     }
 
@@ -556,8 +779,15 @@ class HomeController extends Controller
         return view('back.hizmet.hizmet-kategori-ekle');
     }
 
-    public function hizmet_kategori_ekle_post()
+    public function hizmet_kategori_ekle_post(Request $request)
     {
+
+        DB::table('hizmet_kategori')->insert([
+            'kategori' => $request->input('kategori'),
+            'sira' => $request->input('sira'),
+        ]);
+
+        return redirect()->route('hizmet_kategori')->with('success', 'Yeni Kategori başarıyla eklendi.');
 
     }
 
@@ -566,8 +796,15 @@ class HomeController extends Controller
         return view('back.hizmet.hizmet-kategori-duzenle');
     }
 
-    public function hizmet_kategori_duzenle_post()
+    public function hizmet_kategori_duzenle_post(Request $request)
     {
+
+        DB::table('hizmet_kategori')->where('id', $request->id)->update([
+            'kategori' => $request->input('kategori'),
+            'sira' => $request->input('sira'),
+        ]);
+
+        return redirect()->route('hizmet_kategori')->with('success', 'Kategori başarıyla güncellendi.');
 
     }
 
@@ -616,8 +853,73 @@ class HomeController extends Controller
         return view('back.urun.urun-ekle');
     }
 
-    public function urun_ekle_post()
+    public function urun_ekle_post(Request $request)
     {
+
+        $url = Str::slug($request->input('title'), '-');
+        DB::table('urun')->insert([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'kategori' => $request->input('kategori'),
+            'text' => $request->input('text'),
+            'url' => $url,
+            'created_at' => date('YmdHis'),
+        ]);
+        $lastId = DB::table('urun')->get()->last()->id;
+        if (isset($request->pdf)) {
+            $pdfName = time() . ".pdf";
+            $request->pdf->move(public_path('img'), $pdfName);
+            DB::table('urun')->where('id', $lastId)->update([
+                'pdf' => $pdfName,
+            ]);
+        }
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('urun')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+        if ($request->hasfile('pdfs')) {
+            $i = 1;
+            foreach ($request->file('pdfs') as $image) {
+                $extension = $image->getClientOriginalExtension();
+                $pdfName = $url . "-" . $i . "-" . $image->getClientOriginalName();
+                $pdfFirstName = explode(".", $pdfName);
+                $pdfName = Str::slug($pdfFirstName[0], '-');
+                $pdfName = $pdfName . "." . $extension;
+                $image->move(public_path('img'), $pdfName);
+                DB::table('urun_belge')->insert([
+                    'urun_id' => $lastId,
+                    'belge' => $pdfName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        if ($request->hasfile('images')) {
+            $i = 0;
+            foreach ($request->file('images') as $image) {
+
+                $info = getimagesize($image);
+                $extension = image_type_to_extension($info[2]);
+                $imageName = time() . $i . $extension;
+                $location = public_path('img') . "\ " . $imageName;
+                $location = str_replace(' ', '', $location);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+
+                DB::table('urun_gorsel')->insert([
+                    'urun_id' => $lastId,
+                    'gorsel' => $imageName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        return redirect()->route('urun')->with('success', 'Yeni Ürün başarıyla eklendi.');
 
     }
 
@@ -626,8 +928,66 @@ class HomeController extends Controller
         return view('back.urun.urun-duzenle');
     }
 
-    public function urun_duzenle_post()
+    public function urun_duzenle_post(Request $request)
     {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('urun')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('urun')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'kategori' => $request->input('kategori'),
+            'text' => $request->input('text'),
+            'updated_at' => date('YmdHis'),
+        ]);
+        $url = Str::slug($request->input('title'), '-');
+        if($request->hasfile('pdf'))
+        {
+            $i = 1;
+            foreach($request->file('pdf') as $image)
+            {
+                $extension = $image->getClientOriginalExtension();
+                $pdfName = $url."-".$i."-".$image->getClientOriginalName();
+                $pdfFirstName = explode(".", $pdfName);
+                $pdfName = Str::slug($pdfFirstName[0], '-');
+                $pdfName = $pdfName.".".$extension;
+
+                $image->move(public_path('img'), $pdfName);
+                DB::table('urun_belge')->insert([
+                    'urun_id' => $request->id,
+                    'belge' => $pdfName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        if($request->hasfile('images'))
+        {
+            $i = 0;
+            foreach($request->file('images') as $image)
+            {
+                $info = getimagesize($image);
+                $extension = image_type_to_extension($info[2]);
+                $imageName = time().$i.$extension;
+                $location = public_path('img') . "\ " . $imageName;
+                $location = str_replace(' ', '', $location);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                DB::table('urun_gorsel')->insert([
+                    'urun_id' => $request->id,
+                    'gorsel' => $imageName,
+                ]);
+                $i = $i + 1;
+            }
+        }
+        return redirect()->route('urun')->with('success', 'Yeni Ürün başarıyla eklendi.');
 
     }
 
@@ -641,8 +1001,15 @@ class HomeController extends Controller
         return view('back.urun.urun-kategori-ekle');
     }
 
-    public function urun_kategori_ekle_post()
+    public function urun_kategori_ekle_post(Request $request)
     {
+
+        DB::table('urun_kategori')->insert([
+            'kategori' => $request->input('kategori'),
+            'sira' => $request->input('sira'),
+        ]);
+
+        return redirect()->route('urun_kategori')->with('success', 'Yeni Kategori başarıyla eklendi.');
 
     }
 
@@ -651,8 +1018,15 @@ class HomeController extends Controller
         return view('back.urun.urun-kategori-duzenle');
     }
 
-    public function urun_kategori_duzenle_post()
+    public function urun_kategori_duzenle_post(Request $request)
     {
+
+        DB::table('urun_kategori')->where('id', $request->id)->update([
+            'kategori' => $request->input('kategori'),
+            'sira' => $request->input('sira'),
+        ]);
+
+        return redirect()->route('urun_kategori')->with('success', 'Kategori başarıyla güncellendi.');
 
     }
 
