@@ -3,6 +3,14 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    if (isset($_GET['id'])) {
+        $slider = DB::table('slider')->where('id', $_GET['id'])->first();
+    } else {
+        header("Location:" . route('slider'));
+    }
+
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -38,7 +46,7 @@
                                                             <div class="card-block">
                                                                 <label>Slider Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$slider->title}}" name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +58,7 @@
                                                             <div class="card-block">
                                                                 <label>Slider Alt Başlık</label>
                                                                 <div class="input-group">
-                                                                    <input name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$slider->title_2}}" name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -58,16 +66,20 @@
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Slider Görsel (Tek Fotoğraf)</label>
-                                                                <div class="input-group">
-                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <label>Slider Fotoğraf</label>
+                                                    <div class="input-group">
+                                                        <input name="image" type="file"
+                                                               class="form-control"
+                                                               aria-describedby="basic-addon3">
                                                     </div>
+                                                    @if($slider->image != '')
+                                                        <br>
+                                                        <div class="input-group">
+                                                            <img
+                                                                src="{{asset('public/img/'.$slider->image)}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

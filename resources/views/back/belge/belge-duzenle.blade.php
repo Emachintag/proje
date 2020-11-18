@@ -1,8 +1,41 @@
+<?php
+if(isset($_GET['gorselSil']) && isset($_GET['gorsel']) && isset($_GET['id'])) {
+    $sil = $_GET['gorsel'];
+    $gorsel = DB::table('blog_gorsel')->where('id', $sil)->first()->gorsel;
+    $gorsel = public_path("img/".$gorsel);
+    if(File::exists($gorsel)) {
+        File::delete($gorsel);
+    }
+    DB::table('blog_gorsel')->where('id', $sil)->delete();
+    header("Location: ?id=" . $_GET['id']);
+    die();
+}
+if(isset($_GET['belgeSil']) && isset($_GET['belge']) && isset($_GET['id'])) {
+    $sil = $_GET['belge'];
+    $belge = DB::table('blog_belge')->where('id', $sil)->first()->belge;
+    $belge = public_path("img/".$belge);
+    if(File::exists($belge)) {
+        File::delete($belge);
+    }
+    DB::table('blog_belge')->where('id', $sil)->delete();
+    header("Location: ?id=" . $_GET['id']);
+    die();
+}
+use Illuminate\Support\Facades\File;
+?>
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/public/back/app-assets/vendors/css/editors/tinymce/tinymce.min.css')}}">
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    if (isset($_GET['id'])) {
+        $belge = DB::table('belge')->where('id', $_GET['id'])->first();
+    } else {
+        header("Location:" . route('belge'));
+    }
+
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -38,36 +71,44 @@
                                                             <div class="card-block">
                                                                 <label>Belge Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$belge->title}}" name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Belge Görsel (Tek Fotoğraf)</label>
-                                                                <div class="input-group">
-                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <label>Belge Fotoğraf</label>
+                                                    <div class="input-group">
+                                                        <input name="image" type="file"
+                                                               class="form-control"
+                                                               aria-describedby="basic-addon3">
                                                     </div>
+                                                    @if($belge->image != '')
+                                                        <br>
+                                                        <div class="input-group">
+                                                            <img
+                                                                src="{{asset('public/img/'.$belge->image)}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    @endif
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Belge (PDF)</label>
-                                                                <div class="input-group">
-                                                                    <input name="pdf" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <label>Belge PDF</label>
+                                                    <div class="input-group">
+                                                        <input name="pdf" type="file"
+                                                               class="form-control"
+                                                               aria-describedby="basic-addon3">
                                                     </div>
+                                                    @if($belge->image != '')
+                                                        <br>
+                                                        <div class="input-group">
+                                                            <a target="_blank" href="{{asset('/public/img/'.$belge->pdf)}}" ><img
+                                                                src="{{ asset('/public/back/icon/pdf.png') }}" style="width: 68%"
+                                                                class="form-control"></a>
+                                                        </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -185,11 +185,11 @@
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-info-circle"></i>Hakkımızda</a>
                         <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="d3-line-chart.html" data-toggle="dropdown">Hakkımızda Yazısı</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('hakkimizda_ayarlar')}}" data-toggle="dropdown">Hakkımızda Yazısı</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Misyon Yazısı</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('misyon_ayarlar')}}" data-toggle="dropdown">Misyon Yazısı</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="d3-bar-chart.html" data-toggle="dropdown">Vizyon Yazısı</a>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('vizyon_ayarlar')}}" data-toggle="dropdown">Vizyon Yazısı</a>
                             </li>
                         </ul>
                     </li>

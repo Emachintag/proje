@@ -4,12 +4,7 @@
 @extends('back.layouts.app')
 @section('content')
     <?php
-    if (isset($_GET['id'])) {
-        $galeri = DB::table('galeri')->where('id', $_GET['id'])->first();
-    } else {
-        header("Location:" . route('galeri'));
-    }
-
+    $hakkimizda = DB::table('hakkimizda')->first();
     ?>
     <div class="app-content content">
         <div class="content-wrapper">
@@ -22,7 +17,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="row-separator-colored-controls">Galeri Düzenle</h4>
+                                <h4 class="card-title" id="row-separator-colored-controls">Hakkımızda Ekle</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -38,69 +33,82 @@
                                     <form class="form-horizontal" method="post" autocomplete="off" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>Galeri</h4>
+                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>Hakkımızda</h4>
                                             <div class="row">
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Galeri Başlığı</label>
+                                                                <label>Hakkımızda Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input value="{{$galeri->title}}" name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$hakkimizda->title}}" name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Galeri Açıklama</label>
+                                                                <label>Hakkımızda Alt Başlığı</label>
                                                                 <div class="input-group">
-                                                                    <input value="{{$galeri->title_2}}" name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Youtube Link</label>
-                                                                <div class="input-group">
-                                                                    <input value="{{$galeri->link}}" name="link" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
+                                                                    <input value="{{$hakkimizda->title_2}}" name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-3">
-                                                    <label>Galeri Fotoğraf</label>
+                                                <div class="col-md-4">
+                                                    <label>Hakkımızda Görsel (Tek
+                                                        Fotoğraf)</label>
                                                     <div class="input-group">
                                                         <input name="image" type="file"
                                                                class="form-control"
+                                                               placeholder="Alt Başlık"
                                                                aria-describedby="basic-addon3">
                                                     </div>
-                                                    @if($galeri->image != '')
+                                                    @if($hakkimizda->image != '')
                                                         <br>
                                                         <div class="input-group">
                                                             <img
-                                                                src="{{asset('public/img/'.$galeri->image)}}"
+                                                                src="{{asset('public/img/'.$hakkimizda->image)}}"
                                                                 class="form-control">
                                                         </div>
                                                     @endif
                                                 </div>
-
+                                                <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Hakkımızda Metni (Kısa Anasayfa İçin)</label>
+                                                                <div class="form-group">
+                                                                    <textarea name="text_2" class="tinymce">{{$hakkimizda->text_2}} </textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Hakkımızda Metni</label>
+                                                                <div class="form-group">
+                                                                    <textarea name="text" class="tinymce">{{$hakkimizda->text}} </textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
 
                                             </div>
 
                                         </div>
                                         <div class="form-actions right">
-                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Gönder</button>
+                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Güncelle</button>
                                         </div>
                                     </form>
                                 </div>

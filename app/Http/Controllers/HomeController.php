@@ -123,6 +123,99 @@ class HomeController extends Controller
         return back()->with('success', 'İletişim bilgileri başarıyla güncellendi.');
     }
 
+    public function hakkimizda_ayarlar()
+    {
+        return view('back.hakkimizda.hakkimizda');
+    }
+
+    public function hakkimizda_ayarlar_post(Request $request)
+    {
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('hakkimizda')->where('id', '1')->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('hakkimizda')->where('id', '1')->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'text_2' => $request->input('text_2'),
+            'text' => $request->input('text'),
+            'updated_at' => date('YmdHis'),
+
+        ]);
+
+        return back()->with('success', 'İletişim bilgileri başarıyla güncellendi.');
+    }
+
+    public function vizyon_ayarlar()
+    {
+        return view('back.hakkimizda.vizyon');
+    }
+
+    public function vizyon_ayarlar_post(Request $request)
+    {
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('vizyon')->where('id', '1')->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('vizyon')->where('id', '1')->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'text_2' => $request->input('text_2'),
+            'text' => $request->input('text'),
+            'updated_at' => date('YmdHis'),
+
+        ]);
+
+        return back()->with('success', 'İletişim bilgileri başarıyla güncellendi.');
+    }
+
+    public function misyon_ayarlar()
+    {
+        return view('back.hakkimizda.misyon');
+    }
+
+    public function misyon_ayarlar_post(Request $request)
+    {
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('misyon')->where('id', '1')->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('misyon')->where('id', '1')->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'text_2' => $request->input('text_2'),
+            'text' => $request->input('text'),
+            'updated_at' => date('YmdHis'),
+
+        ]);
+
+        return back()->with('success', 'İletişim bilgileri başarıyla güncellendi.');
+    }
+
     //Blog
 
     public function blog()
@@ -145,6 +238,7 @@ class HomeController extends Controller
             'kategori' => $request->input('kategori'),
             'text' => $request->input('text'),
             'url' => $url,
+            'created_at' => date('YmdHis'),
         ]);
         $lastId = DB::table('blog')->get()->last()->id;
         if (isset($request->pdf)) {
@@ -361,8 +455,32 @@ class HomeController extends Controller
         return view('back.belge.belge-duzenle');
     }
 
-    public function belge_duzenle_post()
+    public function belge_duzenle_post(Request $request)
     {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('belge')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('belge')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'updated_at' => date('YmdHis'),
+        ]);
+        if(isset($request->pdf)) {
+            $pdfName = time().".pdf";
+            $request->pdf->move(public_path('img'), $pdfName);
+            DB::table('belge')->where('id', $request->id)->update([
+                'pdf' => $pdfName,
+            ]);
+        }
+        return redirect()->route('belge')->with('success', 'Yeni haber başarıyla eklendi.');
 
     }
 
@@ -411,8 +529,31 @@ class HomeController extends Controller
         return view('back.galeri.galeri-ekle');
     }
 
-    public function galeri_ekle_post()
+    public function galeri_ekle_post(Request $request)
     {
+
+        DB::table('galeri')->insert([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'link' => $request->input('link'),
+            'image' => $request->input('image'),
+            'created_at' => date('YmdHis'),
+
+        ]);
+        $lastId = DB::table('galeri')->get()->last()->id;
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('galeri')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+        return redirect()->route('galeri')->with('success', 'Yeni ürün başarıyla eklendi.');
 
     }
 
@@ -421,8 +562,28 @@ class HomeController extends Controller
         return view('back.galeri.galeri-duzenle');
     }
 
-    public function galeri_duzenle_post()
+    public function galeri_duzenle_post(Request $request)
     {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('belge')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('belge')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'link' => $request->input('link'),
+            'updated_at' => date('YmdHis'),
+        ]);
+
+        return redirect()->route('galeri')->with('success', 'Yeni haber başarıyla eklendi.');
 
     }
 
@@ -823,8 +984,30 @@ class HomeController extends Controller
         return view('back.slider.slider-ekle');
     }
 
-    public function slider_ekle_post()
+    public function slider_ekle_post(Request $request)
     {
+
+        DB::table('slider')->insert([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'image' => $request->input('image'),
+            'created_at' => date('YmdHis'),
+
+        ]);
+        $lastId = DB::table('slider')->get()->last()->id;
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('slider')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+        return redirect()->route('slider')->with('success', 'Yeni ürün başarıyla eklendi.');
 
     }
 
@@ -833,8 +1016,27 @@ class HomeController extends Controller
         return view('back.slider.slider-duzenle');
     }
 
-    public function slider_duzenle_post()
+    public function slider_duzenle_post(Request $request)
     {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('slider')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('slider')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'updated_at' => date('YmdHis'),
+        ]);
+
+        return redirect()->route('slider')->with('success', 'Yeni haber başarıyla eklendi.');
 
     }
 

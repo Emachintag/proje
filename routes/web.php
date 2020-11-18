@@ -19,6 +19,12 @@ Route::prefix('panel')->group(function () {
     Route::post('/site-ayarlar', [HomeController::class, 'site_ayarlar_post']);
     Route::get('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar'])->name('iletisim_ayarlar');
     Route::post('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar_post']);
+    Route::get('/hakkimizda-ayarlar', [HomeController::class, 'hakkimizda_ayarlar'])->name('hakkimizda_ayarlar');
+    Route::post('/hakkimizda-ayarlar', [HomeController::class, 'hakkimizda_ayarlar_post']);
+    Route::get('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar'])->name('vizyon_ayarlar');
+    Route::post('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar_post']);
+    Route::get('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar'])->name('misyon_ayarlar');
+    Route::post('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar_post']);
 
     // Blog İşlemleri Başlangıç
 

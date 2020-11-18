@@ -3,6 +3,20 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    if (isset($_GET['id']) AND isset($_GET['sil'])) {
+        $id = $_GET['id'];
+        // tekli görsel silme
+        $kapakFoto = DB::table('slider')->where('id', $id)->first()->image;
+        $kapakFoto = public_path("img/" . $kapakFoto);
+        if (File::exists($kapakFoto)) {
+            File::delete($kapakFoto);
+        }
+        DB::table('slider')->where('id', $id)->delete();
+        header("Location: ?okey");
+        die();
+    }
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-body">
@@ -22,7 +36,7 @@
                                             <span>Yazdığınız Slider Sayısı</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">84,695</h1>
+                                            <h1 class="text-white">{{DB::table('slider')->count()}}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -38,9 +52,6 @@
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Yeni Slider Ekle</h4>
                                             <span>Yeni Slider İçin Tıklayınız</span>
-                                        </div>
-                                        <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">18,000</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -80,27 +91,59 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach(DB::table('slider')->get() as $u)
                                             <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td style="text-align: right" >
-                                                    <a href="?haber=&sil&token={{ csrf_token() }}" class="btn btn-danger btn-min-width btn-glow">
-                                                        <i class="la la-trash"></i>
-                                                        <span>
-                                                Sil
-                                            </span>
-                                                    </a>
-                                                    <a href="/haber-duzenle/" class="btn btn-info btn-min-width btn-glow">
+                                                <td>{{$u->title}}</td>
+                                                <td>{{$u->title_2}}</td>
+                                                <td style="text-align: center"><img class="img" src="{{asset('/public/img/'.$u->image)}}" height="100"></td>
+                                                <td style="text-align: center">
+                                                    <button id="delete-confir{{$u->id}}" class="btn btn-outline-danger">
+                                                        <i class="la la-remove"></i>
+                                                        Sil
+                                                    </button>
+                                                    <script>
+                                                        $(document).ready(function(){
+                                                            $('#delete-confir{{$u->id}}').on('click',function(){
+                                                                swal({
+                                                                    title: "Slider Silme",
+                                                                    text: "{{$u->title}} - yazı tamamen silinecektir. Onaylıyor musunuz?",
+                                                                    icon: "warning",
+                                                                    buttons: {
+                                                                        cancel: {
+                                                                            text: "Hayır",
+                                                                            value: null,
+                                                                            visible: true,
+                                                                            className: "btn-outline-success",
+                                                                            closeModal: false,
+                                                                        },
+                                                                        confirm: {
+                                                                            text: "Evet",
+                                                                            value: true,
+                                                                            visible: true,
+                                                                            className: "btn-outline-danger",
+                                                                            closeModal: false
+                                                                        }
+                                                                    }
+                                                                }).then(isConfirm => {
+                                                                    if (isConfirm) {
+                                                                        swal("Başarılı", "Silme işlemi başarılı", "success");
+                                                                        location.href='?id={{$u->id}}&sil'
+                                                                    } else {
+                                                                        swal("Dikkat", "Silme işlemi iptal edildi...", "error");
+                                                                    }
+                                                                });
+                                                            });
+                                                        });
+                                                    </script>
+                                                    <a href="{{route('slider_duzenle', ['id'=>$u->id])}}"
+                                                       class="btn btn-outline-info">
                                                         <i class="la la-edit"></i>
-                                                        <span>
-                                                Düzenle
-                                            </span>
+                                                        Düzenle
                                                     </a>
                                                 </td>
 
                                             </tr>
+                                            @endforeach
                                             </tbody>
                                             <tfoot>
                                             <tr>

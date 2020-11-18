@@ -3,6 +3,26 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    if (isset($_GET['id']) AND isset($_GET['sil'])) {
+        $id = $_GET['id'];
+        // tekli görsel silme
+        $kapakFoto = DB::table('belge')->where('id', $id)->first()->image;
+        $kapakFoto = public_path("img/" . $kapakFoto);
+        if (File::exists($kapakFoto)) {
+            File::delete($kapakFoto);
+        }
+        // tekli pdf silme
+        $kapakPdf = DB::table('belge')->where('id', $id)->first()->pdf;
+        $kapakPdf = public_path("img/" . $kapakPdf);
+        if (File::exists($kapakPdf)) {
+            File::delete($kapakPdf);
+        }
+        DB::table('belge')->where('id', $id)->delete();
+        header("Location: ?okey");
+        die();
+    }
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-body">
