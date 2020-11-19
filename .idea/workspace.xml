@@ -161,7 +161,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -171,6 +171,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\panel\resources\views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\panel\resources\views\back\hakkimizda" />
     </key>
@@ -239,10 +242,11 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1605785241454" />
-    <state x="634" y="358" key="NewPhpFileDialog" timestamp="1605701946359">
-      <screen x="0" y="0" width="1600" height="870" />
+    <state x="761" y="428" key="NewPhpFileDialog" timestamp="1605793885801">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="634" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1605701946359" />
+    <state x="761" y="428" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605793885801" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1605045688300">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

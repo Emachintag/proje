@@ -5,7 +5,20 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 Route::get('/', [MainController::class, 'index'])->name('anasayfa');
+Route::get('/hakkimizda', [MainController::class, 'hakkimizda'])->name('hakkimizda');
+Route::get('/iletisim', [MainController::class, 'iletisim'])->name('iletisim');
+Route::get('/urunlerimiz', [MainController::class, 'urunlerimiz'])->name('urunlerimiz');
+Route::get('/urun/{urun}', [MainController::class, 'urun'])->name('urun_detay');
+Route::get('/haberler', [MainController::class, 'haberler'])->name('haberler');
+Route::get('/haber/{haber}', [MainController::class, 'haber'])->name('haber');
+Route::get('/blog', [MainController::class, 'blog'])->name('blog');
+Route::get('/blog/{blog}', [MainController::class, 'blog_detay'])->name('blog_detay');
+Route::get('/hizmetlerimiz', [MainController::class, 'hizmetlerimiz'])->name('hizmetlerimiz');
+Route::get('/hizmet/{hizmet}', [MainController::class, 'hizmet'])->name('hizmet');
+
+
 Route::get('/giris', [LoginController::class, 'login'])->name('giris');
 Route::post('/giris', [LoginController::class, 'login_post']);
 
@@ -40,7 +53,6 @@ Route::prefix('panel')->group(function () {
     Route::post('/blog-kategori-duzenle', [HomeController::class, 'blog_kategori_duzenle_post']);
 
     // Blog İşlemleri Bitiş
-
 
 
     // Belge İşlemleri Başlangıç
@@ -142,8 +154,6 @@ Route::prefix('panel')->group(function () {
     Route::post('/uye-duzenle', [HomeController::class, 'uye_duzenle_post']);
 
     // Üye İşlemleri Bitiş
-
-
 
 
     /*foreach (Modules::where('status', '1')->get() as $u) {
