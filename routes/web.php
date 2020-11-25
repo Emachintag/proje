@@ -156,7 +156,7 @@ Route::prefix('panel')->group(function () {
     // Üye İşlemleri Bitiş
 
 
-    /*foreach (Modules::where('status', '1')->get() as $u) {
+    foreach (Modules::where('status', '1')->get() as $u) {
         $moduleLink = $u->moduleLink;
         $moduleController = $u->moduleController;
         $space = "App\Http\Controllers\\";
@@ -167,6 +167,6 @@ Route::prefix('panel')->group(function () {
         Route::post($moduleLink, $controller.'@ekle_post')->name($moduleSlug.'_ekle_post');
         Route::get($moduleLink, $controller.'@duzenle')->name($moduleSlug.'_duzenle');
         Route::post($moduleLink, $controller.'@duzenle_post')->name($moduleSlug.'_duzenle_post');
-    }*/
+    }
 
 });

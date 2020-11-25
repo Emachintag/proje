@@ -46,7 +46,7 @@
             <div class="content-body">
                 <!-- modüller -->
                 <div class="row mb-3">
-                    <div class="col-lg-2 col-4" style="height: 125px;">
+                    <div class="col mb-2" style="height: 125px;">
                         <div class="card h-100 pull-up bg-gradient-directional-info">
                             <div class="card-content">
                                 <a href="{{route('haber')}}"><div class="card-body text-center">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-4" style="height: 125px;">
+                    <div class="col mb-2" style="height: 125px;">
                         <div class="card h-100 pull-up bg-gradient-directional-danger">
                             <div class="card-content">
                                 <a href="{{route('blog')}}">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-4" style="height: 125px;">
+                    <div class="col mb-2" style="height: 125px;">
                         <div class="card h-100 pull-up bg-gradient-directional-success">
                             <div class="card-content">
                                 <a href="{{route('hizmet')}}">
@@ -84,7 +84,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-4" style="height: 125px;">
+                    <div class="col mb-2" style="height: 125px;">
                         <div class="card h-100 pull-up bg-gradient-directional-warning">
                             <div class="card-content">
                                 <a href="{{route('urun')}}">
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-4" style="height: 125px;">
+                    <div class="col mb-2" style="height: 125px;">
                         <div class="card h-100 pull-up bg-gradient-directional-primary">
                             <div class="card-content">
                                 <a href="{{route('galeri')}}" ><div class="card-body text-center">
@@ -109,7 +109,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-4" style="height: 125px;">
+                    <div class="col mb-2" style="height: 125px;">
                         <div class="card h-100 pull-up bg-gradient-directional-purple">
                             <div class="card-content">
                                 <a href="{{route('slider')}}" >
