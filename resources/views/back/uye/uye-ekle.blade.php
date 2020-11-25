@@ -38,7 +38,7 @@
                                                             <div class="card-block">
                                                                 <label>İsim</label>
                                                                 <div class="input-group">
-                                                                    <input name="title" type="text" class="form-control" placeholder="İsim" aria-describedby="basic-addon3">
+                                                                    <input name="name" type="text" class="form-control" placeholder="İsim" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +50,7 @@
                                                             <div class="card-block">
                                                                     <label>Soyisim</label>
                                                                     <div class="input-group">
-                                                                        <input name="title_2" type="text" class="form-control" placeholder="Soyisim" aria-describedby="basic-addon3">
+                                                                        <input name="last_name" type="text" class="form-control" placeholder="Soyisim" aria-describedby="basic-addon3">
                                                                     </div>
                                                             </div>
                                                         </div>
@@ -62,7 +62,7 @@
                                                             <div class="card-block">
                                                                 <label>E-Posta</label>
                                                                 <div class="input-group">
-                                                                    <input name="title_2" type="email" class="form-control" placeholder="E-Posta" aria-describedby="basic-addon3">
+                                                                    <input name="email" type="email" class="form-control" placeholder="E-Posta" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -74,7 +74,7 @@
                                                             <div class="card-block">
                                                                 <label>Şifre</label>
                                                                 <div class="input-group">
-                                                                    <input name="link" type="text" class="form-control" placeholder="Şifre" aria-describedby="basic-addon3">
+                                                                    <input name="password" type="text" class="form-control" placeholder="Şifre" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -105,9 +105,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
-
                                             </div>
 
                                         </div>

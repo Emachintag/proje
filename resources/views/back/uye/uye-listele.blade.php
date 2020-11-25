@@ -3,6 +3,20 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    if (isset($_GET['id']) AND isset($_GET['sil'])) {
+        $id = $_GET['id'];
+        // tekli görsel silme
+        $kapakFoto = DB::table('users')->where('id', $id)->first()->image;
+        $kapakFoto = public_path("img/" . $kapakFoto);
+        if (File::exists($kapakFoto)) {
+            File::delete($kapakFoto);
+        }
+        DB::table('users')->where('id', $id)->delete();
+        header("Location: ?okey");
+        die();
+    }
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-body">
@@ -14,15 +28,15 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="media align-items-stretch bg-gradient-directional-success text-white rounded">
-                                        <div class="bg-gradient-directional-success bg-darken-2 p-2 media-middle">
-                                            <i class="icon-user font-large-2 text-white"></i>
+                                        <div class="p-2 media-middle">
+                                            <i class="icon-users font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Üye Sayısı</h4>
                                             <span>Yazdığınız Üye Sayısı</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">84,695</h1>
+                                            <h1 class="text-white">{{DB::table('users')->count()}}</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -32,16 +46,14 @@
                             <div class="card overflow-hidden">
                                 <div style="cursor: pointer" onclick="location.href='{{route('uye_ekle')}}'" class="card-content">
                                     <div class="media align-items-stretch bg-gradient-directional-info text-white rounded">
-                                        <div class="bg-gradient-directional-info bg-darken-2 p-2 media-middle">
-                                            <i class="icon-pencil font-large-2 text-white"></i>
+                                        <div class="p-2 media-middle">
+                                            <i class="icon-user-follow font-large-2 text-white"></i>
                                         </div>
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Yeni Üye Ekle</h4>
                                             <span>Yeni Üye İçin Tıklayınız</span>
                                         </div>
-                                        <div class="media-right p-2 media-middle">
-                                            <h1 class="text-white">18,000</h1>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -81,27 +93,60 @@
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach(DB::table('users')->get() as $u)
                                             <tr>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td>Donna Snider</td>
-                                                <td>Customer Support</td>
-                                                <td style="text-align: right" >
-                                                    <a href="?haber=&sil&token={{ csrf_token() }}" class="btn btn-danger btn-min-width btn-glow">
-                                                        <i class="la la-trash"></i>
-                                                        <span>
-                                                Sil
-                                            </span>
-                                                    </a>
-                                                    <a href="/haber-duzenle/" class="btn btn-info btn-min-width btn-glow">
+                                                <td>{{$u->name}}</td>
+                                                <td>{{$u->last_name}}</td>
+                                                <td>{{$u->email}}</td>
+                                                <td style="text-align: center"><img class="img" src="{{asset('/public/img/'.$u->image)}}" height="100"></td>
+                                                <td style="text-align: center">
+                                                    <button id="delete-confir{{$u->id}}" class="btn btn-outline-danger">
+                                                        <i class="la la-remove"></i>
+                                                        Sil
+                                                    </button>
+                                                    <script>
+                                                        $(document).ready(function(){
+                                                            $('#delete-confir{{$u->id}}').on('click',function(){
+                                                                swal({
+                                                                    title: "Üye Silme",
+                                                                    text: "{{$u->name}} - yazı tamamen silinecektir. Onaylıyor musunuz?",
+                                                                    icon: "warning",
+                                                                    buttons: {
+                                                                        cancel: {
+                                                                            text: "Hayır",
+                                                                            value: null,
+                                                                            visible: true,
+                                                                            className: "btn-outline-success",
+                                                                            closeModal: false,
+                                                                        },
+                                                                        confirm: {
+                                                                            text: "Evet",
+                                                                            value: true,
+                                                                            visible: true,
+                                                                            className: "btn-outline-danger",
+                                                                            closeModal: false
+                                                                        }
+                                                                    }
+                                                                }).then(isConfirm => {
+                                                                    if (isConfirm) {
+                                                                        swal("Başarılı", "Silme işlemi başarılı", "success");
+                                                                        location.href='?id={{$u->id}}&sil'
+                                                                    } else {
+                                                                        swal("Dikkat", "Silme işlemi iptal edildi...", "error");
+                                                                    }
+                                                                });
+                                                            });
+                                                        });
+                                                    </script>
+                                                    <a href="{{route('uye_duzenle', ['id'=>$u->id])}}"
+                                                       class="btn btn-outline-info">
                                                         <i class="la la-edit"></i>
-                                                        <span>
-                                                Düzenle
-                                            </span>
+                                                        Düzenle
                                                     </a>
                                                 </td>
 
                                             </tr>
+                                            @endforeach
                                             </tbody>
                                             <tfoot>
                                             <tr>
