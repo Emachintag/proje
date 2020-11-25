@@ -34,6 +34,8 @@ Route::prefix('panel')->group(function () {
     Route::post('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar_post']);
     Route::get('/hakkimizda-ayarlar', [HomeController::class, 'hakkimizda_ayarlar'])->name('hakkimizda_ayarlar');
     Route::post('/hakkimizda-ayarlar', [HomeController::class, 'hakkimizda_ayarlar_post']);
+    Route::get('/ekatalog-ayarlar', [HomeController::class, 'ekatalog_ayarlar'])->name('ekatalog_ayarlar');
+    Route::post('/ekatalog-ayarlar', [HomeController::class, 'ekatalog_ayarlar_post']);
     Route::get('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar'])->name('vizyon_ayarlar');
     Route::post('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar_post']);
     Route::get('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar'])->name('misyon_ayarlar');
@@ -66,15 +68,6 @@ Route::prefix('panel')->group(function () {
     // Belge İşlemleri Bitiş
 
 
-    // Ekip İşlemleri Başlangıç
-
-    Route::get('/ekip', [HomeController::class, 'ekip'])->name('ekip');
-    Route::get('/ekip-ekle', [HomeController::class, 'ekip_ekle'])->name('ekip_ekle');
-    Route::post('/ekip-ekle', [HomeController::class, 'ekip_ekle_post']);
-    Route::get('/ekip-duzenle', [HomeController::class, 'ekip_duzenle'])->name('ekip_duzenle');
-    Route::post('/ekip-duzenle', [HomeController::class, 'ekip_duzenle_post']);
-
-    // Ekip İşlemleri Bitiş
 
 
     // Galeri İşlemleri Başlangıç
@@ -86,6 +79,17 @@ Route::prefix('panel')->group(function () {
     Route::post('/galeri-duzenle', [HomeController::class, 'galeri_duzenle_post']);
 
     // Galeri İşlemleri Bitiş
+
+
+    // Ekip İşlemleri Başlangıç
+
+    Route::get('/ekip', [HomeController::class, 'ekip'])->name('ekip');
+    Route::get('/ekip-ekle', [HomeController::class, 'ekip_ekle'])->name('ekip_ekle');
+    Route::post('/ekip-ekle', [HomeController::class, 'ekip_ekle_post']);
+    Route::get('/ekip-duzenle', [HomeController::class, 'ekip_duzenle'])->name('ekip_duzenle');
+    Route::post('/ekip-duzenle', [HomeController::class, 'ekip_duzenle_post']);
+
+    // Ekip İşlemleri Bitiş
 
 
     // Haber İşlemleri Başlangıç

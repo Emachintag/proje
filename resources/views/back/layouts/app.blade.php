@@ -142,6 +142,15 @@
                         </ul>
                     </li>
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-user-secret"></i>Ekip Yönetimi</a>
+                        <ul class="dropdown-menu">
+                            <li data-menu=""><a class="dropdown-item" href="{{route('ekip')}}" data-toggle="dropdown">Ekip Görüntüle</a>
+                            </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('ekip_ekle')}}" data-toggle="dropdown">Ekip Ekle</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i class="la la-file-pdf-o"></i>Belge Yönetimi</a>
                         <ul class="dropdown-menu">
                             <li data-menu=""><a class="dropdown-item" href="{{route('belge')}}" data-toggle="dropdown">Belge Görüntüle</a>
@@ -193,6 +202,8 @@
                             </li>
                         </ul>
                     </li>
+                    <li data-menu=""><a class="dropdown-item" href="{{route('ekatalog_ayarlar')}}" data-toggle="dropdown"><i class="la la-book"></i>E-Katalog</a>
+                    </li>
 
                 </ul>
 
@@ -203,9 +214,9 @@
 
             <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown"><i class="la la-user"></i><span>Üye İşlemleri</span></a>
                 <ul class="dropdown-menu">
-                    <li data-menu=""><a class="dropdown-item" href="{{route('uye')}}" data-toggle="dropdown">Üye Görüntüle</a>
+                    <li data-menu=""><a class="dropdown-item" href="{{route('uye')}}" data-toggle="dropdown"><i class="la la-users"></i>Üye Görüntüle</a>
                     </li>
-                    <li data-menu=""><a class="dropdown-item" href="{{route('uye_ekle')}}" data-toggle="dropdown">Üye Ekle </a>
+                    <li data-menu=""><a class="dropdown-item" href="{{route('uye_ekle')}}" data-toggle="dropdown"><i class="la la-user-plus"></i>Üye Ekle </a>
                     </li>
                 </ul>
             </li>

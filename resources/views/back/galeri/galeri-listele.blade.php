@@ -33,7 +33,7 @@
                                         </div>
                                         <div class="media-body p-2">
                                             <h4 class="text-white">Galeri Sayısı</h4>
-                                            <span>Yazdığınız Galeri Sayısı</span>
+                                            <span>Eklenen Galeri Sayısı</span>
                                         </div>
                                         <div class="media-right p-2 media-middle">
                                             <h1 class="text-white">{{DB::table('galeri')->count()}}</h1>

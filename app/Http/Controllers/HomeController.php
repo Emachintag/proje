@@ -154,6 +154,31 @@ class HomeController extends Controller
         return back()->with('success', 'İletişim bilgileri başarıyla güncellendi.');
     }
 
+    public function ekatalog_ayarlar()
+    {
+        return view('back.ayarlar.ekatalog');
+    }
+
+    public function ekatalog_ayarlar_post(Request $request)
+    {
+
+        DB::table('ekatalog')->where('id', '1')->update([
+            'title' => $request->input('title'),
+            'updated_at' => date('YmdHis'),
+
+        ]);
+        $lastId = DB::table('ekatalog')->get()->last()->id;
+        if (isset($request->pdf)) {
+            $pdfName = time() . ".pdf";
+            $request->pdf->move(public_path('img'), $pdfName);
+            DB::table('ekatalog')->where('id', $lastId)->update([
+                'pdf' => $pdfName,
+            ]);
+        }
+
+        return back()->with('success', 'İletişim bilgileri başarıyla güncellendi.');
+    }
+
     public function vizyon_ayarlar()
     {
         return view('back.hakkimizda.vizyon');
@@ -487,34 +512,6 @@ class HomeController extends Controller
     // Belge
 
 
-    // Ekip
-
-    public function ekip()
-    {
-        return view('back.ekip.ekip-listele');
-    }
-
-    public function ekip_ekle()
-    {
-        return view('back.ekip.ekip-ekle');
-    }
-
-    public function ekip_ekle_post()
-    {
-
-    }
-
-    public function ekip_duzenle()
-    {
-        return view('back.ekip.ekip-duzenle');
-    }
-
-    public function ekip_duzenle_post()
-    {
-
-    }
-
-    // Ekip
 
 
     // Galeri
@@ -588,6 +585,80 @@ class HomeController extends Controller
     }
 
     // Galeri
+
+
+
+    // Ekip
+
+    public function ekip()
+    {
+        return view('back.ekip.ekip-listele');
+    }
+
+    public function ekip_ekle()
+    {
+        return view('back.ekip.ekip-ekle');
+    }
+
+    public function ekip_ekle_post(Request $request)
+    {
+
+        DB::table('ekip')->insert([
+            'isim' => $request->input('isim'),
+            'unvan' => $request->input('unvan'),
+            'email' => $request->input('email'),
+            'image' => $request->input('image'),
+            'created_at' => date('YmdHis'),
+
+        ]);
+        $lastId = DB::table('ekip')->get()->last()->id;
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('ekip')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+        return redirect()->route('ekip')->with('success', 'Yeni ürün başarıyla eklendi.');
+
+    }
+
+    public function ekip_duzenle()
+    {
+        return view('back.ekip.ekip-duzenle');
+    }
+
+    public function ekip_duzenle_post(Request $request)
+    {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('ekip')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('ekip')->where('id', $request->id)->update([
+            'isim' => $request->input('isim'),
+            'unvan' => $request->input('unvan'),
+            'email' => $request->input('email'),
+            'updated_at' => date('YmdHis'),
+        ]);
+
+        return redirect()->route('ekip')->with('success', 'Yeni haber başarıyla eklendi.');
+
+    }
+
+    // Ekip
 
 
     // Haber
