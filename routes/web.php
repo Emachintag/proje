@@ -21,32 +21,33 @@ Route::get('/hizmet/{hizmet}', [MainController::class, 'hizmet'])->name('hizmet'
 
 Route::get('/giris', [LoginController::class, 'login'])->name('giris');
 Route::post('/giris', [LoginController::class, 'login_post']);
+Route::get('/cikis', [LoginController::class, 'logout'])->name('cikis');
 
 Auth::routes();
-Route::prefix('panel')->group(function () {
+Route::prefix('panel')->middleware('auth')->group(function () {
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/sosyal-medya-ayarlar', [HomeController::class, 'sosyal_medya_ayarlar'])->name('sosyal_medya_ayarlar');
-    Route::post('/sosyal-medya-ayarlar', [HomeController::class, 'sosyal_medya_ayarlar_post']);
-    Route::get('/site-ayarlar', [HomeController::class, 'site_ayarlar'])->name('site_ayarlar');
-    Route::post('/site-ayarlar', [HomeController::class, 'site_ayarlar_post']);
-    Route::get('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar'])->name('iletisim_ayarlar');
-    Route::post('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar_post']);
-    Route::get('/hakkimizda-ayarlar', [HomeController::class, 'hakkimizda_ayarlar'])->name('hakkimizda_ayarlar');
-    Route::post('/hakkimizda-ayarlar', [HomeController::class, 'hakkimizda_ayarlar_post']);
-    Route::get('/ekatalog-ayarlar', [HomeController::class, 'ekatalog_ayarlar'])->name('ekatalog_ayarlar');
-    Route::post('/ekatalog-ayarlar', [HomeController::class, 'ekatalog_ayarlar_post']);
-    Route::get('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar'])->name('vizyon_ayarlar');
-    Route::post('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar_post']);
-    Route::get('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar'])->name('misyon_ayarlar');
-    Route::post('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar_post']);
+    Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+    Route::get('/sosyal-medya-ayarlar', [HomeController::class, 'sosyal_medya_ayarlar'])->name('sosyal_medya_ayarlar')->middleware('auth');
+    Route::post('/sosyal-medya-ayarlar', [HomeController::class, 'sosyal_medya_ayarlar_post'])->middleware('auth');
+    Route::get('/site-ayarlar', [HomeController::class, 'site_ayarlar'])->name('site_ayarlar')->middleware('auth');
+    Route::post('/site-ayarlar', [HomeController::class, 'site_ayarlar_post'])->middleware('auth');
+    Route::get('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar'])->name('iletisim_ayarlar')->middleware('auth');
+    Route::post('/iletisim-ayarlar', [HomeController::class, 'iletisim_ayarlar_post'])->middleware('auth');
+    Route::get('/hakkimizda-ayarlar', [HomeController::class, 'hakkimizda_ayarlar'])->name('hakkimizda_ayarlar')->middleware('auth');
+    Route::post('/hakkimizda-ayarlar', [HomeController::class, 'hakkimizda_ayarlar_post'])->middleware('auth');
+    Route::get('/ekatalog-ayarlar', [HomeController::class, 'ekatalog_ayarlar'])->name('ekatalog_ayarlar')->middleware('auth');
+    Route::post('/ekatalog-ayarlar', [HomeController::class, 'ekatalog_ayarlar_post'])->middleware('auth');
+    Route::get('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar'])->name('vizyon_ayarlar')->middleware('auth');
+    Route::post('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar_post'])->middleware('auth');
+    Route::get('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar'])->name('misyon_ayarlar')->middleware('auth');
+    Route::post('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar_post'])->middleware('auth');
 
     // Blog İşlemleri Başlangıç
 
-    Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
-    Route::get('/blog-ekle', [HomeController::class, 'blog_ekle'])->name('blog_ekle');
-    Route::post('/blog-ekle', [HomeController::class, 'blog_ekle_post']);
-    Route::get('/blog-duzenle', [HomeController::class, 'blog_duzenle'])->name('blog_duzenle');
+    Route::get('/blog', [HomeController::class, 'blog'])->name('blog')->middleware('auth');
+    Route::get('/blog-ekle', [HomeController::class, 'blog_ekle'])->name('blog_ekle')->middleware('auth');
+    Route::post('/blog-ekle', [HomeController::class, 'blog_ekle_post'])->middleware('auth');
+    Route::get('/blog-duzenle', [HomeController::class, 'blog_duzenle'])->name('blog_duzenle')->middleware('auth');
     Route::post('/blog-duzenle', [HomeController::class, 'blog_duzenle_post']);
     Route::get('/blog-kategori', [HomeController::class, 'blog_kategori'])->name('blog_kategori');
     Route::get('/blog-kategori-ekle', [HomeController::class, 'blog_kategori_ekle'])->name('blog_kategori_ekle');

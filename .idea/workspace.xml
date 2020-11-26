@@ -218,6 +218,7 @@
       <workItem from="1606308933189" duration="8970000" />
       <workItem from="1606330917322" duration="1312000" />
       <workItem from="1606414628131" duration="2209000" />
+      <workItem from="1606421323387" duration="2276000" />
     </task>
     <servers />
   </component>
@@ -237,6 +238,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="731" y="309" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606421812892">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="731" y="309" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606421812892" />
     <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604086791790">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
