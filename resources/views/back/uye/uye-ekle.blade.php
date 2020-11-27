@@ -86,7 +86,7 @@
                                                             <div class="card-block">
                                                                 <label>Şifre Tekrar</label>
                                                                 <div class="input-group">
-                                                                    <input name="link" type="text" class="form-control" placeholder="Şifre Tekrar" aria-describedby="basic-addon3">
+                                                                    <input  type="text" class="form-control" placeholder="Şifre Tekrar" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -9,14 +9,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'index'])->name('anasayfa');
 Route::get('/hakkimizda', [MainController::class, 'hakkimizda'])->name('hakkimizda');
 Route::get('/iletisim', [MainController::class, 'iletisim'])->name('iletisim');
+Route::get('/galeri', [MainController::class, 'galeri'])->name('galeri');
+Route::get('/vizyon', [MainController::class, 'vizyon'])->name('vizyon');
+Route::get('/misyon', [MainController::class, 'misyon'])->name('misyon');
+Route::get('/belgeler', [MainController::class, 'belgeler'])->name('belgeler');
+Route::get('/ekibimiz', [MainController::class, 'ekibimiz'])->name('ekibimiz');
 Route::get('/urunlerimiz', [MainController::class, 'urunlerimiz'])->name('urunlerimiz');
 Route::get('/urun/{urun}', [MainController::class, 'urun'])->name('urun_detay');
 Route::get('/haberler', [MainController::class, 'haberler'])->name('haberler');
 Route::get('/haber/{haber}', [MainController::class, 'haber'])->name('haber');
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/blog/{blog}', [MainController::class, 'blog_detay'])->name('blog_detay');
-Route::get('/hizmetlerimiz', [MainController::class, 'hizmetlerimiz'])->name('hizmetlerimiz');
-Route::get('/hizmet/{hizmet}', [MainController::class, 'hizmet'])->name('hizmet');
+Route::get('/hizmetler', [MainController::class, 'hizmetler'])->name('hizmetler');
+Route::get('/hizmet-detay/{hizmet}', [MainController::class, 'hizmet'])->name('hizmet');
 
 
 Route::get('/giris', [LoginController::class, 'login'])->name('giris');
@@ -68,6 +73,23 @@ Route::prefix('panel')->middleware('auth')->group(function () {
 
     // Belge İşlemleri Bitiş
 
+
+
+    Route::get('/profil-bilgileri', [HomeController::class, 'profil'])->name('profil');
+    Route::post('/profil-bilgileri', [HomeController::class, 'profil_post']);
+    Route::get('/sifre-bilgileri', [HomeController::class, 'sifre'])->name('sifre');
+    Route::post('/sifre-bilgileri', [HomeController::class, 'sifre_post']);
+
+
+    // Üye İşlemleri Başlangıç
+
+    Route::get('/uyeler', [HomeController::class, 'uyeler'])->name('uyeler');
+    Route::get('/uye-ekle', [HomeController::class, 'uye_ekle'])->name('uye_ekle');
+    Route::post('/uye-ekle', [HomeController::class, 'uye_ekle_post']);
+    Route::get('/uye-duzenle', [HomeController::class, 'uye_duzenle'])->name('uye_duzenle');
+    Route::post('/uye-duzenle', [HomeController::class, 'uye_duzenle_post']);
+
+    // Üye İşlemleri Bitiş
 
 
 

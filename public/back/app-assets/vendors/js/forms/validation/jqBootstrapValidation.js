@@ -857,7 +857,7 @@
                         $.error("Can't find field '" + elementName + "' to match '" + $this.attr("name") + "' against in '" + name + "' validator");
                     }
 
-                    var message = "Must match";
+                    var message = "Yazdığınız Şifreler Uyuşmuyor";
                     var $label = null;
                     if (($label = $form.find("label[for=\"" + elementName + "\"]")).length) {
                         message += " '" + $label.text() + "'";

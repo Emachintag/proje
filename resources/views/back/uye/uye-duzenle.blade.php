@@ -3,6 +3,14 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
+    <?php
+    if (isset($_GET['id'])) {
+        $uye = DB::table('users')->where('id', $_GET['id'])->first();
+    } else {
+        header("Location:" . route('uyeler'));
+    }
+
+    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -38,7 +46,7 @@
                                                             <div class="card-block">
                                                                 <label>İsim</label>
                                                                 <div class="input-group">
-                                                                    <input name="name" type="text" class="form-control" placeholder="İsim" aria-describedby="basic-addon3">
+                                                                    <input value="{{$uye->name}}" name="name" type="text" class="form-control" placeholder="İsim" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -50,7 +58,7 @@
                                                             <div class="card-block">
                                                                 <label>Soyisim</label>
                                                                 <div class="input-group">
-                                                                    <input name="last_name" type="text" class="form-control" placeholder="Soyisim" aria-describedby="basic-addon3">
+                                                                    <input value="{{$uye->last_name}}" name="last_name" type="text" class="form-control" placeholder="Soyisim" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -62,7 +70,7 @@
                                                             <div class="card-block">
                                                                 <label>E-Posta</label>
                                                                 <div class="input-group">
-                                                                    <input name="email" type="email" class="form-control" placeholder="E-Posta" aria-describedby="basic-addon3">
+                                                                    <input value="{{$uye->email}}" name="email" type="email" class="form-control" placeholder="E-Posta" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -74,7 +82,7 @@
                                                             <div class="card-block">
                                                                 <label>Şifre</label>
                                                                 <div class="input-group">
-                                                                    <input name="link" type="text" class="form-control" placeholder="Şifre" aria-describedby="basic-addon3">
+                                                                    <input  name="password" type="password" class="form-control" placeholder="Şifre" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -86,7 +94,7 @@
                                                             <div class="card-block">
                                                                 <label>Şifre Tekrar</label>
                                                                 <div class="input-group">
-                                                                    <input name="link" type="text" class="form-control" placeholder="Şifre Tekrar" aria-describedby="basic-addon3">
+                                                                    <input  type="password" class="form-control" placeholder="Şifre Tekrar" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -94,16 +102,21 @@
                                                 </div>
 
                                                 <div class="col-md-4">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Üye Görsel (Tek Fotoğraf)</label>
-                                                                <div class="input-group">
-                                                                    <input name="image" type="file" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                    <label>Üye Görsel</label>
+                                                    <div class="input-group">
+                                                        <input name="image" type="file"
+                                                               class="form-control"
+                                                               placeholder="Alt Başlık"
+                                                               aria-describedby="basic-addon3">
                                                     </div>
+                                                    @if($uye->image != '')
+                                                        <br>
+                                                        <div class="input-group">
+                                                            <img
+                                                                src="{{asset('public/img/'.$uye->image)}}"
+                                                                class="form-control">
+                                                        </div>
+                                                    @endif
                                                 </div>
 
 

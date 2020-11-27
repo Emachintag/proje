@@ -21,6 +21,32 @@ class MainController extends Controller
         return view('iletisim');
     }
 
+    public function galeri()
+    {
+        return view('galeri');
+    }
+
+    public function vizyon()
+    {
+        return view('vizyon');
+    }
+
+    public function misyon()
+    {
+        return view('misyon');
+    }
+
+    public function belgeler()
+    {
+        return view('belgeler');
+    }
+
+    public function ekibimiz()
+    {
+        return view('ekibimiz');
+    }
+
+
     public function urunlerimiz()
     {
         return view('urunlerimiz');
@@ -49,9 +75,9 @@ class MainController extends Controller
         return view('blog_detay')->with('id', $blog);
     }
 
-    public function hizmetlerimiz()
+    public function hizmetler()
     {
-        return view ('hizmetlerimiz');
+        return view ('hizmetler');
     }
 
     public function hizmet($hizmet) {

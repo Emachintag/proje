@@ -3,9 +3,6 @@
 @endsection
 @extends('back.layouts.app')
 @section('content')
-    <?php
-    $ekatalog = DB::table('ekatalog')->first();
-    ?>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -17,7 +14,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title" id="row-separator-colored-controls">E-Katalog Ekle</h4>
+                                <h4 class="card-title" id="row-separator-colored-controls"> Hoşgeldiniz <strong>{{Auth::user()->name}} {{Auth::user()->last_name}}</h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-h font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -33,40 +30,66 @@
                                     <form class="form-horizontal" method="post" autocomplete="off" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>E-Katalog</h4>
+                                            <h4 class="form-section"><i class="la la-newspaper-o"></i>Bilgilerinizi Güncelleyiniz</h4>
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>E-Katalog Başlığı (Menüde Gözüken)</label>
+                                                                <label>İsim</label>
                                                                 <div class="input-group">
-                                                                    <input value="{{$ekatalog->title}}" name="title" type="text" class="form-control" placeholder="Başlık" aria-describedby="basic-addon3">
+                                                                    <input  value="{{Auth::user()->name}}" name="name" type="text" class="form-control" placeholder="İsim" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <label>Belge PDF</label>
+                                                <div class="col-md-3">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Soyisim</label>
+                                                                <div class="input-group">
+                                                                    <input  value="{{Auth::user()->last_name}}" name="last_name" type="text" class="form-control" placeholder="Soyisim" aria-describedby="basic-addon3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>E-Posta</label>
+                                                                <div class="input-group">
+                                                                    <input  value="{{Auth::user()->email}}" name="email" type="email" class="form-control" placeholder="E-Posta" aria-describedby="basic-addon3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label>Üye Görsel</label>
                                                     <div class="input-group">
-                                                        <input name="pdf" type="file"
+                                                        <input name="image" type="file"
                                                                class="form-control"
+                                                               placeholder="Alt Başlık"
                                                                aria-describedby="basic-addon3">
                                                     </div>
-                                                    @if($ekatalog->pdf != '')
+                                                    @if(Auth::user()->image != '')
                                                         <br>
                                                         <div class="input-group">
-                                                            <a target="_blank" href="{{asset('/public/img/'.$ekatalog->pdf)}}" ><img
-                                                                    src="{{ asset('/public/back/icon/pdf.png') }}" style="width: 68%"
-                                                                    class="form-control"></a>
+                                                            <img
+                                                                src="{{asset('public/img/'.Auth::user()->image)}}"
+                                                                class="form-control">
                                                         </div>
                                                     @endif
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="form-actions right">
-                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Güncelle</button>
+                                            <button type="submit" class="btn btn-success btn-min-width btn-glow mr-1 mb-1">Gönder</button>
                                         </div>
                                     </form>
                                 </div>

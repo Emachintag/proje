@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+
 
 function compressImage($source, $destination, $quality)
 {
@@ -431,6 +436,146 @@ class HomeController extends Controller
     //Blog
 
 
+    // Üye Ekleme
+
+    public function uyeler()
+    {
+        return view('back.uye.uye-listele');
+    }
+
+    public function uye_ekle()
+    {
+        return view('back.uye.uye-ekle');
+    }
+
+    public function uye_ekle_post(Request $request)
+    {
+
+        $info = getimagesize($request->image);
+        $extension = image_type_to_extension($info[2]);
+        $imageName = time().$extension;
+        $request->image->move(public_path('img'), $imageName);
+
+        $user= new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->last_name = $request->last_name;
+        $user->password=bcrypt(request()->password);
+        $user->image = $imageName;
+        $user->save();
+
+        return redirect()->route('uyeler')->with('success', 'Yeni üye başarıyla eklendi.');
+    }
+
+    public function uye_duzenle()
+    {
+        return view('back.uye.uye-duzenle');
+    }
+
+    public function uye_duzenle_post(Request $request)
+    {
+        if(isset($request->image)) {
+
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $request->image->move(public_path('img'), $imageName);
+            DB::table('users')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('users')->where('id', $request->id)->update([
+            'name' => $request->input('name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+        ]);
+        if($request->password != '') {
+            DB::table('users')->where('id', $request->id)->update([
+                'password' => bcrypt(request()->password),
+            ]);
+        }
+        return redirect()->route('uyeler')->with('success', 'Yeni üye başarıyla düzenlendi.');
+    }
+
+    // Üye Ekleme
+
+
+    // Profil Gilgileri Güncelleme
+
+    public function profil()
+    {
+        return view('back.ayarlar.profil-bilgileri');
+    }
+
+    public function profil_post(Request $request)
+    {
+
+        if(isset($request->image)) {
+
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $request->image->move(public_path('img'), $imageName);
+            DB::table('users')->where('id', Auth::user()->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+
+        DB::table('users')->where('id', Auth::user()->id)->update([
+            'name' => $request->input('name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+        ]);
+        return redirect()->route('home')->with('success', 'Profiliniz başarıyla güncellendi.');
+    }
+
+    // Profil Gilgileri Güncelleme
+
+    // Şifre Değiştirme
+
+    public function sifre()
+    {
+        return view('back.ayarlar.sifre-guncelle');
+    }
+
+    public function sifre_post(Request $request){
+        $validator = Validator::make($request->all(), [
+            'old_password' => 'required',
+            'password' => 'required|min:6',
+            'password2' => 'required|min:6',
+        ], [
+            'old_password.required' => 'Eski Şifreniz gereklidir.',
+            'password.required' => 'Yeni Şifreniz gereklidir.',
+            'password2.required' => 'Yeni Şifrenizi tekrar yazmanız gereklidir.',
+            'password2.min' => 'Yeni Şifrenizin tekrarı en az 6 karakter olmalıdır.',
+            'password.min' => 'Yeni Şifreniz en az 6 karakter olmalıdır.',
+        ]);
+        if($request->input('password') != $request->input('password2')) {
+            $validator->errors()->add('old_password', 'Yeni şifreniz ile yeni şifre tekrarınız uyuşmuyor.');
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $password = $request->input('old_password');
+        $user = User::where('id', Auth::user()->id)->first();
+        if (!Hash::check($password, $user->password) ) {
+            $validator->errors()->add('old_password', 'Eski şifreniz ile yeni şifreniz uyuşmuyor. Güvenlik nedeniyle şifrenizi değiştirebilmek için eski şifrenize ihtiyacımız var.');
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            DB::table('users')->where('id', Auth::user()->id)->update([
+                'password' => bcrypt(request()->password),
+            ]);
+            return back()->with('success', 'Şifreniz başarıyla kaydedildi');
+        }
+    }
+
+    // Şifre Değiştirme
+
+
     // Belge
 
     public function belge()
@@ -471,7 +616,7 @@ class HomeController extends Controller
                 'image' => $imageName,
             ]);
         }
-        return redirect()->route('belge')->with('success', 'Yeni ürün başarıyla eklendi.');
+        return redirect()->route('belge')->with('success', 'Yeni belge başarıyla eklendi.');
 
     }
 
@@ -1306,34 +1451,7 @@ class HomeController extends Controller
     // Ürün
 
 
-    // Üye
 
-    public function uye()
-    {
-        return view('back.uye.uye-listele');
-    }
-
-    public function uye_ekle()
-    {
-        return view('back.uye.uye-ekle');
-    }
-
-    public function uye_ekle_post(Request $request)
-    {
-
-    }
-
-    public function uye_duzenle()
-    {
-        return view('back.uye.uye-duzenle');
-    }
-
-    public function uye_duzenle_post()
-    {
-
-    }
-
-    // Üye
 
 
 }

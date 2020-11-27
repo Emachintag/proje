@@ -73,14 +73,17 @@
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">Merhaba,
-                  <span class="user-name text-bold-700">Kullanıcı</span>
+                  <span class="user-name text-bold-700">{{Auth::user()->name}}</span>
                 </span>
                             <span class="avatar avatar-online">
-                  <img src="{{asset('/public/back/app-assets/images/portrait/small/avatar-s-19.png')}}"
+                  <img src="{{asset('public/img/'.Auth::user()->image)}}"
                        alt="avatar"><i></i></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i
-                                    class="ft-user"></i> Edit Profile</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{route('profil')}}"><i
+                                    class="ft-user"></i> Profil Güncelle</a>
+                            <a class="dropdown-item" href="{{route('sifre')}}"><i
+                                    class="ft-user-check"></i> Şifre Güncelle</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{route('cikis')}}"><i class="ft-power"></i> Çıkış Yap</a>
                         </div>
@@ -273,7 +276,7 @@
                                                                   data-toggle="dropdown"><i
                         class="la la-user"></i><span>Üye İşlemleri</span></a>
                 <ul class="dropdown-menu">
-                    <li data-menu=""><a class="dropdown-item" href="{{route('uye')}}" data-toggle="dropdown"><i
+                    <li data-menu=""><a class="dropdown-item" href="{{route('uyeler')}}" data-toggle="dropdown"><i
                                 class="la la-users"></i>Üye Görüntüle</a>
                     </li>
                     <li data-menu=""><a class="dropdown-item" href="{{route('uye_ekle')}}" data-toggle="dropdown"><i
@@ -283,8 +286,8 @@
             </li>
 
 
-        </ul>
-        </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </div>
