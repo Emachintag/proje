@@ -161,7 +161,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../monocake" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lojistik" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -221,7 +221,9 @@
       <workItem from="1606414628131" duration="2209000" />
       <workItem from="1606421323387" duration="2276000" />
       <workItem from="1606464248343" duration="19739000" />
-      <workItem from="1606502091321" duration="1746000" />
+      <workItem from="1606502091321" duration="1931000" />
+      <workItem from="1606504997718" duration="316000" />
+      <workItem from="1606755128360" duration="948000" />
     </task>
     <servers />
   </component>
@@ -250,10 +252,10 @@
     </state>
     <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1606487107704" />
     <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603924484387" />
-    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1606503437736">
+    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1606755214987">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1606503437736" />
+    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1606755214987" />
     <state x="634" y="358" key="NewPhpFileDialog" timestamp="1606503838716">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
