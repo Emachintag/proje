@@ -1,3 +1,3 @@
 <?php
-$u = DB::table('blog')->where('id', $id)->first();
+$u = DB::table('blog')->where('url', $id)->first();
 ?>

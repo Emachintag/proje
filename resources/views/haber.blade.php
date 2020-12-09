@@ -1,3 +1,3 @@
 <?php
-$u = DB::table('haber')->where('id', $id)->first();
+$u = DB::table('haber')->where('url', $id)->first();
 ?>

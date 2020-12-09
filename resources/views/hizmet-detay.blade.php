@@ -1,3 +1,3 @@
 <?php
-$u = DB::table('hizmet')->where('id', $id)->first();
+$u = DB::table('hizmet')->where('url', $id)->first();
 ?>

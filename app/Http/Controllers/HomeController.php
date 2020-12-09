@@ -74,27 +74,28 @@ class HomeController extends Controller
     {
 
 
-        if (isset($request->site_favicon)) {
+        if(isset($request->site_favicon)) {
+            request()->validate([
+                'favicon' => 'image'
+            ], [
+                'favicon.image' => 'Favicon bir resim olmalıdır (Jpg, jpeg, png, ico)',
+            ]);
             $info = getimagesize($request->site_favicon);
             $extension = image_type_to_extension($info[2]);
-            $imageName = time() . $extension;
-            /*
-             * Resim Sıkıştırma / Not : $request->input adı ->move() satırını silmelisin resim yükleme sırasında, sıkıştırma resmi yükleyecek
-             */
-            $location = public_path('img') . "\ " . $imageName;
-            $location = str_replace(' ', '', $location);
-            compressImage($_FILES['site_favicon']['tmp_name'], $location, 75);
-
+            $imageName = time().$extension;
+            $request->site_favicon->move(public_path('img'), $imageName);
             DB::table('site_ayarlar')->where('id', 1)->update(['site_favicon' => $imageName]);
         }
-        if (isset($request->site_logo)) {
-
+        if(isset($request->site_logo)) {
+            request()->validate([
+                'logo' => 'image'
+            ], [
+                'logo.image' => 'Logo bir resim olmalıdır (Jpg, jpeg, png, ico)',
+            ]);
             $info = getimagesize($request->site_logo);
             $extension = image_type_to_extension($info[2]);
-            $imageName = time() . $extension;
-            $location = public_path('img') . "\ " . $imageName;
-            $location = str_replace(' ', '', $location);
-            compressImage($_FILES['site_logo']['tmp_name'], $location, 75);
+            $imageName = time().$extension;
+            $request->site_logo->move(public_path('img'), $imageName);
             DB::table('site_ayarlar')->where('id', 1)->update(['site_logo' => $imageName]);
         }
         DB::table('site_ayarlar')->where('id', '1')->update([
@@ -172,7 +173,7 @@ class HomeController extends Controller
             'updated_at' => date('YmdHis'),
 
         ]);
-        $lastId = DB::table('ekatalog')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->pdf)) {
             $pdfName = time() . ".pdf";
             $request->pdf->move(public_path('img'), $pdfName);
@@ -270,7 +271,7 @@ class HomeController extends Controller
             'url' => $url,
             'created_at' => date('YmdHis'),
         ]);
-        $lastId = DB::table('blog')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->pdf)) {
             $pdfName = time() . ".pdf";
             $request->pdf->move(public_path('img'), $pdfName);
@@ -596,7 +597,7 @@ class HomeController extends Controller
             'created_at' => date('YmdHis'),
 
         ]);
-        $lastId = DB::table('belge')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->pdf)) {
             $pdfName = time() . ".pdf";
             $request->pdf->move(public_path('img'), $pdfName);
@@ -682,7 +683,7 @@ class HomeController extends Controller
             'created_at' => date('YmdHis'),
 
         ]);
-        $lastId = DB::table('galeri')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->image)) {
             $info = getimagesize($request->image);
             $extension = image_type_to_extension($info[2]);
@@ -756,7 +757,7 @@ class HomeController extends Controller
             'created_at' => date('YmdHis'),
 
         ]);
-        $lastId = DB::table('ekip')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->image)) {
             $info = getimagesize($request->image);
             $extension = image_type_to_extension($info[2]);
@@ -829,7 +830,7 @@ class HomeController extends Controller
             'text' => $request->input('text'),
             'url' => $url,
         ]);
-        $lastId = DB::table('haber')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->pdf)) {
             $pdfName = time() . ".pdf";
             $request->pdf->move(public_path('img'), $pdfName);
@@ -1020,7 +1021,7 @@ class HomeController extends Controller
             'url' => $url,
             'created_at' => date('YmdHis'),
         ]);
-        $lastId = DB::table('hizmet')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->pdf)) {
             $pdfName = time() . ".pdf";
             $request->pdf->move(public_path('img'), $pdfName);
@@ -1210,7 +1211,7 @@ class HomeController extends Controller
             'created_at' => date('YmdHis'),
 
         ]);
-        $lastId = DB::table('slider')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->image)) {
             $info = getimagesize($request->image);
             $extension = image_type_to_extension($info[2]);
@@ -1283,7 +1284,7 @@ class HomeController extends Controller
             'url' => $url,
             'created_at' => date('YmdHis'),
         ]);
-        $lastId = DB::table('urun')->get()->last()->id;
+        $lastId = DB::getPdo()->lastInsertId();
         if (isset($request->pdf)) {
             $pdfName = time() . ".pdf";
             $request->pdf->move(public_path('img'), $pdfName);
