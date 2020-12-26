@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Dec 16, 2020 at 02:46 PM
+-- Generation Time: Dec 26, 2020 at 12:31 PM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -441,13 +441,13 @@ CREATE TABLE IF NOT EXISTS `istatistik` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(255) DEFAULT NULL,
   `date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `page` varchar(255) DEFAULT NULL,
-  `device` text,
-  `browser` text,
-  `ms` text,
+  `page` text,
+  `device` mediumtext,
+  `browser` mediumtext,
+  `ms` mediumtext,
   `tekil` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2124 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2124 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `istatistik`
