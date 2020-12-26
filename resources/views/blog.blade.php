@@ -1,3 +1,5 @@
-<?php
-$u = DB::table('blog')->where('id', $id)->first();
-?>
+@extends('layouts.app')
+@section('content')
+
+
+@endsection
