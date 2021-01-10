@@ -1,5 +1,6 @@
+<?php $settings = DB::table('site_ayarlar')->first(); ?>
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
+<html class="loading" lang="tr" data-textdirection="ltr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,8 +10,7 @@
     <meta name="keywords"
           content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard sales - Modern Admin - Clean Bootstrap 4 Dashboard HTML Template + Bitcoin
-        Dashboard
+    <title>{{$settings->site_name}} | I Feel Code
     </title>
     <link rel="apple-touch-icon" href="{{asset('/public/favicon.ico')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('/public/favicon.ico')}}">
@@ -190,6 +190,42 @@
                             </li>
                             <li data-menu=""><a class="dropdown-item" href="{{route('ekip_ekle')}}"
                                                 data-toggle="dropdown">Ekip Ekle</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
+                                class="la la-user-secret"></i>Marka Yönetimi</a>
+                        <ul class="dropdown-menu">
+                            <li data-menu=""><a class="dropdown-item" href="{{route('marka')}}" data-toggle="dropdown">Marka
+                                    Görüntüle</a>
+                            </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('marka_ekle')}}"
+                                                data-toggle="dropdown">Marka Ekle</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
+                                class="la la-user-secret"></i>Yorum Yönetimi</a>
+                        <ul class="dropdown-menu">
+                            <li data-menu=""><a class="dropdown-item" href="{{route('yorum')}}" data-toggle="dropdown">Yorum
+                                    Görüntüle</a>
+                            </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('yorum_ekle')}}"
+                                                data-toggle="dropdown">Yorum Ekle</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
+                                class="la la-user-secret"></i>Soru Yönetimi</a>
+                        <ul class="dropdown-menu">
+                            <li data-menu=""><a class="dropdown-item" href="{{route('soru')}}" data-toggle="dropdown">Soru
+                                    Görüntüle</a>
+                            </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('soru_ekle')}}"
+                                                data-toggle="dropdown">Soru Ekle</a>
                             </li>
                         </ul>
                     </li>

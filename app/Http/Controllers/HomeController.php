@@ -82,7 +82,7 @@ class HomeController extends Controller
             ]);
             $info = getimagesize($request->site_favicon);
             $extension = image_type_to_extension($info[2]);
-            $imageName = time().$extension;
+            $imageName = time()."1".$extension;
             $request->site_favicon->move(public_path('img'), $imageName);
             DB::table('site_ayarlar')->where('id', 1)->update(['site_favicon' => $imageName]);
         }
@@ -94,9 +94,21 @@ class HomeController extends Controller
             ]);
             $info = getimagesize($request->site_logo);
             $extension = image_type_to_extension($info[2]);
-            $imageName = time().$extension;
+            $imageName = time()."2".$extension;
             $request->site_logo->move(public_path('img'), $imageName);
             DB::table('site_ayarlar')->where('id', 1)->update(['site_logo' => $imageName]);
+        }
+        if(isset($request->site_logo_1)) {
+            request()->validate([
+                'logo' => 'image'
+            ], [
+                'logo.image' => 'Logo bir resim olmalıdır (Jpg, jpeg, png, ico)',
+            ]);
+            $info = getimagesize($request->site_logo_1);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time()."3".$extension;
+            $request->site_logo_1->move(public_path('img'), $imageName);
+            DB::table('site_ayarlar')->where('id', 1)->update(['site_logo_1' => $imageName]);
         }
         DB::table('site_ayarlar')->where('id', '1')->update([
             'site_name' => $request->input('site_name'),
@@ -451,18 +463,20 @@ class HomeController extends Controller
 
     public function uye_ekle_post(Request $request)
     {
-
+        $user= new User();
+        if (isset($request->image)) {
         $info = getimagesize($request->image);
         $extension = image_type_to_extension($info[2]);
         $imageName = time().$extension;
         $request->image->move(public_path('img'), $imageName);
+            $user->image = $imageName;}
 
-        $user= new User();
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->last_name = $request->last_name;
         $user->password=bcrypt(request()->password);
-        $user->image = $imageName;
+
         $user->save();
 
         return redirect()->route('uyeler')->with('success', 'Yeni üye başarıyla eklendi.');
@@ -805,6 +819,193 @@ class HomeController extends Controller
     }
 
     // Ekip
+
+    // Soru
+
+    public function soru()
+    {
+        return view('back.soru.soru-listele');
+    }
+
+    public function soru_ekle()
+    {
+        return view('back.soru.soru-ekle');
+    }
+
+    public function soru_ekle_post(Request $request)
+    {
+
+        DB::table('sorular')->insert([
+            'title' => $request->input('title'),
+            'text' => $request->input('text'),
+
+        ]);
+
+        return redirect()->route('soru')->with('success', 'Yeni soru başarıyla eklendi.');
+
+    }
+
+    public function soru_duzenle()
+    {
+        return view('back.soru.soru-duzenle');
+    }
+
+    public function soru_duzenle_post(Request $request)
+    {
+
+        DB::table('sorular')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'text' => $request->input('text'),
+
+        ]);
+
+        return redirect()->route('soru')->with('success', 'Yeni soru başarıyla düzenlendi.');
+
+    }
+
+    // Soru
+
+
+
+    // Marka
+
+    public function marka()
+    {
+        return view('back.marka.marka-listele');
+    }
+
+    public function marka_ekle()
+    {
+        return view('back.marka.marka-ekle');
+    }
+
+    public function marka_ekle_post(Request $request)
+    {
+
+        DB::table('marka')->insert([
+            'title' => $request->input('title'),
+            'link' => $request->input('link'),
+
+        ]);
+        $lastId = DB::getPdo()->lastInsertId();
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('marka')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+        return redirect()->route('marka')->with('success', 'Yeni marka başarıyla eklendi.');
+
+    }
+
+    public function marka_duzenle()
+    {
+        return view('back.marka.marka-duzenle');
+    }
+
+    public function marka_duzenle_post(Request $request)
+    {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('marka')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('marka')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'link' => $request->input('link'),
+
+        ]);
+
+        return redirect()->route('marka')->with('success', 'Yeni marka başarıyla düzenlendi.');
+
+    }
+
+    // Marka
+
+    // Yorum
+
+    public function yorum()
+    {
+        return view('back.yorum.yorum-listele');
+    }
+
+    public function yorum_ekle()
+    {
+        return view('back.yorum.yorum-ekle');
+    }
+
+    public function yorum_ekle_post(Request $request)
+    {
+
+        DB::table('yorum')->insert([
+            'isim' => $request->input('isim'),
+            'unvan' => $request->input('unvan'),
+            'text' => $request->input('text'),
+
+        ]);
+        $lastId = DB::getPdo()->lastInsertId();
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+
+            DB::table('yorum')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+        return redirect()->route('yorum')->with('success', 'Yeni yorum başarıyla eklendi.');
+
+    }
+
+    public function yorum_duzenle()
+    {
+        return view('back.yorum.yorum-duzenle');
+    }
+
+    public function yorum_duzenle_post(Request $request)
+    {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            DB::table('yorum')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('yorum')->where('id', $request->id)->update([
+            'isim' => $request->input('isim'),
+            'unvan' => $request->input('unvan'),
+            'text' => $request->input('text'),
+
+        ]);
+
+        return redirect()->route('yorum')->with('success', 'Yeni yorum başarıyla düzenlendi.');
+
+    }
+
+    // Yorum
+
+
 
 
     // Haber

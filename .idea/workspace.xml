@@ -161,7 +161,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../psikolog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -228,6 +228,9 @@
       <workItem from="1607420561241" duration="69000" />
       <workItem from="1607540664505" duration="1588000" />
       <workItem from="1608985442127" duration="468000" />
+      <workItem from="1608998402540" duration="28000" />
+      <workItem from="1609837394478" duration="518000" />
+      <workItem from="1610227125006" duration="9395000" />
     </task>
     <servers />
   </component>
@@ -256,14 +259,14 @@
     </state>
     <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1606487107704" />
     <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603924484387" />
-    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1608985539762">
+    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1608998424689">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1608985539762" />
-    <state x="634" y="358" key="NewPhpFileDialog" timestamp="1608985496455">
+    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1608998424689" />
+    <state x="634" y="358" key="NewPhpFileDialog" timestamp="1610231339766">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="634" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1608985496455" />
+    <state x="634" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1610231339766" />
     <state x="761" y="428" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605793885801" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1605045688300">
       <screen x="0" y="0" width="1920" height="1040" />

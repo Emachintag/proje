@@ -103,6 +103,40 @@ Route::prefix('panel')->middleware('auth')->group(function () {
 
     // Galeri İşlemleri Bitiş
 
+    // Marka İşlemleri Başlangıç
+
+    Route::get('/soru', [HomeController::class, 'soru'])->name('soru');
+    Route::get('/soru-ekle', [HomeController::class, 'soru_ekle'])->name('soru_ekle');
+    Route::post('/soru-ekle', [HomeController::class, 'soru_ekle_post']);
+    Route::get('/soru-duzenle', [HomeController::class, 'soru_duzenle'])->name('soru_duzenle');
+    Route::post('/soru-duzenle', [HomeController::class, 'soru_duzenle_post']);
+
+    // Marka İşlemleri Bitiş
+
+
+    // Yorum İşlemleri Başlangıç
+
+    Route::get('/yorum', [HomeController::class, 'yorum'])->name('yorum');
+    Route::get('/yorum-ekle', [HomeController::class, 'yorum_ekle'])->name('yorum_ekle');
+    Route::post('/yorum-ekle', [HomeController::class, 'yorum_ekle_post']);
+    Route::get('/yorum-duzenle', [HomeController::class, 'yorum_duzenle'])->name('yorum_duzenle');
+    Route::post('/yorum-duzenle', [HomeController::class, 'yorum_duzenle_post']);
+
+    // Yorum İşlemleri Bitiş
+
+
+
+    // Marka İşlemleri Başlangıç
+
+    Route::get('/marka', [HomeController::class, 'marka'])->name('marka');
+    Route::get('/marka-ekle', [HomeController::class, 'marka_ekle'])->name('marka_ekle');
+    Route::post('/marka-ekle', [HomeController::class, 'marka_ekle_post']);
+    Route::get('/marka-duzenle', [HomeController::class, 'marka_duzenle'])->name('marka_duzenle');
+    Route::post('/marka-duzenle', [HomeController::class, 'marka_duzenle_post']);
+
+    // Marka İşlemleri Bitiş
+
+
 
     // Ekip İşlemleri Başlangıç
 
