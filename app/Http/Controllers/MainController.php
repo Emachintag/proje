@@ -2,7 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
+use Auth;
+use Redirect;
+use App\User;
+use Hash;
+use DB;
+use Illuminate\Support\Str;
+use Carbon\Carbon;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Mail;
+
 
 class MainController extends Controller
 {
@@ -82,5 +95,50 @@ class MainController extends Controller
 
     public function hizmet($hizmet) {
         return view('hizmet')->with('id', $hizmet);
+    }
+
+    public function iletisim_post (Request $request)
+    {
+        $request = Request::only('ad', 'soyad', 'tel', 'cv', 'email', 'is');
+        $request[0] = $request;
+        $request = (object) $request;
+        $created_at = date('YmdHis');
+        $extension = $request->cv->getClientOriginalExtension();
+        $cv_name = time() . '.' . $extension;
+        $request->cv->move(public_path('img'), $cv_name);
+        DB::table('basvurular')->insert([
+            'ad' => $request->ad,
+            'soyad' => $request->soyad,
+            'tel' => $request->tel,
+            'email' => $request->email,
+            'hangi_is' => $request->is,
+            'created_at' => $created_at,
+            'cv' => $cv_name,
+        ]);
+
+
+        /*
+         * kullanıcıya e-posta
+         */
+        $to_name = "".$request->ad." ".$request->soyad;
+        $to_email = $request->email;
+        $data = array('name'=>"İş Başvurusu", 'email'=>$request->email);
+        Mail::send('emails.basvuru', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)->subject('İş Başvurunuz');
+            $message->from('epostaburaya@gmail.com','İş Başvurunuz');
+        });
+
+
+        /*
+         * yönetime e-posta
+         */
+        $to_name = "Şirinat petrol";
+        $to_email = "info@sirinatpetrol.com";
+        $data = array('name'=>"İş Başvurusu", 'ad'=> $request->ad, 'soyad' => $request->soyad, 'email' => $request->email, 'tel' => $request->tel, 'cv' => $cv_name, "tarih" => $created_at);
+        Mail::send('emails.basvuru-yonetim', $data, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)->subject('İş Başvurunuz');
+            $message->from('epostaburaya@gmail.com','İş Başvurunuz');
+        });
+        return redirect('insan-kaynaklari')->with('success','Başvurunuz başarıyla alındı. Teşekkür ederiz.');
     }
 }

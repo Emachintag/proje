@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [MainController::class, 'index'])->name('anasayfa');
 Route::get('/hakkimizda', [MainController::class, 'hakkimizda'])->name('hakkimizda');
 Route::get('/iletisim', [MainController::class, 'iletisim'])->name('iletisim');
+Route::post('/iletisim', [MainController::class, 'iletisim_post']);
 Route::get('/galeri', [MainController::class, 'galeri'])->name('galeri');
 Route::get('/vizyon', [MainController::class, 'vizyon'])->name('vizyon');
 Route::get('/misyon', [MainController::class, 'misyon'])->name('misyon');
