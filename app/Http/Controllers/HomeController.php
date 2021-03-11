@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 
-function compressImage($source, $destination, $quality)
+function compressImage($source, $destination, $quality,$width)
 {
     $info = getimagesize($source);
 
@@ -23,7 +23,7 @@ function compressImage($source, $destination, $quality)
         $image = imagecreatefrompng($source);
 
 
-    $kucukresimgenislik = 700;
+    $kucukresimgenislik = $width;
     $genislik = imagesx($image);
     $yukseklik = imagesy($image);
     $yeni_genislik = $kucukresimgenislik;
@@ -154,7 +154,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('hakkimizda')->where('id', '1')->update([
                 'image' => $imageName,
@@ -210,7 +210,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('vizyon')->where('id', '1')->update([
                 'image' => $imageName,
@@ -241,7 +241,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('misyon')->where('id', '1')->update([
                 'image' => $imageName,
@@ -297,7 +297,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('blog')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -328,7 +328,7 @@ class HomeController extends Controller
                 $imageName = time() . $i . $extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80,500);
 
                 DB::table('blog_gorsel')->insert([
                     'blog_id' => $lastId,
@@ -355,7 +355,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('blog')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -396,7 +396,7 @@ class HomeController extends Controller
                 $imageName = time().$i.$extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80,500);
                 DB::table('blog_gorsel')->insert([
                     'blog_id' => $request->id,
                     'gorsel' => $imageName,
@@ -448,6 +448,81 @@ class HomeController extends Controller
     }
     //Blog
 
+    // İnsan Kaynakları
+
+    public function basvuru()
+    {
+        return view('back.insan.basvuru');
+    }
+
+    public function insan()
+    {
+        return view('back.insan.insan-listele');
+    }
+
+    public function insan_ekle()
+    {
+        return view('back.insan.insan-ekle');
+    }
+
+    public function insan_ekle_post(Request $request)
+    {
+
+        $url = Str::slug($request->input('title'), '-');
+        DB::table('insan_kaynaklari')->insert([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+            'url' => $url,
+            'created_at' => date('YmdHis'),
+        ]);
+        $lastId = DB::getPdo()->lastInsertId();
+        if (isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time() . $extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
+
+            DB::table('insan_kaynaklari')->where('id', $lastId)->update([
+                'image' => $imageName,
+            ]);
+        }
+
+        return redirect()->route('insanlar')->with('success', 'Yeni ürün başarıyla eklendi.');
+
+    }
+
+    public function insan_duzenle()
+    {
+        return view('back.insan.insan-duzenle');
+    }
+
+    public function insan_duzenle_post(Request $request)
+    {
+
+        if(isset($request->image)) {
+            $info = getimagesize($request->image);
+            $extension = image_type_to_extension($info[2]);
+            $imageName = time().$extension;
+            $location = public_path('img') . "\ " . $imageName;
+            $location = str_replace(' ', '', $location);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
+            DB::table('insan_kaynaklari')->where('id', $request->id)->update([
+                'image' => $imageName,
+            ]);
+        }
+        DB::table('insan_kaynaklari')->where('id', $request->id)->update([
+            'title' => $request->input('title'),
+            'title_2' => $request->input('title_2'),
+
+        ]);
+
+        return redirect()->route('insanlar')->with('success', 'Yeni haber başarıyla eklendi.');
+
+    }
+
+    // İnsan Kaynakları
 
     // Üye Ekleme
 
@@ -625,7 +700,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('belge')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -649,7 +724,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('belge')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -704,7 +779,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('galeri')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -728,7 +803,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('belge')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -778,7 +853,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('ekip')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -802,7 +877,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('ekip')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -894,7 +969,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('marka')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -918,7 +993,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('marka')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -963,7 +1038,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('yorum')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -987,7 +1062,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('yorum')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -1045,7 +1120,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('haber')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -1076,7 +1151,7 @@ class HomeController extends Controller
                 $imageName = time() . $i . $extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80,500);
 
                 DB::table('haber_gorsel')->insert([
                     'haber_id' => $lastId,
@@ -1103,7 +1178,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('haber')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -1144,7 +1219,7 @@ class HomeController extends Controller
                 $imageName = time().$i.$extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80,500);
                 DB::table('haber_gorsel')->insert([
                     'haber_id' => $request->id,
                     'gorsel' => $imageName,
@@ -1236,7 +1311,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('hizmet')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -1267,7 +1342,7 @@ class HomeController extends Controller
                 $imageName = time() . $i . $extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80,500);
 
                 DB::table('hizmet_gorsel')->insert([
                     'hizmet_id' => $lastId,
@@ -1294,7 +1369,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('hizmet')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -1336,7 +1411,7 @@ class HomeController extends Controller
                 $imageName = time().$i.$extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80,500);
                 DB::table('hizmet_gorsel')->insert([
                     'hizmet_id' => $request->id,
                     'gorsel' => $imageName,
@@ -1419,7 +1494,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('slider')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -1443,7 +1518,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('slider')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -1499,7 +1574,7 @@ class HomeController extends Controller
             $imageName = time() . $extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
 
             DB::table('urun')->where('id', $lastId)->update([
                 'image' => $imageName,
@@ -1530,7 +1605,7 @@ class HomeController extends Controller
                 $imageName = time() . $i . $extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80,500);
 
                 DB::table('urun_gorsel')->insert([
                     'urun_id' => $lastId,
@@ -1557,7 +1632,7 @@ class HomeController extends Controller
             $imageName = time().$extension;
             $location = public_path('img') . "\ " . $imageName;
             $location = str_replace(' ', '', $location);
-            compressImage($_FILES['image']['tmp_name'], $location, 80);
+            compressImage($_FILES['image']['tmp_name'], $location, 80,500);
             DB::table('urun')->where('id', $request->id)->update([
                 'image' => $imageName,
             ]);
@@ -1599,7 +1674,7 @@ class HomeController extends Controller
                 $imageName = time().$i.$extension;
                 $location = public_path('img') . "\ " . $imageName;
                 $location = str_replace(' ', '', $location);
-                compressImage($_FILES['images']['tmp_name'][$i], $location, 80);
+                compressImage($_FILES['images']['tmp_name'][$i], $location, 80,500);
                 DB::table('urun_gorsel')->insert([
                     'urun_id' => $request->id,
                     'gorsel' => $imageName,

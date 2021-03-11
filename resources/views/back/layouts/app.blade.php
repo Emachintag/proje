@@ -145,6 +145,22 @@
                     </li>
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
+                                class="la la-newspaper-o"></i>İş İlanı Yönetimi</a>
+                        <ul class="dropdown-menu">
+                            <li data-menu=""><a class="dropdown-item" href="{{route('insanlar')}}" data-toggle="dropdown">İş İlanı
+                                    Görüntüle</a>
+                            </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('insan_ekle')}}"
+                                                data-toggle="dropdown">İş İlanı Ekle</a>
+                            </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('basvuru')}}"
+                                                data-toggle="dropdown">İş Başvuruları</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
                                 class="la la-newspaper-o"></i>Blog Yönetimi</a>
                         <ul class="dropdown-menu">
                             <li data-menu=""><a class="dropdown-item" href="{{route('blog')}}" data-toggle="dropdown">Blog

@@ -63,6 +63,17 @@ Route::prefix('panel')->middleware('auth')->group(function () {
 
     // Blog İşlemleri Bitiş
 
+    // İnsan Kaynakları
+
+    Route::get('/basvuru', [HomeController::class, 'basvuru'])->name('basvuru')->middleware('auth');
+    Route::get('/insan-kaynaklari', [HomeController::class, 'insan'])->name('insanlar')->middleware('auth');
+    Route::get('/insan-kaynaklari-ekle', [HomeController::class, 'insan_ekle'])->name('insan_ekle')->middleware('auth');
+    Route::post('/insan-kaynaklari-ekle', [HomeController::class, 'insan_ekle_post'])->middleware('auth');
+    Route::get('/insan-kaynaklari-duzenle', [HomeController::class, 'insan_duzenle'])->name('insan_duzenle')->middleware('auth');
+    Route::post('/insan-kaynaklari-duzenle', [HomeController::class, 'insan_duzenle_post']);
+
+    // İnsan Kaynakları
+
 
     // Belge İşlemleri Başlangıç
 

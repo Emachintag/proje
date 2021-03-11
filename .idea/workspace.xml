@@ -161,7 +161,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../metal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -232,6 +232,11 @@
       <workItem from="1609837394478" duration="518000" />
       <workItem from="1610227125006" duration="9395000" />
       <workItem from="1610363582201" duration="419000" />
+      <workItem from="1610365685751" duration="20000" />
+      <workItem from="1610712904956" duration="109000" />
+      <workItem from="1611608185176" duration="497000" />
+      <workItem from="1613468698469" duration="2383000" />
+      <workItem from="1613481991020" duration="225000" />
     </task>
     <servers />
   </component>
@@ -259,11 +264,10 @@
       <screen x="0" y="0" width="1600" height="870" />
     </state>
     <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1606487107704" />
-    <state x="690" y="273" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603924484387" />
-    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1610363856940">
+    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1613471086371">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
-    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1610363856940" />
+    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1613471086371" />
     <state x="634" y="358" key="NewPhpFileDialog" timestamp="1610231339766">
       <screen x="0" y="0" width="1600" height="870" />
     </state>
@@ -273,9 +277,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605045688300" />
-    <state x="507" y="34" width="585" height="801" key="find.popup" timestamp="1604005187228">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="507" y="34" width="585" height="801" key="find.popup/0.0.1600.870@0.0.1600.870" timestamp="1604005187228" />
   </component>
 </project>

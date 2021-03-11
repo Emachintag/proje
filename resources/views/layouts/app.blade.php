@@ -127,6 +127,7 @@ if ($kontrol > 0) {
     <link href="public/img/{{$settings->site_favicon}}" rel="apple-touch-icon">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+@yield('meta')
 
 
 @yield('content')
