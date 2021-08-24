@@ -10,10 +10,10 @@
     <meta name="keywords"
           content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
-    <title>{{$settings->site_name}} | I Feel Code
+    <title>{{$settings->site_name}} | Proje
     </title>
-    <link rel="apple-touch-icon" href="{{asset('/public/favicon.ico')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/public/favicon.ico')}}">
+    <link rel="apple-touch-icon" href="{{asset('/public/favicon.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('/public/favicon.png')}}">
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
         rel="stylesheet">
@@ -54,7 +54,7 @@
                 <li class="nav-item">
                     <a class="navbar-brand" href="{{route('home')}}">
                         <img class="brand-logo" alt="modern admin logo" src="{{asset('/public/logo.png')}}">
-                        <h3 class="brand-text">I Feel Code</h3>
+                        <h3 class="brand-text">Proje</h3>
                     </a>
                 </li>
                 <li class="nav-item d-md-none">
@@ -124,127 +124,7 @@
                         class="la la-television"></i><span>Modüller</span></a>
                 <ul class="dropdown-menu">
 
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                class="la la-newspaper-o"></i>Haber Yönetimi</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="{{route('haber')}}" data-toggle="dropdown">Haber
-                                    Görüntüle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('haber_ekle')}}"
-                                                data-toggle="dropdown">Haber Ekle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('haber_kategori')}}"
-                                                data-toggle="dropdown">Haber Kategori Yönet</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('haber_kategori_ekle')}}"
-                                                data-toggle="dropdown">Haber Kategori Ekle</a>
-                            </li>
 
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                class="la la-newspaper-o"></i>İş İlanı Yönetimi</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="{{route('insanlar')}}" data-toggle="dropdown">İş İlanı
-                                    Görüntüle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('insan_ekle')}}"
-                                                data-toggle="dropdown">İş İlanı Ekle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('basvuru')}}"
-                                                data-toggle="dropdown">İş Başvuruları</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                class="la la-newspaper-o"></i>Blog Yönetimi</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="{{route('blog')}}" data-toggle="dropdown">Blog
-                                    Görüntüle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('blog_ekle')}}"
-                                                data-toggle="dropdown">Blog Ekle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('blog_kategori')}}"
-                                                data-toggle="dropdown">Blog Kategori Yönet</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('blog_kategori_ekle')}}"
-                                                data-toggle="dropdown">Blog Kategori Ekle</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                class="la la-recycle"></i>Hizmet Yönetimi</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="{{route('hizmet')}}" data-toggle="dropdown">Hizmet
-                                    Görüntüle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('hizmet_ekle')}}"
-                                                data-toggle="dropdown">Hizmet Ekle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('hizmet_kategori')}}"
-                                                data-toggle="dropdown">Hizmet Kategori Yönet</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('hizmet_kategori_ekle')}}"
-                                                data-toggle="dropdown">Hizmet Kategori Ekle</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                class="la la-user-secret"></i>Ekip Yönetimi</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="{{route('ekip')}}" data-toggle="dropdown">Ekip
-                                    Görüntüle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('ekip_ekle')}}"
-                                                data-toggle="dropdown">Ekip Ekle</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                class="la la-user-secret"></i>Marka Yönetimi</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="{{route('marka')}}" data-toggle="dropdown">Marka
-                                    Görüntüle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('marka_ekle')}}"
-                                                data-toggle="dropdown">Marka Ekle</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                class="la la-user-secret"></i>Yorum Yönetimi</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="{{route('yorum')}}" data-toggle="dropdown">Yorum
-                                    Görüntüle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('yorum_ekle')}}"
-                                                data-toggle="dropdown">Yorum Ekle</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
-                                class="la la-user-secret"></i>Soru Yönetimi</a>
-                        <ul class="dropdown-menu">
-                            <li data-menu=""><a class="dropdown-item" href="{{route('soru')}}" data-toggle="dropdown">Soru
-                                    Görüntüle</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('soru_ekle')}}"
-                                                data-toggle="dropdown">Soru Ekle</a>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#" data-toggle="dropdown"><i
                                 class="la la-file-pdf-o"></i>Belge Yönetimi</a>
@@ -291,13 +171,6 @@
                             <li data-menu=""><a class="dropdown-item" href="{{route('urun_ekle')}}"
                                                 data-toggle="dropdown">Ürün Ekle</a>
                             </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('urun_kategori')}}"
-                                                data-toggle="dropdown">Ürün Kategori Yönet</a>
-                            </li>
-                            <li data-menu=""><a class="dropdown-item" href="{{route('urun_kategori_ekle')}}"
-                                                data-toggle="dropdown">Ürün Kategori Ekle</a>
-                            </li>
-
                         </ul>
                     </li>
                     <li class="dropdown dropdown-submenu" data-menu="dropdown-submenu">
@@ -312,6 +185,12 @@
                             </li>
                             <li data-menu=""><a class="dropdown-item" href="{{route('vizyon_ayarlar')}}"
                                                 data-toggle="dropdown">Vizyon Yazısı</a>
+                            </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('tarim_ayarlar')}}"
+                                                data-toggle="dropdown">Tarım Makinaları Yazısı</a>
+                            </li>
+                            <li data-menu=""><a class="dropdown-item" href="{{route('sakarya_ayarlar')}}"
+                                                data-toggle="dropdown">Sakaryamız Yazısı</a>
                             </li>
                         </ul>
                     </li>
@@ -353,9 +232,9 @@
 
 <footer class="footer footer-static footer-light navbar-shadow">
     <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2">
-      <span class="float-md-left d-block d-md-inline-block">Copyright © 2020. <a class="text-bold-800 grey darken-2"
-                                                                                   href="http://ifeelcode.com/"
-                                                                                   target="_blank">ifeelcode </a>, Her Hakkı Saklıdır. </span>
+      <span class="float-md-left d-block d-md-inline-block">Copyright © 2021. <a class="text-bold-800 grey darken-2"
+                                                                                   href="http://sakarya.edu.ctr/"
+                                                                                   target="_blank">Elmar Dadashov </a>, Her Hakkı Saklıdır. </span>
 
     </p>
 </footer>

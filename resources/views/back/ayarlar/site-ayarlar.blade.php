@@ -141,32 +141,7 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label class="label-control text-pink" for="userinput15">Logo</label>
-                                                        @if($site_ayarlar->site_logo_1 != '')
-                                                            <?php
-                                                            $image = $site_ayarlar->site_logo_1;
-                                                            ?>
-                                                            <div class="row" style="margin-bottom: 3em;">
-                                                                <div class="col-md-3">
-                                                                    <img class="img-thumbnail" src="{{ asset('/public/img/'.$image.'') }}" alt="{{$site_ayarlar->site_name}} Logo" style="width: 100%;">
-                                                                </div>
-                                                                <div class="col-md-9">
-                                                                    <h3>
-                                                                        <strong>Not: Siyah Logo'yu değiştirmek için yeni resim seçip yükleyebilirsiniz.</strong>
-                                                                    </h3>
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                        <input
-                                                            id="userinput15"
-                                                            class="form-control border-pink @error('meta') is-invalid border-pink @enderror"
-                                                            type="file"
-                                                            name="site_logo_1"/>
 
-                                                    </div>
-                                                </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">

@@ -20,9 +20,127 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6930ecd9-fcab-41a7-ba62-e60016408112" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-duzenle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/haber/haber-duzenle.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-listele.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/haber/haber-listele.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1605640915.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/image/1605640975.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605599472.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16055994732.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16056004060.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605610460.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605614308.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16056143080.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16056143081.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605614577.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605614683.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16056146830.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16056146831.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605620485.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16056204850.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16056204851.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16056205020.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605621912.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605621912.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605640212.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605640230.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605640237.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605641384.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605643649.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605699954.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605699992.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605700073.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605700491.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605701323.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605702390.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605703414.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1605703414.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606313322.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606314521.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606314550.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606316029.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606484177.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606486288.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606486303.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606504583.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16065045830.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16065045841.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16065045842.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606504805.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1606742471.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/1610228384.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16102287731.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16102287732.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16102291413.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/16102291493.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/deneme-hizmet-1-lorem-ipsum.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/deneme-urun-1-lorem-ipsum.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/ayarlar/site-ayarlar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/ayarlar/site-ayarlar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/blog/blog-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/blog/blog-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/blog/blog-kategori-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/blog/blog-kategori-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/blog/blog-kategori-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/blog/blog-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/ekip/ekip-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/ekip/ekip-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/ekip/ekip-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/galeri/galeri-duzenle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/galeri/galeri-duzenle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/galeri/galeri-ekle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/galeri/galeri-ekle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/galeri/galeri-listele.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/galeri/galeri-listele.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-kategori-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-kategori-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-kategori-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/haber/haber-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hakkimizda/hakkimizda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/hakkimizda/hakkimizda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hakkimizda/misyon.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/hakkimizda/misyon.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hakkimizda/vizyon.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/hakkimizda/vizyon.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hizmet/hizmet-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hizmet/hizmet-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hizmet/hizmet-kategori-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hizmet/hizmet-kategori-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hizmet/hizmet-kategori-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/hizmet/hizmet-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/insan/basvuru.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/insan/insan-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/insan/insan-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/insan/insan-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/marka/marka-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/marka/marka-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/marka/marka-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/slider/slider-duzenle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/slider/slider-duzenle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/slider/slider-ekle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/slider/slider-ekle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/soru/soru-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/soru/soru-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/soru/soru-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/urun/urun-duzenle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/urun/urun-duzenle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/urun/urun-ekle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back/urun/urun-ekle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/yorum/yorum-duzenle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/yorum/yorum-ekle.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back/yorum/yorum-listele.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/belgeler.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/belgeler.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/blog.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/blog_detay.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/ekibimiz.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/galeri.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/galeri.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/haber.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/haberler.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/hakkimizda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/hakkimizda.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/hizmet-detay.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/hizmetler.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/iletisim.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/iletisim.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/misyon.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/misyon.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vizyon.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vizyon.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +278,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -167,6 +286,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -237,6 +357,55 @@
       <workItem from="1611608185176" duration="497000" />
       <workItem from="1613468698469" duration="2383000" />
       <workItem from="1613481991020" duration="225000" />
+      <workItem from="1615989981344" duration="10000" />
+      <workItem from="1616063035597" duration="92000" />
+      <workItem from="1616262390772" duration="638000" />
+      <workItem from="1616268518680" duration="26000" />
+      <workItem from="1616412309243" duration="14000" />
+      <workItem from="1616490650158" duration="157000" />
+      <workItem from="1616508329494" duration="597000" />
+      <workItem from="1617184348053" duration="793000" />
+      <workItem from="1617269834115" duration="1733000" />
+      <workItem from="1617558972976" duration="4845000" />
+      <workItem from="1617881641573" duration="829000" />
+      <workItem from="1618052837002" duration="518000" />
+      <workItem from="1618303488258" duration="488000" />
+      <workItem from="1618497681924" duration="84000" />
+      <workItem from="1618531213621" duration="493000" />
+      <workItem from="1618921763122" duration="620000" />
+      <workItem from="1619003962463" duration="301000" />
+      <workItem from="1619080248194" duration="1215000" />
+      <workItem from="1619523820821" duration="1921000" />
+      <workItem from="1619530752083" duration="11000" />
+      <workItem from="1619530771080" duration="86000" />
+      <workItem from="1619536188380" duration="738000" />
+      <workItem from="1619571067364" duration="288000" />
+      <workItem from="1619596709386" duration="866000" />
+      <workItem from="1619689346800" duration="374000" />
+      <workItem from="1619961940181" duration="472000" />
+      <workItem from="1620146949241" duration="102000" />
+      <workItem from="1620151738736" duration="334000" />
+      <workItem from="1620289756570" duration="183000" />
+      <workItem from="1620309487649" duration="723000" />
+      <workItem from="1623492746718" duration="1391000" />
+      <workItem from="1623653876444" duration="2332000" />
+      <workItem from="1623656644991" duration="47000" />
+      <workItem from="1624096288852" duration="616000" />
+      <workItem from="1624099335313" duration="16000" />
+      <workItem from="1624959651340" duration="3062000" />
+      <workItem from="1625046191754" duration="86000" />
+      <workItem from="1625051710421" duration="939000" />
+      <workItem from="1625562350183" duration="1103000" />
+      <workItem from="1625585781588" duration="368000" />
+      <workItem from="1626443722140" duration="21000" />
+      <workItem from="1626443791235" duration="16000" />
+      <workItem from="1626444416709" duration="20000" />
+      <workItem from="1629459249114" duration="2878000" />
+      <workItem from="1629655708055" duration="11005000" />
+      <workItem from="1629674728862" duration="56000" />
+      <workItem from="1629714551012" duration="31000" />
+      <workItem from="1629738672911" duration="1113000" />
+      <workItem from="1629825459490" duration="4150000" />
     </task>
     <servers />
   </component>
@@ -254,28 +423,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="731" y="309" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606421812892">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="731" y="309" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606421812892" />
-    <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606487107704">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="575" y="228" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.870@0.0.1600.870" timestamp="1606487107704" />
-    <state x="580" y="190" key="FileChooserDialogImpl" timestamp="1613471086371">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="580" y="190" key="FileChooserDialogImpl/0.0.1600.870@0.0.1600.870" timestamp="1613471086371" />
-    <state x="634" y="358" key="NewPhpFileDialog" timestamp="1610231339766">
-      <screen x="0" y="0" width="1600" height="870" />
-    </state>
-    <state x="634" y="358" key="NewPhpFileDialog/0.0.1600.870@0.0.1600.870" timestamp="1610231339766" />
-    <state x="761" y="428" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605793885801" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1605045688300">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605045688300" />
   </component>
 </project>

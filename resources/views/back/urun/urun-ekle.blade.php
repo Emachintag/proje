@@ -60,13 +60,24 @@
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Kategori</label>
+                                                                <label>Öneçıksın mı?</label>
                                                                 <div class="input-group">
                                                                     <select name="kategori" class="form-control" id="basicSelect">
-                                                                        <option value="1" >deneme</option>
-                                                                        <option value="2" >deneme 1</option>
-
+                                                                        <option value="1" >Hayır</option>
+                                                                        <option value="2" >Evet</option>
                                                                     </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Youtube Video İD</label>
+                                                                <div class="input-group">
+                                                                    <input name="youtube" type="text" class="form-control" placeholder="Youtube Video Linki" aria-describedby="basic-addon3">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -96,18 +107,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Ürün Belge (Çoklu PDF)</label>
-                                                                <div class="input-group">
-                                                                    <input name="pdfs[]" type="file" multiple class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
 
                                                 <div class="col-md-12">
                                                     <div class="row">

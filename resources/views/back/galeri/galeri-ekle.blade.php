@@ -32,7 +32,7 @@
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="la la-newspaper-o"></i>Galeri</h4>
                                             <div class="row">
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
@@ -44,19 +44,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                    <label>Galeri Açıklama</label>
-                                                                    <div class="input-group">
-                                                                        <input name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                    </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
@@ -68,8 +56,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">

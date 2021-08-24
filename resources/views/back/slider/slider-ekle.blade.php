@@ -69,6 +69,30 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Buton adı</label>
+                                                                <div class="input-group">
+                                                                    <input name="buton" type="text" class="form-control" placeholder="Buton adı" aria-describedby="basic-addon3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Buton Linki</label>
+                                                                <div class="input-group">
+                                                                    <input name="link" type="text" class="form-control" placeholder="Buton Linki" aria-describedby="basic-addon3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-actions right">

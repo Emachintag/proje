@@ -29,6 +29,16 @@ class MainController extends Controller
         return view('hakkimizda');
     }
 
+    public function tarim()
+    {
+        return view('tarim');
+    }
+
+    public function sakarya()
+    {
+        return view('sakarya');
+    }
+
     public function iletisim()
     {
         return view('iletisim');
@@ -54,11 +64,6 @@ class MainController extends Controller
         return view('belgeler');
     }
 
-    public function ekibimiz()
-    {
-        return view('ekibimiz');
-    }
-
 
     public function urunlerimiz()
     {
@@ -70,32 +75,6 @@ class MainController extends Controller
         return view('urun')->with('id', $urun);
     }
 
-    public function haberler()
-    {
-        return view('haberler');
-    }
-
-    public function haber($haber) {
-        return view('haber')->with('id', $haber);
-    }
-
-    public function blog()
-    {
-        return view('blog');
-    }
-
-    public function blog_detay($blog) {
-        return view('blog_detay')->with('id', $blog);
-    }
-
-    public function hizmetler()
-    {
-        return view ('hizmetler');
-    }
-
-    public function hizmet($hizmet) {
-        return view('hizmet')->with('id', $hizmet);
-    }
 
     public function iletisim_post (Request $request)
     {

@@ -10,9 +10,13 @@ Route::get('/', [MainController::class, 'index'])->name('anasayfa');
 Route::get('/hakkimizda', [MainController::class, 'hakkimizda'])->name('hakkimizda');
 Route::get('/iletisim', [MainController::class, 'iletisim'])->name('iletisim');
 Route::post('/iletisim', [MainController::class, 'iletisim_post']);
-Route::get('/galeri', [MainController::class, 'galeri'])->name('galeri');
+Route::get('/galeri', [MainController::class, 'galeri'])->name('galeriler');
 Route::get('/vizyon', [MainController::class, 'vizyon'])->name('vizyon');
 Route::get('/misyon', [MainController::class, 'misyon'])->name('misyon');
+
+Route::get('/sakaryamiz', [MainController::class, 'sakarya'])->name('sakarya');
+Route::get('/tarim-makinalari', [MainController::class, 'tarim'])->name('tarim');
+
 Route::get('/belgeler', [MainController::class, 'belgeler'])->name('belgeler');
 Route::get('/ekibimiz', [MainController::class, 'ekibimiz'])->name('ekibimiz');
 Route::get('/urunlerimiz', [MainController::class, 'urunlerimiz'])->name('urunlerimiz');
@@ -47,6 +51,11 @@ Route::prefix('panel')->middleware('auth')->group(function () {
     Route::post('/vizyon-ayarlar', [HomeController::class, 'vizyon_ayarlar_post'])->middleware('auth');
     Route::get('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar'])->name('misyon_ayarlar')->middleware('auth');
     Route::post('/misyon-ayarlar', [HomeController::class, 'misyon_ayarlar_post'])->middleware('auth');
+
+    Route::get('/tarim-makina-ayarlar', [HomeController::class, 'tarim_ayarlar'])->name('tarim_ayarlar')->middleware('auth');
+    Route::post('/tarim-makina-ayarlar', [HomeController::class, 'tarim_ayarlar_post'])->middleware('auth');
+    Route::get('/sakarya-ayarlar', [HomeController::class, 'sakarya_ayarlar'])->name('sakarya_ayarlar')->middleware('auth');
+    Route::post('/sakarya-ayarlar', [HomeController::class, 'sakarya_ayarlar_post'])->middleware('auth');
 
     // Blog İşlemleri Başlangıç
 

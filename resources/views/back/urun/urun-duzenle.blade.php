@@ -101,23 +101,30 @@ use Illuminate\Support\Facades\File;
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
-                                                                <label>Kategori</label>
+                                                                <label>Öneçıksın mı?</label>
                                                                 <div class="input-group">
-                                                                    <select name="kategori" class="form-control"
-                                                                            id="basicSelect">
-                                                                        <option>Select Option</option>
-                                                                        <option>Option 1</option>
-                                                                        <option>Option 2</option>
-                                                                        <option>Option 3</option>
-                                                                        <option>Option 4</option>
-                                                                        <option>Option 5</option>
+                                                                    <select name="kategori" class="form-control" id="basicSelect">
+                                                                        <option @if($urunim->kategori == 1) selected @endif value="1" >Hayır</option>
+                                                                        <option @if($urunim->kategori == 2) selected @endif value="2" >Evet</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="row">
+                                                        <div class="card-body">
+                                                            <div class="card-block">
+                                                                <label>Youtube Video İD</label>
+                                                                <div class="input-group">
+                                                                    <input value="{{$urunim->youtube}}" name="youtube" type="text" class="form-control" placeholder="Youtube Video Linki" aria-describedby="basic-addon3">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-8">
                                                     <div class="row">
 
                                                         <div class="col-md-12">
@@ -126,7 +133,7 @@ use Illuminate\Support\Facades\File;
                                                                     <div class="card-block">
                                                                         <div class="row">
 
-                                                                            <div class="col-md-4">
+                                                                            <div class="col-md-6">
                                                                                 <label>Ürün Görsel (Tek
                                                                                     Fotoğraf)</label>
                                                                                 <div class="input-group">
@@ -144,7 +151,7 @@ use Illuminate\Support\Facades\File;
                                                                                     </div>
                                                                                 @endif
                                                                             </div>
-                                                                            <div class="col-sm-4 col-md-4">
+                                                                            <div class="col-sm-6 col-md-6">
                                                                                 <label class="label-control"
                                                                                        for="userinput4">Yeni Resim Yükle
                                                                                     ( Çoklu )</label>
@@ -181,21 +188,6 @@ use Illuminate\Support\Facades\File;
                                                                             </div>
 
 
-
-                                                                            <div class="col-sm-4 col-md-4">
-                                                                                <div class="form-group">
-                                                                                    <label class="label-control text-danger" for="userinput4">Yeni Yüklemek istediğiniz pdf'leri seçin</label>
-                                                                                    <input id="userinput4" type="file" name="pdf[]" class="btn btn-block btn-outline-pink form-control" accept="application/pdf" multiple>
-                                                                                </div>
-                                                                                @if(DB::table('urun_belge')->where('urun_id', $urunim->id)->get())
-                                                                                    @foreach(DB::table('urun_belge')->where('urun_id', $urunim->id)->get() as $uu)
-                                                                                        <span class="text-info mt-1"
-                                                                                              style="display: block;"><a target="_blank" href="/public/img/{{$uu->belge}}"><label>{{$uu->belge}}</label><img style="width: 30%" src="{{ asset('/public/back/icon/pdf.png') }}"></a><button type="button" onclick="location.href='?belgeSil&belge={{$uu->id}}&id={{$urunim->id}}'" class="btn btn-outline-danger ml-1"><i class="ft ft-minus"></i> Sil</button></span><br>
-                                                                                    @endforeach
-                                                                                @else
-                                                                                    <span class="text-danger">PDF Yüklenmemiş</span>
-                                                                                @endif
-                                                                            </div>
 
                                                                         </div>
                                                                     </div>

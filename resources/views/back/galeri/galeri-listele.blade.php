@@ -84,7 +84,6 @@
                                             <thead>
                                             <tr>
                                                 <th>Galeri Başlık</th>
-                                                <th>Galeri Açıklama</th>
                                                 <th>Youtube Video</th>
                                                 <th>Galeri Resim</th>
                                                 <th>İşlem</th>
@@ -95,7 +94,6 @@
                                             @foreach(DB::table('galeri')->get() as $u)
                                             <tr>
                                                 <td>{{$u->title}}</td>
-                                                <td>{{$u->title_2}}</td>
                                                 <td><a href="{{$u->link}}">{{$u->link}}</a></td>
                                                 <td style="text-align: center"><img class="img" src="{{asset('/public/img/'.$u->image)}}" height="100"></td>
 
@@ -151,7 +149,6 @@
                                             <tfoot>
                                             <tr>
                                                 <th>Galeri Başlık</th>
-                                                <th>Galeri Açıklama</th>
                                                 <th>Youtube Video</th>
                                                 <th>Galeri Resim</th>
                                                 <th>İşlem</th>

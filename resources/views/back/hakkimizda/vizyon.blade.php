@@ -35,7 +35,7 @@
                                         <div class="form-body">
                                             <h4 class="form-section"><i class="la la-newspaper-o"></i>Vizyon</h4>
                                             <div class="row">
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <div class="row">
                                                         <div class="card-body">
                                                             <div class="card-block">
@@ -47,20 +47,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="row">
-                                                        <div class="card-body">
-                                                            <div class="card-block">
-                                                                <label>Vizyon Alt Başlığı</label>
-                                                                <div class="input-group">
-                                                                    <input value="{{$vizyon->title_2}}" name="title_2" type="text" class="form-control" placeholder="Alt Başlık" aria-describedby="basic-addon3">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="col-md-4">
+
+                                                <div class="col-md-6">
                                                     <label>Vizyon Görsel (Tek
                                                         Fotoğraf)</label>
                                                     <div class="input-group">

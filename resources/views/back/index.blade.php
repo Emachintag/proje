@@ -46,69 +46,6 @@
             <div class="content-body">
                 <!-- modüller -->
                 <div class="row mb-3">
-                    @if(DB::table('haber')->count() == '')
-                        @else
-                    <div class="col mb-2" style="height: 125px;">
-                        <div class="card h-100 pull-up bg-gradient-directional-info">
-                            <div class="card-content">
-                                <a href="{{route('haber')}}"><div class="card-body text-center">
-                                    <i class="la la-newspaper-o text-white la-2x"></i>
-                                    <br>
-                                    <h3><span class="text-white">Haberler</span></h3>
-                                    <h1><span class="text-white">{{DB::table('haber')->count()}}</span></h1>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                    @endif
-                        @if(DB::table('blog')->count() == '')
-                        @else
-                    <div class="col mb-2" style="height: 125px;">
-                        <div class="card h-100 pull-up bg-gradient-directional-danger">
-                            <div class="card-content">
-                                <a href="{{route('blog')}}">
-                                <div class="card-body text-center">
-                                    <i class="la la-newspaper-o text-white la-2x"></i>
-                                    <br>
-                                    <h3><span class="text-white">Bloglar</span></h3>
-                                    <h1><span class="text-white">{{DB::table('blog')->count()}}</span></h1>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                        @endif
-                        @if(DB::table('hizmet')->count() == '')
-                        @else
-                    <div class="col mb-2" style="height: 125px;">
-                        <div class="card h-100 pull-up bg-gradient-directional-success">
-                            <div class="card-content">
-                                <a href="{{route('hizmet')}}">
-                                <div class="card-body text-center">
-                                    <i class="la la-recycle text-white la-2x"></i>
-                                    <br>
-                                    <h3><span class="text-white">Hizmetler</span></h3>
-                                    <h1><span class="text-white">{{DB::table('hizmet')->count()}}</span></h1>
-                                </div></a>
-                            </div>
-                        </div>
-                    </div>
-                        @endif
-                        @if(DB::table('ekip')->count() == '')
-                        @else
-                    <div class="col mb-2" style="height: 125px;">
-                        <div class="card h-100 pull-up bg-gradient-directional-info">
-                            <div class="card-content">
-                                <a href="{{route('ekip')}}">
-                                    <div class="card-body text-center">
-                                        <i class="la la-user-secret text-white la-2x"></i>
-                                        <br>
-                                        <h3><span class="text-white">Ekip</span></h3>
-                                        <h1><span class="text-white">{{DB::table('ekip')->count()}}</span></h1>
-                                    </div></a>
-                            </div>
-                        </div>
-                    </div>
-                        @endif
                         @if(DB::table('belge')->count() == '')
                         @else
                     <div class="col mb-2" style="height: 125px;">
@@ -292,22 +229,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
         </div>
     </div>
